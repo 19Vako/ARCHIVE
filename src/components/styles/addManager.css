@@ -1,0 +1,264 @@
+.addManagercontainer {  
+   height: 100%;    
+   display: flex;
+   flex-direction: row;
+}
+.managerList {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   height: 100%;
+   width: 30vw;
+   border: 1px solid gray;
+   border-radius: 1vw;
+   margin-right: 0.8vw;
+}
+.filter {
+   margin-top: 0.4vw;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 5vw;
+   width: 100%;
+}
+.findErrorLog {
+   color: white;
+   font-size: 1vw;
+}
+.inputButtonFind {
+  height: 1vw;
+  width: 1vw;
+  left: 2.5vw;
+  cursor: pointer;
+  position: absolute;
+}
+.inputButtonClean {
+   height: 1vw;
+   width: 1vw;
+   left: 20.1vw;
+   cursor: pointer;
+   position: absolute;
+ }
+.filterInput {
+   border-radius: 2vw;
+   padding: 0.5vw;
+   padding-left: 3vw;
+   padding-right: 3vw;
+   font-size: 1vw;
+   height: 2.5vw;
+   width: 15vw;
+   background: none;
+   border: 1px solid gray;
+   color: white;
+}
+.list {
+   width: 25;
+   height: 100%;
+   overflow-y: auto;
+   
+}
+
+.managerBlock {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border: 1px solid gray;
+   padding: 1vw;
+   border-radius: 0.5vw;
+   height: 2vw;
+   width: 19vw;
+   margin-top: 0.5vw;
+   margin-bottom: 0.5vw;
+   cursor: pointer;
+}
+.managerBlock:hover {
+   background-color: #034d89;
+}
+.managerName {
+   color: white;
+   font-size: 1vw;
+}
+.deleteButton {
+   border: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background:none;
+   height: 1.5vw;
+   width: 1.5vw;
+   cursor: pointer;
+}
+.deleteModalManagerContainer {
+   position: absolute;
+   background: #2e2e2e;
+   top: 9vw;
+   left: 38vw;
+   width: 50vw;
+   height: 29vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: white;
+}
+
+.deleteModalManagerContainer h1 {
+   width: 25vw;
+   font-size: 1.5vw;
+   margin-bottom: 2vw;
+}
+
+.deleteModalManagerButtons {
+   display: flex;
+}
+
+.deleteModalButton {
+   background: #b00303;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   height: 3vw;
+   width: 10vw;
+   color: white;
+   cursor: pointer;
+   margin-right: 2vw;
+}
+.deleteModalButton:hover {
+   background-color: #8b0606;
+}
+
+.closeModalButton {
+   background: #004884;
+   height: 3vw;
+   width: 10vw;
+   cursor: pointer;
+   color: white;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+}
+.closeModalButton:hover {
+   background-color: #023a68;
+}
+
+
+
+
+
+.addManagerForm {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   color: white;
+   height: 100%;
+   width: 100%;
+   border: 1px solid gray;
+   border-radius: 1vw;
+}
+.addForm {
+   height: 60%;
+   width: 73vw;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   border-bottom: 1px solid gray;
+   padding: 1vw;
+}
+.addManagerForm h1 {
+   font-size: 1.5vw;
+}
+.addManagerInput {
+   background:none;
+   border: 1px solid gray;
+   color: white;
+   border-radius: 0.5vw;
+   padding-left: 1vw;
+   padding-right: 1vw;
+   font-size: 1vw;
+   width: 20vw;
+   height: 2vw;
+   margin-bottom: 1vw;
+}
+.addManagerForm .logs {
+   font-size: 1vw;
+   margin-top: 0;
+}
+.addButton {
+   width: 22vw;
+   height: 3vw;
+   border-radius: 0.5vw;
+   background:none;
+   font-size: 1vw;
+   border: 1px solid gray;
+   color: white;
+   background-color: #004884;
+   cursor: pointer;
+}
+.addButton:hover {
+   background-color: #034d89;
+}
+.emptyText {
+   margin-top: 2vw;
+}
+.managerOptions {
+   height: 15vw;
+   width: 73vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 1vw;
+}
+.managerOptions h1{
+   font-size: 1.5vw;
+}
+.managerOptionsContainer {
+   display: flex;
+   width: 73vw;
+   margin-top: 1vw;
+   justify-content: space-between;
+   flex-direction: row;
+   align-items: center;
+}
+.managerDataForm {
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+}
+.dataContainer {
+   display: flex;
+   align-items:flex-end;
+   margin-left: 3vw;
+}
+.dataContainer h1 {
+   font-size: 1.5vw;
+   margin-bottom: 0;
+}
+.dataContainer input {
+   margin-left: 1vw;
+   background: none;
+   border: none;
+   color: white;
+   font-size: 1.5vw;
+}
+.optionButtons {
+   width: 10vw;
+   margin-right: 3vw;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+}
+.saveButton {
+   height: 3vw;
+   width: 7vw;
+   background-color: #004884;
+   color: white;
+   font-size: 1vw;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   margin-right: 1vw;
+   cursor: pointer;
+}
+.saveButton:hover {
+   background-color: #023a68;
+}

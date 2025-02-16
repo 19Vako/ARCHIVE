@@ -1,0 +1,12 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3vw;
+  background-color: #004884;
+  color: white;
+}
+
+.headerContainer p {
+  font-size: 1.5vw;
+}
