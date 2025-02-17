@@ -7,6 +7,7 @@ const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
 const { ManagerScheme, DocCardScheme, AdminScheme } = require("./schemas");
+const { error } = require("console");
 
 const env = process.env;
 const app = express();
@@ -173,6 +174,11 @@ app.get(env.GET_MANAGERS, async (_, res) => {
      res.status(500).json({ error: "❌ Помилка сервера" });
   }
 });
+
+
+
+
+
 app.post(env.MANAGER_LOG_IN, async (req, res) => {
    try {
       const { name, password } = req.body;
@@ -224,25 +230,14 @@ app.post(env.ADD_CARD_ADDITION, upload.single("docPDF"), async (req, res) => {
          return res.status(400).json({ error: "❌ Дозволені лише PDF-файли" });
       }
 
-      if(
-           !docType || 
-           !docNumber || 
-           !docCreateDate || 
-           !docSigningDate || 
-           !name || 
-           !validityPeriod || 
-           !organizationName ||
-           !organisationCode || 
-           !counterpartyName || 
-           !counterpartyCode || 
-           !content || 
-           !contractType || 
-           !author || 
-           !createDate
-         ) { 
-            fs.unlinkSync(req.file.path);
-            return res.status(400).json({ error: "❌ Заповнені не всі поля!" }) 
-           }
+      if (Object.values({ 
+         docType, docNumber, docCreateDate, docSigningDate, name, validityPeriod, 
+         organizationName, organisationCode, counterpartyName, counterpartyCode, 
+         content, contractType, author, createDate 
+      }).some(value => !value)) {
+         fs.unlinkSync(req.file.path);
+         return res.status(400).json({ error: "❌ Заповнені не всі поля!" });
+      }
 
       const docCard = await DocCardScheme.create({
            docType: docType,
@@ -275,6 +270,66 @@ app.post(env.ADD_CARD_ADDITION, upload.single("docPDF"), async (req, res) => {
       res.status(500).json({ error: "❌ Помилка сервера" });
    }
 });
+app.get(env.GET_CARDS, async (_, res) => {
+   try {
+      const cards = await DocCardScheme.find()
+      if(!cards.length){
+         return res.status(404).json({ error: "❌ Архів договорів пустий!"})
+      }
+      res.status(200).json({ message: "✅ Успішне отримання всіх даних!", cards})
+   } catch (err) {
+      console.error("❌ Помилка при отриманні списка карток договорів!")
+      res.status(500).json({ error: "❌ Помилка сервера" })
+   }
+})
+app.post(env.FIND_CARDS, async (req, res) => {
+   try {
+     const {
+       docType,
+       docNumber,
+       docCreateDate,
+       docSigningDate,
+       name,
+       validityPeriod,
+       organizationName,
+       organisationCode,
+       counterpartyName,
+       counterpartyCode,
+       content,
+       contractType,
+       addition,
+       author,
+       createDate,
+     } = req.body;
+ 
+     // Перевірка, переданих чи передані фільтри
+     if (!Object.values(req.body).some(val => val)) { 
+       return res.status(400).json({ error: "❌ Введіть фільтри!" });
+     }
+ 
+     // Динамічна фільтрація
+     const filter = Object.fromEntries(
+      Object.entries({
+        docType, docNumber, docCreateDate, docSigningDate, name, validityPeriod,
+        organizationName, organisationCode, counterpartyName, counterpartyCode,
+        content, contractType, addition, author, createDate
+      }).filter(([_, value]) => value)
+    );
+    
+ 
+     const findedCards = await DocCardScheme.find(filter);
+ 
+     if (!findedCards.length) {
+       return res.status(404).json({ error: '❌ Картка документу не знайдена!' });
+     }
+ 
+     res.status(200).json({ message: "✅ Картки успішно отримані!", data: findedCards });
+ 
+   } catch (err) {
+     console.error('❌ Помилка при пошуку документу!', err);
+     res.status(500).json({ error: "❌ Помилка сервера!" });
+   }
+}); 
 app.post(env.DELETE_CARD, async (req, res) => {
    try {
       const { docId } = req.body;
@@ -322,28 +377,14 @@ app.post(env.UPDATE_CARD, upload.single("docPDF"), async (req, res) => {
        return res.status(400).json({ error: "❌ Картка не знайдена!" });
      }
  
-     let updateFields = {};
-     const fieldsToCheck = [
-       { field: 'docType', value: docType },
-       { field: 'docNumber', value: docNumber },
-       { field: 'docCreateDate', value: docCreateDate },
-       { field: 'docSigningDate', value: docSigningDate },
-       { field: 'name', value: name },
-       { field: 'validityPeriod', value: validityPeriod },
-       { field: 'organizationName', value: organizationName },
-       { field: 'organisationCode', value: organisationCode },
-       { field: 'counterpartyName', value: counterpartyName },
-       { field: 'counterpartyCode', value: counterpartyCode },
-       { field: 'content', value: content },
-       { field: 'contractType', value: contractType },
-       { field: 'author', value: author },
-       { field: 'createDate', value: createDate },
-     ];
-     fieldsToCheck.forEach(({ field, value }) => {
-       if (value && value !== cardDoc[field]) {
-         updateFields[field] = value;
-       }
-     });
+     const updateFields = Object.fromEntries(
+      Object.entries({ 
+        docType, docNumber, docCreateDate, docSigningDate, name, validityPeriod, 
+        organizationName, organisationCode, counterpartyName, counterpartyCode, 
+        content, contractType, author, createDate 
+      }).filter(([key, value]) => value && value !== cardDoc[key])
+    );
+   
 
      if (req.file) {
          fs.unlink(path.join(__dirname, 'pdf-files', cardDoc.docPDF), (err) => {
