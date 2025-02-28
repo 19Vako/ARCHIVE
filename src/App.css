@@ -9,3 +9,9 @@ p{
 .AppContainer {
    height: 100vh;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+   filter: invert(1); /* Инвертирует цвет (на черном фоне будет белым) */
+}
+ 
+

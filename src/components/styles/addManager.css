@@ -8,7 +8,7 @@
    align-items: center;
    flex-direction: column;
    height: 100%;
-   width: 30vw;
+   width: 22vw;
    border: 1px solid gray;
    border-radius: 1vw;
    margin-right: 0.8vw;
@@ -55,9 +55,7 @@
    width: 25;
    height: 100%;
    overflow-y: auto;
-   
 }
-
 .managerBlock {
    display: flex;
    justify-content: space-between;
@@ -101,17 +99,14 @@
    justify-content: center;
    color: white;
 }
-
 .deleteModalManagerContainer h1 {
    width: 25vw;
    font-size: 1.5vw;
    margin-bottom: 2vw;
 }
-
 .deleteModalManagerButtons {
    display: flex;
 }
-
 .deleteModalButton {
    background: #b00303;
    border: 1px solid gray;
@@ -121,11 +116,11 @@
    color: white;
    cursor: pointer;
    margin-right: 2vw;
+   font-size: 1vw;
 }
 .deleteModalButton:hover {
    background-color: #8b0606;
 }
-
 .closeModalButton {
    background: #004884;
    height: 3vw;
@@ -134,22 +129,20 @@
    color: white;
    border: 1px solid gray;
    border-radius: 0.5vw;
+   font-size: 1vw;
 }
 .closeModalButton:hover {
    background-color: #023a68;
 }
-
-
-
-
-
 .addManagerForm {
+   position: absolute;
    display: flex;
    align-items: center;
    flex-direction: column;
    color: white;
-   height: 100%;
-   width: 100%;
+   height: 46.501vw;
+   width: 75vw;
+   left: 23.88vw;
    border: 1px solid gray;
    border-radius: 1vw;
 }
@@ -262,3 +255,7 @@
 .saveButton:hover {
    background-color: #023a68;
 }
+.cardDataButtons button {
+   font-size: 0.8vw;
+}
+

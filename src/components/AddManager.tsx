@@ -1,9 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import "./styles/addManager.css"
+import { useStore } from '../context/Context';
 import axios from 'axios';
+
 
 function AddManager() {
   const env = process.env as any;
+
+  const { setCards } = useStore()
 
   // Стани списку менеджерів
   const [managers, setManagers] = useState([]); // Список менеджерів
@@ -23,20 +28,22 @@ function AddManager() {
   const [ManagerName, setManagerName] = useState('');
   const [ManagerPassword, setManagerPassword] = useState('');
   const [changeManagerID, setChangeManagerID] = useState('');
-
-  
   const [deleteManagerModal, setDeleteManagerModal] = useState(false);
 
 
-
+  
   const getManagers = async () => {
-    const { data } = await axios.get(env.REACT_APP_GET_MANAGERS);
+    const { data } = await axios.get(env.REACT_APP_GET_MANAGERS)
     setManagers(data.managers);
   };
+  const GetCards = async () => {
+    const {data} = await axios.get(env.REACT_APP_GET_CARDS)
+    setCards(data.cards)
+  }
   useEffect(() => {
     getManagers()
+    GetCards()
   },[]);
-
   const FindManager = async () => {
     await axios.post(env.REACT_APP_FIND_MANAGER, {name:findName})
     .then((data) => {
@@ -75,15 +82,12 @@ function AddManager() {
       setOptionsLog(err.response.data.error)
     })
   };
-
-
   const DeleteManager = async () => {
     setDeleteManagerModal(false)
     setShowManager(false)
     await axios.post(env.REACT_APP_DELETE_MANAGER, { name:ManagerName });
     setManagers((prev) => prev.filter((mng: any) => mng.name !== ManagerName));
   };
-  
   const DeletModal = () => {
     if(deleteManagerModal){
       return (
@@ -100,8 +104,8 @@ function AddManager() {
     }
   }
   
-
   
+
   return (
     <div className='addManagercontainer'>
       <div className='managerList'>
@@ -164,7 +168,7 @@ function AddManager() {
 
               </div>
               <div className='optionButtons'>
-                <button onClick={() => ChangeManager()} className='saveButton'>Зберегти зміни</button>
+                <button onClick={() => ChangeManager()} className='saveButton'>Зберегти</button>
                 <button className='deleteButton' onClick={() => {setDeleteManagerModal(true)}}  >
                 <img 
                   className='deleteButton' 

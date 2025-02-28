@@ -39,6 +39,7 @@
    color: white;
    width: 15vw;
    height: 2vw;
+   font-size: 1vw;
    margin-bottom: 1vw;
    padding-left: 0.5vw;
    padding-right: 0.5vw;
@@ -47,6 +48,7 @@
 .log_in_text {
    color: white;
    margin: 0;
+   font-size: 2vw;
    margin-bottom: 1vw;
 }
 

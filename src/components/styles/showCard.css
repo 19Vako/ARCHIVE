@@ -1,0 +1,226 @@
+.cardContainer {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   color: white;
+   height: 46.5vw;
+   width: 75vw;
+   left: 23.88vw;
+   border: 1px solid gray;
+   border-radius: 1vw;
+   background-color:#2e2e2e;
+}
+
+.cardContainerBlock {
+   display: flex;
+   justify-content: end;
+}
+
+.cardDataButtons {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   left: 0;
+   margin-top: 1vw;
+   margin-left: 1vw;
+   margin-right: 1vw;
+   height: 34.3vw;
+   width: 18.6vw;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+}
+
+.cardDataButtonsContainer {
+   padding-top: 1vw;
+   width: 18.6vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border-bottom: 1px solid gray;
+}
+
+.backButton {
+   width: 100%;
+}
+
+.cardDataButtons .backButton button {
+   border: none;
+   height: 3vw;
+   width: 3vw;
+   font-size: 2vw;
+   font-family: sans-serif;
+   color: gray;
+   margin: 0;
+   margin-left: 1vw;
+   background: none;
+}
+
+.cardDataButtons h1 {
+   width: 16vw;
+   font-size: 1vw;
+   display: flex;
+   flex-direction: column;
+}
+
+.changeFileButton {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: sans-serif;
+   height: 2vw;
+   width: 10vw;
+   background: whitesmoke;
+   font-size: 1vw; 
+   color: black;
+   border-radius: 0.5vw;
+   border: 1px solid gray;
+   cursor: pointer;
+}
+
+.showFileTitle {
+   display: flex;
+   align-items: center;
+   width: 15vw;
+   font-size: 1vw;
+   white-space: nowrap; 
+   overflow: hidden; 
+   text-overflow: ellipsis; 
+}
+
+.saveCangesButton {
+   position: absolute;
+   top: 32.3vw;
+   left: 62.9vw;
+   font-size: 1vw;
+   cursor: pointer;
+}
+
+.deleteCard {
+   background: #b00303;
+   color: white;
+   cursor: pointer;
+}
+
+.deleteCard:hover {
+   background-color: #8b0606;
+}
+
+.additionList {
+   width: 100%;
+   height: 17vw;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   overflow-x: scroll;
+   padding-bottom: 0.5vw;
+}
+
+.additionList h1 {
+   display: flex;
+   justify-content: center;
+}
+
+.additionBlockContainer {
+   display: flex;
+   width: 17.3vw;
+   flex-direction: column;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   margin-top: 0.5vw;
+   padding-top: 1vw;
+   padding-bottom: 0.5vw;
+}
+
+.additionBlockContainer h1 {
+   font-size: 0.8vw;
+    margin: 0;
+    margin-left: 1vw;
+    margin-bottom: 0.5vw;
+}
+
+.additionBlockContainer:hover {
+   background-color: #023a68;
+}
+
+.cardDataContainer {
+   height: 34.3vw;
+   width: 26vw;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   margin: 1vw;
+   
+}
+
+.cardDataTitle {
+   display: flex;
+   align-items: center;
+}
+
+.cardDataContainer h1 {
+   width: 8vw;
+   color: white;
+   display: flex;
+   align-items: center;
+   font-size: 0.95vw;
+   margin-left: 1vw;
+   margin-right: 1vw;
+}
+
+.cardDataContainer input {
+   font-size: 0.8vw;
+   margin: 0;
+   color: white;
+   background: none;
+   border: 1px solid gray;
+   border-radius: 0.2vw;
+}
+
+.cardDataContainer select {
+   font-size: 0.8vw;
+   margin: 0;
+   color: white;
+   background: none;
+   border: 1px solid gray;
+   border-radius: 0.2vw;
+}
+
+.cardDataTitleContent {
+   height: 9vw;
+   display: block;
+   align-items: center;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   margin-left: 1vw;
+   margin-right: 1vw;
+   margin-bottom: 1vw;
+}
+
+.cardDataTitleContent h1 {
+   font-size: 1vw;
+   margin-left: 1vw;
+}
+
+.cardDataTitleContent textarea {
+   font-size: 1vw;
+   overflow-y: auto;
+   background: none;
+   color: white;
+   border: none;
+   height: 5.2vw;
+   width: 70.5vw;
+   margin-left: 1vw;
+   margin-right: 1vw;
+   resize: none;
+}
+
+.cardPdfDocContainer {
+   z-index: 2;
+   width: 26vw;
+   margin-top: 1vw;
+   margin-right: 1vw;
+   background-color: #2e2e2e;
+   height: 32.1vw;
+   width: 26vw;
+}

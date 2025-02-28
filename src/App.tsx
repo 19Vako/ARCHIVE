@@ -10,6 +10,7 @@ import Manager from './screens/Manager';
 import Admin from './screens/Admin';
 import StartScreen from './screens/StartScreen';
 import { Provider } from './context/Context';
+import DocumentCard from './screens/DocumentCard';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path='/Admin_log_in' element={<Admin_log_in/>}/>
             <Route path='/Manager' element={<Manager/>}/>
             <Route path='/Admin' element={<Admin/>}/>
+            <Route path='/document/card/:id' element={<DocumentCard/>}/>
           </Routes>
         </Router>
       </Provider>

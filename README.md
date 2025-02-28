@@ -1,46 +1,183 @@
-# Getting Started with Create React App
+# API Архіву Документів
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Опис:
+Цей серверний додаток є API для управління архівом документів, адміністрування користувачів (адміністраторів і менеджерів) та роботи з PDF-файлами.
 
-## Available Scripts
+## Використані технології:
+Node.js
+Express.js
+MongoDB (Mongoose)
+bcrypt для хешування паролів
+dotenv для зберігання конфігураційних змінних
+cors для обробки міждоменної політики
+Multer для завантаження файлів
 
-In the project directory, you can run:
 
-### `npm start`
+# УСТАНОВКА
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Клонуйте репозиторій:
+git clone <repo_url>
+cd document-archive
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Встановіть залежності:
+npm install
 
-### `npm test`
+## Створіть файл .env і налаштуйте змінні оточення:
+MONGO_URL=<your_mongodb_url>
+PORT=5000
+ADD_ADMIN=/add-admin
+ADMIN_LOG_IN=/admin-login
+ADD_MANAGER=/add-manager
+DELETE_MANAGER=/delete-manager
+FIND_MANAGER=/find-manager
+FIND_CHANGE_MANAGER=/find-change-manager
+GET_MANAGERS=/get-managers
+MANAGER_LOG_IN=/manager-login
+ADD_CARD_OR_ADDITION=/add-card-or-addition
+GET_CARDS=/get-cards
+GET_ADDITIONCARDS=/get-additioncards
+FIND_CARDS=/find-cards
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Запустіть сервер:
+npm start
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# API ЕНДПОІНТИ
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Аутентифікація та адміністрування:
+POST /add-admin - Додає нового адміністратора.
+POST /admin-login - Авторизація адміністратора.
+POST /add-manager - Додає нового менеджера.
+POST /delete-manager - Видаляє менеджера.
+POST /find-manager - Пошук менеджера за ім’ям.
+POST /find-change-manager - Зміна даних менеджера.
+GET /get-managers - Отримання списку менеджерів.
+POST /manager-login - Авторизація менеджера.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Управління документами:
+POST /add-card-or-addition - Додає нову картку документа або доповнення.
+GET /get-cards - Отримує всі документи.
+POST /get-additioncards - Отримує всі доповнення до конкретного документа.
+POST /find-cards - Пошук документів.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# ДОДАТКОВА ІНФОРМАЦІЯ
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Структура бази даних:
+AdminScheme - Зберігає дані адміністратора (ім’я, хешований пароль).
+ManagerScheme - Зберігає дані менеджерів.
+DocCardScheme - Зберігає дані документів і доповнень.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Файли:
+PDF-файли зберігаються у папці pdf-files.
+Для їх доступу використовується express.static().
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# КОМПОНЕНТИ 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## AddCard - Додаток для додавання та перегляду карток документів
+Цей проект є частиною більшого додатку для роботи з картками документів. Користувач може додавати нові картки, переглядати вже існуючі, а також фільтрувати архів документів.
+
+### Опис:
+Компонент `AddCard` забезпечує інтерфейс для створення нових карток документів, перевірки введених даних перед додаванням, а також можливість вибору файлів (наприклад, PDF) для прикріплення до картки.
+
+### Ключові функції:
+- Додавання нових карток документів.
+- Перевірка введених даних перед збереженням.
+- Зберігання інформації про картку в базі даних.
+- Підтримка завантаження PDF файлів.
+- Фільтрація карток та перегляд деталей.
+
+
+
+## Add Manager App:
+Цей додаток дозволяє керувати менеджерами, додаючи нових, редагуючи їхні дані або видаляючи їх зі списку. Додаток також дозволяє здійснювати пошук менеджерів за ім'ям.
+
+### Особливості:
+- **Додавання менеджера**: Можливість створювати нового менеджера, вказуючи ім'я та пароль.
+- **Пошук менеджера**: Можливість шукати менеджерів за ім'ям.
+- **Редагування менеджера**: Можливість редагувати дані існуючого менеджера (ім'я та пароль).
+- **Видалення менеджера**: Можливість видаляти менеджера зі списку після підтвердження.
+
+### Технології:
+- **React**: Для побудови інтерфейсу користувача.
+- **Axios**: Для здійснення HTTP запитів.
+- **CSS**: Для стилізації компонентів.
+- **Context API**: Для глобального управління станом.
+
+
+
+## FilterCard Component:
+Компонент для фільтрації карток у додатку. Дозволяє фільтрувати картки за різними параметрами, такими як тип документа, дата створення, дата підписання, термін дії, найменування організації та інші.
+
+### Функціональність:
+- **Фільтрація карток**: Використовує різні фільтри для пошуку карток, включаючи тип документа, дату створення, дату підписання, термін дії та інші параметри.
+- **Очистка полів**: Можливість скинути всі введені дані та очистити поля вводу.
+- **Пошук за автором**: Дозволяє вказати автора для фільтрації карток.
+- **Отримання карток**: При натисканні кнопки "Перезавантажити" можна отримати всі картки з сервера.
+
+### Технології:
+- **React**: Для побудови інтерфейсу користувача.
+- **Axios**: Для здійснення HTTP запитів до сервера.
+- **CSS**: Для стилізації компонентів.
+- **Context API**: Для глобального управління станом.
+
+
+
+## ShowCard Component:
+Компонент для відображення та редагування карток у додатку. Дозволяє переглядати, змінювати, видаляти картки та додавати посилання до картки. Крім того, можна завантажувати PDF файли, змінювати їх і переглядати у вбудованому переглядачі.
+
+### Функціональність:
+- **Перегляд картки**: Відображає всі дані картки, такі як назва, автор, тип документу, дата створення, дата підписання, термін дії, контрагент та інші.
+- **Редагування картки**: Дозволяє змінювати інформацію про картку та зберігати зміни.
+- **Видалення картки**: Можна видалити картку з бази даних.
+- **Додавання посилання**: Можна додавати посилання до картки.
+- **Завантаження PDF**: Можна завантажити новий PDF файл для картки та переглянути його.
+- **Фільтрація карток**: Відображення додаткових карток або посилань, які прив'язані до поточної картки.
+
+### Технології:
+- **React**: Для побудови інтерфейсу користувача.
+- **Axios**: Для здійснення HTTP запитів до сервера.
+- **CSS**: Для стилізації компонентів.
+
+
+
+## React Context Store для управління картками
+Цей проєкт містить React Context Store, який допомагає управляти станом для додатку з управління картками. Контекст надає глобальне управління станом для авторизації користувачів, інформації про картки, обробки файлів, логів помилок та інших пов'язаних функцій.
+
+### Особливості:
+- **Управління користувачем**: Зберігає ім'я користувача та зберігає його в `localStorage`.
+- **Управління картками**: Зберігає, редагує та управляє даними карток, такими як типи документів, номери, терміни дії, організації та інше.
+- **Управка формами**: Зберігає та управляє даними форми для створення картки.
+- **Обробка файлів**: Завантаження, відображення та обробка файлів, таких як PDF та лог-файли.
+- **Логи помилок**: Відслідковує помилки, пов'язані з отриманням та створенням карток, обробкою файлів та фільтрацією.
+- **Управління фільтрами та додаваннями**: Управляє фільтрами для карток та обробляє додавання карток.
+
+
+### Станові змінні:
+- **userName**: Зберігає ім'я користувача.
+- **cards**: Масив об'єктів `CardType`, які представляють картки.
+- **showCard**: Булевий тип для управління видимістю картки.
+- **showCardDataLog**: Лог даних, пов'язаних з карткою, що відображається.
+- **showSaveChangesButton**: Булевий тип для показу кнопки збереження змін.
+- **formData**: Зберігає дані форми для створення картки.
+- **showFilter**: Булевий тип для показу UI фільтра.
+- **fileName**: Зберігає назву файлу.
+- **file**: Зберігає сам файл (або `File` об'єкт, або рядок).
+- **pdfURL**: Зберігає URL для згенерованого PDF.
+- **showCardPDF**: Об'єкт, що містить інформацію про PDF картки.
+- **getCardError**: Лог помилок, пов'язаних з отриманням карток.
+- **fileLog**: Булевий тип для вмикання/вимикання логування файлів.
+- **filterLog**: Лог помилок під час фільтрації карток.
+- **findAuthor**: Зберігає ім'я автора для пошуку карток.
+- **createCardError**: Булевий тип для відображення помилок під час створення картки.
+- **additions**: Масив додаткових даних, пов'язаних з картками.
+- **showAddition**: Булевий тип для управління видимістю UI додавання картки.
+
+### Функції
+
+- **reverseWord**: Перевертає рядок дати в форматі `YYYY-MM-DD`.
+- **useStore**: Користувацький хук для доступу до значень контексту. Кидає помилку, якщо використовується поза `Provider`.
+
+

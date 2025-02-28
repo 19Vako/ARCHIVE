@@ -1,0 +1,130 @@
+.filterContainer {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   color: white;
+   height: 46.5vw;
+   width: 75vw;
+   left: 23.88vw;
+   border: 1px solid gray;
+   background-color:#2e2e2e;
+   border-radius: 1vw;
+}
+
+.filterTitle {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   width: 73vw;
+}
+
+.filterTitle button {
+   color: gray;
+   font-size: 2vw;
+   font-family: sans-serif;
+   height: 3vw;
+   width: 3vw;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: none;
+   background: none;
+   cursor: pointer;
+}
+
+.filterTitle button img {
+   height: 2vw;
+   width: 2vw;
+}
+
+.filterTitle h1 {
+   font-size: 1.5vw;
+   margin-top: 1.635vw;
+   margin-bottom: 1.635vw;
+}
+
+.filterContainer input {
+   width: 13vw;
+   height: 2vw;
+   border-radius: 0.5vw;
+   font-size: 1vw;
+   background: none;
+   border: 1px solid gray;
+   color: white;
+}
+
+.filterCardFormInput {
+   display: flex;
+   width: 73vw;
+   flex-direction: row;
+   justify-content: space-between;
+   border-radius: 0.5vw;
+   border: 1px solid gray;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 0;
+   padding-top: 1vw;
+   margin-left: 1vw;
+   margin-right: 1vw;
+}
+
+.filterErrorTitle {
+   font-size: 1vw;
+}
+
+.inputsContainer {
+   display: flex;
+   width: 23.3vw;
+   flex-direction: column;
+   margin-right: 1vw;
+}
+
+.addInput {
+   height: 3vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-left: 1vw;
+   margin-bottom: 1vw;
+}
+
+.addInput h1 {
+   font-size: 1vw;
+   width: 9vw;
+   margin: 0;
+}
+
+.addInput select {
+   height: 2vw;
+   width: 13.4vw;
+   font-size: 1vw;
+   background: none;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   color: white;
+}
+
+.addInput input {
+   width: 13vw;
+   height: 2vw;
+   border-radius: 0.5vw;
+   font-size: 1vw;
+   background: none;
+   border: 1px solid gray;
+   color: white;
+}
+
+.addButtons {
+   margin-top: 0.5vw;
+   width: 73vw;
+   display: flex;
+   justify-content: end;
+}
+
+.addButtons button {
+   height: 2vw;
+   width: 10vw;
+   font-size: 1vw;
+   cursor: pointer;
+}
