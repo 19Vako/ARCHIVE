@@ -7,7 +7,6 @@ const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
 const { ManagerScheme, DocCardScheme, AdminScheme } = require("./schemas");
-const { error } = require("console");
 
 const env = process.env;
 const app = express();
@@ -176,9 +175,6 @@ app.get(env.GET_MANAGERS, async (_, res) => {
 });
 
 
-
-
-
 app.post(env.MANAGER_LOG_IN, async (req, res) => {
    try {
       const { name, password } = req.body;
@@ -202,7 +198,7 @@ app.post(env.MANAGER_LOG_IN, async (req, res) => {
       res.status(500).json({ error: "❌ Помилка сервера" });
    }
 });
-app.post(env.ADD_CARD_ADDITION, upload.single("docPDF"), async (req, res) => {
+app.post(env.ADD_CARD_OR_ADDITION, upload.single("docPDF"), async (req, res) => {
    try {
       const {
            docId,
@@ -224,7 +220,7 @@ app.post(env.ADD_CARD_ADDITION, upload.single("docPDF"), async (req, res) => {
       } = req.body;
 
       if (!req.file) {
-         return res.status(400).json({ message: "❌ Файл не завантажено" });
+         return res.status(400).json({ error: "❌ Файл не завантажено" });
       }
       if (!req.file.mimetype.includes("pdf")) {
          return res.status(400).json({ error: "❌ Дозволені лише PDF-файли" });
@@ -257,10 +253,17 @@ app.post(env.ADD_CARD_ADDITION, upload.single("docPDF"), async (req, res) => {
            author: author,
            createDate: createDate,
       });
+      await DocCardScheme.findOneAndUpdate(
+         {_id:docCard._id}, 
+         {$set: {cardLink:`${env.FRONTEND_DOC_CARD_LINK}${docCard._id}`}}
+      )
 
       if(docId){
          await DocCardScheme.updateOne({_id:docId}, {$push:{addition:docCard._id}}); // передаємо id додатку
          await DocCardScheme.updateOne({_id:docCard._id}, {$push:{addition:docId}}); // передаємо id батьківської картки
+         await DocCardScheme.updateOne({_id: docId}, {$pull: {addition: ""}});
+         await DocCardScheme.updateOne({_id: docCard._id}, {$pull: {addition: ""}});
+
          return res.status(201).json({ message: "✅ Додаток успішно створено!" });
       }
 
@@ -276,12 +279,53 @@ app.get(env.GET_CARDS, async (_, res) => {
       if(!cards.length){
          return res.status(404).json({ error: "❌ Архів договорів пустий!"})
       }
-      res.status(200).json({ message: "✅ Успішне отримання всіх даних!", cards})
+      res.status(200).json({ message: "✅ Успішне отримання всіх даних!", cards })
    } catch (err) {
       console.error("❌ Помилка при отриманні списка карток договорів!")
       res.status(500).json({ error: "❌ Помилка сервера" })
    }
 })
+app.post(env.GET_ADDITIONCARDS, async (req, res) => {
+   try {
+     const { docId } = req.body;
+ 
+     if (!docId) {
+       return res.status(400).json({ error: "❌ Відсутній параметр docId" });
+     }
+ 
+     const card = await DocCardScheme.findOne({ _id: docId });
+ 
+     if (!card) {
+       return res.status(404).json({ error: "❌ Договір не знайдений" });
+     }
+ 
+     if (card.addition && Array.isArray(card.addition) && card.addition.length > 0) {
+     
+       let cleanedAddition = card.addition.filter(id => id && id.toString().trim() !== "");
+ 
+       const foundAdditions = await DocCardScheme.find({ _id: { $in: cleanedAddition } });
+
+       const foundIds = foundAdditions.map((doc) => doc._id.toString());
+ 
+       cleanedAddition = cleanedAddition.filter(id => foundIds.includes(id.toString()));
+ 
+       if (cleanedAddition.length !== card.addition.length) {
+         await DocCardScheme.updateOne({ _id: docId }, { $set: { addition: cleanedAddition } });
+       }
+ 
+       return res.status(200).json({ message: "✅ Успішно отримані додатки", data: foundAdditions });
+     }
+ 
+     res.status(200).json({ message: "✅ Додатки не знайдені для цього договору" });
+   } catch (err) {
+     console.error("❌ Помилка при отриманні списка додатків договорів!", err);
+     res.status(500).json({ error: "❌ Помилка сервера" });
+   }
+ });
+ 
+ 
+ 
+ 
 app.post(env.FIND_CARDS, async (req, res) => {
    try {
      const {
@@ -306,7 +350,6 @@ app.post(env.FIND_CARDS, async (req, res) => {
      if (!Object.values(req.body).some(val => val)) { 
        return res.status(400).json({ error: "❌ Введіть фільтри!" });
      }
- 
      // Динамічна фільтрація
      const filter = Object.fromEntries(
       Object.entries({
@@ -315,8 +358,7 @@ app.post(env.FIND_CARDS, async (req, res) => {
         content, contractType, addition, author, createDate
       }).filter(([_, value]) => value)
     );
-    
- 
+
      const findedCards = await DocCardScheme.find(filter);
  
      if (!findedCards.length) {
@@ -330,6 +372,26 @@ app.post(env.FIND_CARDS, async (req, res) => {
      res.status(500).json({ error: "❌ Помилка сервера!" });
    }
 }); 
+app.post(env.FIND_CARD, async (req, res) => {
+   try {
+     const {
+      id
+     } = req.body;
+     console.log(id)
+     const card = await DocCardScheme.findById(id);
+
+     if (!card) {
+       return res.status(404).json({ error: '❌ Картка документу не знайдена!' });
+     }
+
+     res.status(200).json({ message: "✅ Картка успішно отримана!", data:card });
+
+   } catch (err) {
+     console.error('❌ Помилка при пошуку документу!', err);
+     res.status(500).json({ error: "❌ Помилка сервера!" });
+   }
+});
+
 app.post(env.DELETE_CARD, async (req, res) => {
    try {
       const { docId } = req.body;
@@ -346,7 +408,7 @@ app.post(env.DELETE_CARD, async (req, res) => {
          }
       });
 
-      res.status(200).json({ message: "✅ Документну картку успішно видалено!" });
+      res.status(200).json({ message: "✅ Картку успішно видалено!" });
    } catch (err) {
       console.error("❌ Помилка видалення картки: ", err);
       res.status(500).json({ error: "❌ Помилка сервера" });
@@ -395,7 +457,7 @@ app.post(env.UPDATE_CARD, upload.single("docPDF"), async (req, res) => {
          updateFields.docPDF = req.file.filename;
      }
      if (Object.keys(updateFields).length === 0) {
-       return res.status(400).json({ message: "❌ Жодне поле не було оновлено!" });
+       return res.status(400).json({ error: "❌ Жодне поле не було оновлено!" });
      }
  
      const updatedCard = await DocCardScheme.findOneAndUpdate(
