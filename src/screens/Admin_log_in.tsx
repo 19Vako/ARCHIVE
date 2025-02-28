@@ -15,13 +15,14 @@ function Admin_log_in() {
     const [log, setLog] = useState('')
     const [status, setStatus] = useState('')
 
+
   const log_in = async () => {
     try {
       const res = await axios.post(env.REACT_APP_ADMIN_LOG_IN, { name:name, password:password })
-      setUserName(res.data.data)
       setLog(res.data.message)
       setStatus("success")
       navigate("/Admin")
+      setUserName(name)
     } catch (err:any) {
       setLog(err.response.data.error);
       setStatus("error")

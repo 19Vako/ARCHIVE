@@ -17,7 +17,7 @@ function Manager_log_in() {
   const log_in = async () => {
     try {
       const res = await axios.post(env.REACT_APP_MANAGER_LOG_IN, { name:name, password:password })
-      setUserName(res.data.data)
+      setUserName(res.data.data.name)
       setLog(res.data.message)
       setStatus("success")
       navigate("/Manager")

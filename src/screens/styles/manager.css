@@ -1,0 +1,29 @@
+.manaderContainer {
+  padding-top: 5.7vw;
+  height: 46.5vw;
+  padding-left: 1vw;
+}
+#validityPeriod {
+  margin-left: 1vw;
+}
+.cardDataContainer {
+  height: 34.3vw;
+  width: 26vw;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  justify-content: center;
+  border-radius: 0.5vw;
+  margin: 1vw;
+}
+.contentTitle {
+  font-size: 1vw;
+    overflow-y: auto;
+    background: none;
+    color: white;
+    border: none;
+    height: 5.2vw;
+    width: 70.5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
