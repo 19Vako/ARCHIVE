@@ -321,7 +321,7 @@ app.post(env.GET_ADDITIONCARDS, async (req, res) => {
      console.error("❌ Помилка при отриманні списка додатків договорів!", err);
      res.status(500).json({ error: "❌ Помилка сервера" });
    }
- });
+});
  
  
  
@@ -391,7 +391,6 @@ app.post(env.FIND_CARD, async (req, res) => {
      res.status(500).json({ error: "❌ Помилка сервера!" });
    }
 });
-
 app.post(env.DELETE_CARD, async (req, res) => {
    try {
       const { docId } = req.body;
