@@ -20,6 +20,7 @@
   border: 1px solid gray;
   border-top-left-radius: 2vw;
   border-bottom-left-radius: 2vw;
+  background: none;
 }
 .addManager img {
   height: 1vw;
@@ -37,18 +38,13 @@
   text-decoration: none;
   border: 1px solid gray;
   border-top-right-radius: 2vw;
-  border-bottom-right-radius: 2vw;                                                              
+  border-bottom-right-radius: 2vw;   
+  background: none;                                                           
 }
 .addCard img {
   height: 1vw;
   width: 1vw;
   margin-right: 0.5vw;
-}
-.addCard:hover {
-  background-color: #004884;                                                                   
-}
-.addManager:hover {
-  background-color: #004884;                                                                   
 }
 .mainContainer {
   height: 46.5vw;
