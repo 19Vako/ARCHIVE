@@ -6,7 +6,6 @@ import FilterCard from '../components/FilterCard';
 import '../components/styles/addCard.css'
 import './styles/manager.css'
 function Manager() {
-  const env = process.env as any;
   const today = new Date().toISOString().split("T")[0];
   const {
     userName,  
@@ -81,7 +80,7 @@ function Manager() {
 
 
   const GetCards = async () => {
-    await axios.get(env.REACT_APP_GET_CARDS)
+    await axios.get("http://116.202.198.11/api/get/Cards")
     .then((data) => {
       setCards(data.data.cards)
     })
@@ -93,7 +92,7 @@ function Manager() {
     GetCards()
   },[]);
   const GetAdditions = async (_id:any) => {
-    await axios.post(env.REACT_APP_GET_ADDITIONCARDS, {docId:_id})
+    await axios.post("http://116.202.198.11/api/get/Additions", {docId:_id})
     .then((data) => {
       setAdditions(data.data.data)
     })
@@ -140,7 +139,7 @@ function Manager() {
       data.append(key, value)
     })
     data.append("docPDF", file);
-    await axios.post(env.REACT_APP_ADD_CARD_OR_ADDITION, data)
+    await axios.post("http://116.202.198.11/api/add/Card_or_Addition", data)
     .then((data) => {
       setCreateCardError(false)
       setShowApproveModal(false)
@@ -188,7 +187,7 @@ function Manager() {
   })
   data.append("docPDF", file);
   data.append("docId", formData._id)
-  await axios.post(env.REACT_APP_UPDATE_CARD, data)
+  await axios.post("http://116.202.198.11/api/update/Card", data)
     .then((data) => {
       choiseListCard(data.data.data)
       setShowCardDataLog(data.data.message)

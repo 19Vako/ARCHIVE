@@ -30,6 +30,10 @@ function reverseWord(str: string): string {
 };
 
 type ContextType = {
+
+  log_in: boolean;
+  setLog_in: (state: boolean) => void;
+
   userName: string;
   setUserName: (name: string) => void;
   
@@ -82,12 +86,13 @@ type ContextType = {
   setAdditions: (additions: Array<any>) => void;
 
   showAddition: boolean;
-  setShowAddition: (state: boolean) => void
+  setShowAddition: (state: boolean) => void;
 };
 
 const Context = createContext<ContextType | undefined>(undefined);
 
 export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const [log_in, setLog_in] = useState(false);
     const [userName, setUserName] = useState<string>(() => {return localStorage.getItem("userName") || "";});
     const [cards, setCards] = useState<CardType[]>([]);
     const [showCard, setShowCard] = useState(false);
@@ -117,7 +122,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
     const [fileName, setFileName] = useState('');
     const [file, setFile] = useState<File | string>(String);
     const [pdfURL, setPdfURL] = useState<string | null>(null);
-    const [showCardPDF, setShowCardPDF] = useState({nameHostAndPort:"http://localhost:3000/", fileName:""});
+    const [showCardPDF, setShowCardPDF] = useState({nameHostAndPort:"http://116.202.198.11/api/pdf-files/", fileName:""});
     const [getCardError, setGetCardError] = useState(''); // Логування помилок отриманні помилок
     const [fileLog, setFileLog] = useState(false);
     const [filterLog, setFilterLog] = useState('');  // Логування помилок при фільтрації
@@ -136,6 +141,8 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
     return (
         <Context.Provider 
         value={{ 
+          log_in,
+          setLog_in,
           userName, 
           setUserName, 
           cards, 
