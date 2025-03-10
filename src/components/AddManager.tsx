@@ -1,14 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import "./styles/addManager.css"
-import { useStore } from '../context/Context';
 import axios from 'axios';
 
 
 function AddManager() {
-  const env = process.env as any;
-
-  const { setCards } = useStore()
 
   // Стани списку менеджерів
   const [managers, setManagers] = useState([]); // Список менеджерів
@@ -33,19 +29,15 @@ function AddManager() {
 
   
   const getManagers = async () => {
-    const { data } = await axios.get(env.REACT_APP_GET_MANAGERS)
+    const { data } = await axios.get("http://116.202.198.11/api/get/Managers")
     setManagers(data.managers);
   };
-  const GetCards = async () => {
-    const {data} = await axios.get(env.REACT_APP_GET_CARDS)
-    setCards(data.cards)
-  }
+
   useEffect(() => {
     getManagers()
-    GetCards()
   },[]);
   const FindManager = async () => {
-    await axios.post(env.REACT_APP_FIND_MANAGER, {name:findName})
+    await axios.post("http://116.202.198.11/api/find/Manager", {name:findName})
     .then((data) => {
       setManagers(data.data.managers)
     })
@@ -59,7 +51,7 @@ function AddManager() {
     setFindError('')
   }
   const AddManager = async () => {
-    await axios.post(env.REACT_APP_ADD_MANAGER, {name:name, password:password})
+    await axios.post("http://116.202.198.11/api/add/Manager", {name:name, password:password})
     .then((data) => {
       setLog(data.data.message)
       getManagers()
@@ -71,7 +63,7 @@ function AddManager() {
     })
   };
   const ChangeManager = async () => {
-    await axios.post(env.REACT_APP_FIND_CHANGE_MANAGER, {_id:changeManagerID, changedName:ManagerName, changedPassword:ManagerPassword})
+    await axios.post("http://116.202.198.11/api/find/change/Manager", {_id:changeManagerID, changedName:ManagerName, changedPassword:ManagerPassword})
     .then((data) => {
       getManagers()
       setOptionsLogError(false)
@@ -85,7 +77,7 @@ function AddManager() {
   const DeleteManager = async () => {
     setDeleteManagerModal(false)
     setShowManager(false)
-    await axios.post(env.REACT_APP_DELETE_MANAGER, { name:ManagerName });
+    await axios.post("http://116.202.198.11/api/delete/Manager", { _id:changeManagerID });
     setManagers((prev) => prev.filter((mng: any) => mng.name !== ManagerName));
   };
   const DeletModal = () => {
@@ -126,6 +118,7 @@ function AddManager() {
                 setManagerPassword(mng.adminPassword)
                 setChangeManagerID(mng._id)
                 setDeleteManagerModal(false)
+                setOptionsLog('')
               }} 
               className="managerBlock"
             >

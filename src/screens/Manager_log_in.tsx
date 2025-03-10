@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 function Manager_log_in() {
-  const env = process.env as any;
   const navigate = useNavigate();
-  const { setUserName } = useStore()
+  const { setUserName, setLog_in } = useStore()
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [log, setLog] = useState('')
@@ -16,14 +15,16 @@ function Manager_log_in() {
 
   const log_in = async () => {
     try {
-      const res = await axios.post(env.REACT_APP_MANAGER_LOG_IN, { name:name, password:password })
-      setUserName(res.data.data.name)
+      const res = await axios.post("http://116.202.198.11/api/log_in/Manager", { name:name, password:password })
       setLog(res.data.message)
       setStatus("success")
       navigate("/Manager")
+      setUserName(name);
+      setLog_in(true)
     } catch (err:any) {
       setLog(err.response.data.error);
-      setStatus("error")
+      setStatus("error");
+      setLog_in(false);
     } 
   }
 

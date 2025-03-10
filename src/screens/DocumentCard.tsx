@@ -7,7 +7,6 @@ import Header from '../components/Header';
 
 function DocumentCard() {
   const { id } = useParams()
-  const env = process.env as any;
   const {
     setShowCardDataLog,
     formData, 
@@ -23,7 +22,7 @@ function DocumentCard() {
   } = useStore();
 
   const GetCard = async () => {
-    await axios.post(env.REACT_APP_FIND_CARD, {id:id})
+    await axios.post("http://116.202.198.11/api/find/Card", {id:id})
     .then((data) => {
       setFormData({...data.data.data});
       setShowCardPDF((prev: any) => ({ ...prev, fileName: data.data.data.docPDF }))
@@ -36,7 +35,7 @@ function DocumentCard() {
     })
   }
   const GetAdditions = async (_id:any) => {
-    await axios.post(env.REACT_APP_GET_ADDITIONCARDS, {docId:_id})
+    await axios.post("http://116.202.198.11/api/get/Additions", {docId:_id})
     .then((data) => {
       setAdditions(data.data.data)
     })

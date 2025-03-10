@@ -1,29 +1,15 @@
 
-import "./App.css";
-import { Routes, Route } from 'react-router';
-import { HashRouter as Router } from 'react-router-dom'; // <--- заменяем на HashRouter
-
-import Manager_log_in from './screens/Manager_log_in';
-import Admin_log_in from './screens/Admin_log_in';
-import Manager from './screens/Manager';
-import Admin from './screens/Admin';
-import StartScreen from './screens/StartScreen';
+import { BrowserRouter as Router } from 'react-router-dom'; 
 import { Provider } from './context/Context';
-import DocumentCard from './screens/DocumentCard';
+import AppRoutes from "./components/AppRoutes";
+import "./App.css";
 
 function App() {
   return (
     <div className="AppContainer">
       <Provider>
         <Router>
-          <Routes>
-            <Route path='/' element={<StartScreen />} />
-            <Route path='/Manager_log_in' element={<Manager_log_in />} />
-            <Route path='/Admin_log_in' element={<Admin_log_in />} />
-            <Route path='/Manager' element={<Manager />} />
-            <Route path='/Admin' element={<Admin />} />
-            <Route path='/document/card/:id' element={<DocumentCard />} />
-          </Routes>
+          <AppRoutes />
         </Router>
       </Provider>
     </div>

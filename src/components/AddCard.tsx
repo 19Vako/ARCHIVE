@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/addCard.css'
 import axios from 'axios';
 import { useStore } from '../context/Context';
@@ -9,7 +9,6 @@ import FilterCard from './FilterCard';
 
 
 function AddCard() {
-  const env = process.env as any;
   const today = new Date().toISOString().split("T")[0];
   const { 
     userName,  
@@ -54,6 +53,7 @@ function AddCard() {
     author: userName,
     createDate: reverseWord(today),
   };
+  
 
 
 
@@ -66,7 +66,7 @@ function AddCard() {
 
 
   const GetCards = async () => {
-    await axios.get(env.REACT_APP_GET_CARDS)
+    await axios.get("http://116.202.198.11/api/get/Cards")
     .then((data) => {
       setCards(data.data.cards)
     })
@@ -74,8 +74,13 @@ function AddCard() {
       setGetCardError(err.response.data.error)
     })
   };
+
+  useEffect(() => {
+   GetCards()
+  },[])
+
   const GetAdditions = async (_id:any) => {
-    await axios.post(env.REACT_APP_GET_ADDITIONCARDS, {docId:_id})
+    await axios.post("http://116.202.198.11/api/get/Additions", {docId:_id})
     .then((data) => {
       setAdditions(data.data.data)
       console.log(data)
@@ -123,7 +128,7 @@ function AddCard() {
       data.append(key, value)
     })
     data.append("docPDF", file);
-    await axios.post(env.REACT_APP_ADD_CARD_OR_ADDITION, data)
+    await axios.post("http://116.202.198.11/api/add/Card_or_Addition", data)
     .then(() => {
       setCreateCardError(false)
       setShowApproveModal(false)
@@ -171,7 +176,7 @@ function AddCard() {
           <button onClick={() => choiceFilter()}><img src={require('../icons/filter.png')} alt=''/></button>
         </div>
         <div className='cardList'>
-        {!getCardError ? 
+        {cards ? 
           cards.slice().reverse().map((card:any, index:any) => (
           <div key={index} onClick={() => choiseListCard(card)} className='CardBlock'>
             <div className='cardBlockDateContainer'>

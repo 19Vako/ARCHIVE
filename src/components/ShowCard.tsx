@@ -4,7 +4,6 @@ import { useStore } from '../context/Context';
 import axios from 'axios';
 
 function ShowCard() {
-  const env = process.env as any;
   const today = new Date().toISOString().split("T")[0];
   function reverseWord(str: string): string {
     return str
@@ -74,7 +73,7 @@ function ShowCard() {
     createDate: reverseWord(today),
   }
   const GetCards = async () => {
-    await axios.get(env.REACT_APP_GET_CARDS)
+    await axios.get("http://116.202.198.11/api/get/Cards")
     .then((data) => {
       setCards(data.data.cards)
     })
@@ -83,7 +82,7 @@ function ShowCard() {
     })
   };
   const GetAdditions = async (_id:any) => {
-    await axios.post(env.REACT_APP_GET_ADDITIONCARDS, {docId:_id})
+    await axios.post("http://116.202.198.11/api/get/Additions", {docId:_id})
     .then((data) => {
       setAdditions(data.data.data)
     })
@@ -117,7 +116,7 @@ function ShowCard() {
     data.append("docPDF", file);
     data.append("docId", formData._id)
 
-    await axios.post(env.REACT_APP_UPDATE_CARD, data)
+    await axios.post("http://116.202.198.11/api/update/Card", data)
     .then((data) => {
       choiseListCard(data.data.data)
       setShowCardDataLog(data.data.message)
@@ -133,7 +132,7 @@ function ShowCard() {
     setShowSaveChangesButton(true)
   }
   const deleteCard = async () => {
-    await axios.post(env.REACT_APP_DELETE_CARD, {docId:formData._id})
+    await axios.post("http://116.202.198.11/api/delete/Card", {docId:formData._id})
     .then((data) => {
       setShowCardDataLog(data.data.message)
       GetCards()

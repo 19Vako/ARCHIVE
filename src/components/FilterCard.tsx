@@ -4,7 +4,6 @@ import axios from 'axios';
 import './styles/filterCard.css'
 
 function FilterCard() {
-  const env = process.env as any;
   const today = new Date().toISOString().split("T")[0];
   const { 
     userName,  
@@ -46,7 +45,7 @@ function FilterCard() {
       .join('-');
   };
   const GetCards = async () => {
-    await axios.get(env.REACT_APP_GET_CARDS)
+    await axios.get("http://116.202.198.11/api/get/Cards")
     .then((data) => {
       setCards(data.data.cards)
     })
@@ -73,7 +72,7 @@ function FilterCard() {
     return `${year}-${month}-${day}`;
   };
   const filterCard = async () => {
-    await axios.post(env.REACT_APP_FIND_CARDS, {
+    await axios.post("http://116.202.198.11/api/find/Cards", {
       docType: formData.docType, 
       docNumber:formData.docNumber,
       docCreateDate:formData.docCreateDate,
