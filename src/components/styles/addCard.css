@@ -9,7 +9,8 @@
    align-items: center;
    flex-direction: column;
    height: 46.001vw;
-   border: 1px solid gray;
+   border: 1px solid black;
+   background-color: #EAEAEA;
    border-radius: 1vw;
    padding-bottom: 0.5vw;
 }
@@ -17,9 +18,8 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 1vw;
-   color: white;
-   border-bottom: 1px solid gray;
+   color: black;
+   border-bottom: 1px solid black;
    width: 100%;
    padding-bottom: 1.5vw;
    padding-top: 1.5vw;
@@ -27,7 +27,7 @@
 }
 .cardListTitle h1 {
    margin: 0;
-   font-size: 1vw;
+   font-size: 1.5vw;
    margin-left: 1vw;
 }
 .cardListTitle button {
@@ -47,25 +47,33 @@
 }
 .cardList {
    overflow-y: auto;
+   height: 100%;
+   width: 22vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
 }
 .cardList h1 {
    font-size: 1vw;
-   color: white;
 }
 .CardBlock {
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 0.5vw;
-   width: 20.999vw;
+   width: 20.1vw;
    margin-top: 0.5vw;
+   color: black;
    cursor: pointer;
    padding-top: 1vw;
    padding-bottom: 0.5vw;
+   background-color: aliceblue;
 }
+
+
 .CardBlock h1 {
    margin: 0;
    margin-left: 1vw;
    font-size: 1vw;
-   color: white;
 }
 .cardBlockDateContainer {
    display:  flex;
@@ -77,23 +85,20 @@
    margin-left: 1vw;
    margin-bottom: 0.5vw;
 }
-.CardBlock:hover {
-   background-color: #023a68;
-}
 .addCardForm {
    position: absolute;
    display: flex;
    flex-direction: column;
    align-items: center;
-   color: white;
    height: 46.501vw;
    width: 75vw;
    left: 23.88vw;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 1vw;
-   background-color:#2e2e2e;
+   background-color: #EAEAEA;
 }
 .addCardForm h1 {
+   color: black;
    font-size: 1.5vw;
    margin-top: 1.635vw;
    margin-bottom: 1.635vw;
@@ -104,14 +109,14 @@
   flex-direction: row;
   justify-content: space-between;
   border-radius: 0.5vw;
-  border: 1px solid gray;
+  border: 1px solid black;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   padding-top: 1vw;
 }
 .inputsContainer {
    display: flex;
-   width: 23.3vw;
+   width: 21.9vw;
    flex-direction: column;
    margin-right: 1vw;
 }
@@ -120,7 +125,8 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding-left: 1vw;
+   margin-left: 0.5vw;
+   margin-right: 0.5vw;
    margin-bottom: 1vw;
 }
 .addInput h1 {
@@ -133,9 +139,10 @@
    width: 13.4vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 0.5vw;
-   color: white;
+   color: black;
+   background-color: aliceblue;
 }
 .addInput input {
    width: 13vw;
@@ -143,12 +150,30 @@
    border-radius: 0.5vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid gray;
-   color: white;
+   border: 1px solid black;
+   color: black;
+   background-color: aliceblue;
 }
+.addInput textarea {
+   border-radius: 0.5vw;
+   font-size: 1vw;
+   font-family:sans-serif;
+   background: none;
+   border: 1px solid black;
+   color: black;
+   background-color: aliceblue;
+   resize: none;
+}
+input[type="date"] {
+   font-family:sans-serif;
+}
+input[type="date"]:hover {
+   background-color:silver; 
+}
+
 .choosePDFContainer {
    width: 73vw;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-bottom-right-radius: 0.5vw;
    border-bottom-left-radius: 0.5vw;
    border-top: none;
@@ -179,11 +204,14 @@
    justify-content: center;
    font-family: sans-serif;
    font-size: 1vw;
-   background-color: aliceblue;
-   color: black;
+   background-color: #004884;
+   color: white;
    border-radius: 0.3vw;
    border-top-left-radius: 0;
    cursor: pointer;
+}
+.custom-file-label:hover {
+   background-color: #023a68;
 }
 .mt-2 {
    font-size: 1vw;
@@ -202,14 +230,13 @@
 }
 .contentContainer textarea {
    height: 8vw;
-   padding: 0;
-   background: none;
    border: none;
    padding: 1vw;
    font-size: 1vw;
    border-radius: 0.5vw;
-   border: 1px solid gray;
-   color: white;
+   border: 1px solid black;
+   color: black;
+   background-color: aliceblue;
    resize: none;
    margin-bottom: 1vw;
 }
@@ -220,10 +247,17 @@
    justify-content: end;
 }
 .addButtons button {
-   height: 2vw;
-   width: 10vw;
+   height: 3vw;
+   width: 12vw;
    font-size: 1vw;
    cursor: pointer;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
+   background-color: #004884;
+   color: white;
+}
+.addButtons button:hover {
+   background-color: #023a68;
 }
 .logContainer {
    margin-top: 0.5vw;
@@ -235,93 +269,13 @@
    font-size: 1vw;
    margin: 0;
 }
-
-
-
-/* .filterContainer {
-
-   position: absolute;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   color: white;
-   height: 46.5vw;
-   width: 75vw;
-   left: 23.88vw;
-   border: 1px solid gray;
-   background-color:#2e2e2e;
-   border-radius: 1vw;
-}
-.filterTitle {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-between;
-   width: 73vw;
-}
-.filterTitle button{
-   color: gray;
-   font-size: 2vw;
-   font-family: sans-serif;
-   height: 3vw;
-   width: 3vw;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border: none;
-   background: none;
-   cursor: pointer;
-}
-.filterTitle button img {
-   height: 2vw;
-   width: 2vw;
-}
-.filterTitle h1{
-   font-size: 1.5vw;
-   margin-top: 1.635vw;
-   margin-bottom: 1.635vw;
-};
-.filterContainer input {
-   width: 13vw;
-   height: 2vw;
-   border-radius: 0.5vw;
-   font-size: 1vw;
-   background: none;
-   border: 1px solid gray;
-   color: white;
-}
-.filterCardFormInput {
-   display: flex;
-   width: 73vw;
-   flex-direction: row;
-   justify-content: space-between;
-   border-radius: 0.5vw;
-   border: 1px solid gray;
-   border-bottom-right-radius: 0;
-   border-bottom-left-radius: 0;
-   padding-top: 1vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
-}
-.filterErrorTitle {
-   font-size: 1vw;
-}
-
-
-
-
- */
-
-
-
- 
 .addCardFormHeader {
    width: 73vw;
    display: flex;
    align-items: center;
 }
 .addCardFormHeader button {
-   color: gray;
+   color: black;
     font-size: 2vw;
     font-family: sans-serif;
     height: 3vw;
@@ -341,16 +295,39 @@
    display: flex;
    justify-content: space-between;
 }
-.approveModalContainer h1 {
-   font-size: 1vw;
-   margin: 0.5vw;
-   margin-top: 1vw;
-   margin-bottom: 0;
+.sendData {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding-top: 1vw;
+   padding-bottom: 1vw;
+   border-bottom: 1px solid black;
 }
+.approveModalContainer h1 {
+   font-size: 1.3vw;
+   width: 13vw;
+   margin: 0;
+   margin-left: 1vw;
+}
+.approveModalContainer p {
+   margin: 0;
+   font-size: 1.2vw;
+   width: 15vw;
+   overflow-wrap: break-word;
+   white-space: normal;
+}
+
+
 .approveModalContainer .approveModalContent {
    margin-top: 0;
-   height: 8vw;
-   overflow-y: auto;
+   width: 28vw;
+   margin-left: 1vw;
+   margin-right: 1vw;
+}
+.approveModalContainer .approveModalContentTitle {
+   margin: 0;
+   margin-top: 1vw;
+   margin-left: 1vw;
 }
 #approvedLog {
    font-size: 1vw;
@@ -358,49 +335,21 @@
    margin-top: 1vw;
 }
 .sendDataContainer {
-   display: flex;
-   justify-content: center;
-   flex-direction:column;
+   height: 34.2vw;
    width: 30vw;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   padding-bottom: 1vw;
    border-radius: 0.5vw;
-   border: 1px solid gray;
+   border: 1px solid black;
 }
 .pdfDocContainer {
    height: 35vw;
-   width: 40vw;
-}
-.cardContainer {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
-    height: 46.5vw;
-    width: 75vw;
-    left: 23.88vw;
-    border: 1px solid gray;
-    border-radius: 1vw;
-    background-color:#2e2e2e;
-}
-.cardDataContainer {
-   height: 34.3vw;
-   width: 26vw;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   margin: 1vw;
+   width: 41.6vw;
 }
 .cardDataTitle {
    display: flex;
    align-items: center;
-}
-.cardDataContainer h1 {
-   width: 8vw;
-   color: white;
-   display: flex;
-   align-items: center;
-   font-size: 0.95vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
 }
 .cardDataContainer input {
    font-size: 0.8vw;
@@ -420,12 +369,11 @@
 }
 .cardDataTitleContent {
    height: 9vw;
+   width: 46.8vw;
    display: block;
    align-items: center;
    border: 1px solid gray;
    border-radius: 0.5vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
    margin-bottom: 1vw;
 }
 .cardDataTitleContent h1 {
@@ -439,39 +387,19 @@
    color: white;
    border: none;
    height: 5.2vw;
-   width: 70.5vw;
+   width: 69.5vw;
    margin-left: 1vw;
    margin-right: 1vw;
    resize: none;
 }
-.cardContainerBlock {
-   display: flex;
-   justify-content: end;
-}
 .cardPdfDocContainer {
    z-index: 2;
-   width: 26vw;
-   margin-top: 1vw;
-   margin-right: 1vw;
    background-color: #2e2e2e;
    height: 32.1vw;
    width: 26vw;
 }
-.cardDataButtons {
-   position: absolute;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   left: 0;
-   margin-top: 1vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
-   height: 34.3vw;
-   width: 18.6vw;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-}
 .backButton {
+   color: black;
    width: 100%;
 }
 .cardDataButtons .backButton button {
@@ -480,7 +408,6 @@
    width: 3vw;
    font-size: 2vw;
    font-family: sans-serif;
-   color: gray;
    margin: 0;
    margin-left: 1vw;
    background: none;
@@ -492,21 +419,11 @@
    flex-direction: column;
 }
 .cardDataButtonsContainer {
-   padding-top: 1vw;
-   width: 18.6vw;
+   width: 21.5vw;
    display: flex;
    flex-direction: column;
    align-items: center;
-   border-bottom: 1px solid gray;
-}
-.cardDataButtons button {
-   height: 2vw;
-   width: 10vw;
-   font-size: 1vw;
-   margin-bottom: 1vw;
-   border-radius: 0.5vw;
-   border: 1px solid gray;
-   cursor: pointer;
+   border-bottom: 1px solid black;
 }
 .deleteCard {
    background: #b00303;
@@ -517,31 +434,16 @@
    background-color: #8b0606;
 }
 .additionList {
-   width: 100%;
+   width: 22.5vw;
    height: 100%;
    display: flex;
    align-items: center;
    flex-direction: column;
-   overflow-x: scroll;
    padding-bottom: 0.5vw;
 }
 .additionList h1 {
    display: flex;
    justify-content: center;
-}
-.changeFileButton {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   font-family: sans-serif;
-   height: 2vw;
-   width: 10vw;
-   background: whitesmoke;
-   font-size: 1vw; 
-   color: black;
-   border-radius: 0.5vw;
-   border: 1px solid gray;
-   cursor: pointer;
 }
 .showFileTitle {
    display: flex;
@@ -552,29 +454,5 @@
    overflow: hidden; 
    text-overflow: ellipsis; 
 }
-.saveCangesButton {
-   position: absolute;
-   top: 32.3vw;
-   left: 62.9vw;
-   font-size: 1vw;
-   cursor: pointer;
-}
 
-.additionBlockContainer {
-   display: flex;
-   width: 17.3vw;
-   flex-direction: column;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   margin-top: 0.5vw;
-   padding-top: 1vw;
-   padding-bottom: 1vw;
-}
-.additionBlockContainer h1 {
-   font-size: 1vw;
-   margin: 0;
-   margin-left: 1vw;
-}
-.additionBlockContainer:hover {
-   background-color: #023a68;
-}
+

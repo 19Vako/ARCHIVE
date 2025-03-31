@@ -1,45 +1,101 @@
-.additionList {
-  width: 100%;
+.DocCardDataButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1vw;
+  height: 33.3vw;
+  width: 21.5vw;
+  border: 1px solid black;
+  border-radius: 0.5vw;
+  z-index: 2;
+  margin-top: 1vw;
+  margin-left: 1vw;
+}
+.DocAdditionList {
+  width: 21.5vw;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow-x: scroll;
   padding-bottom: 0.5vw;
+}
+.DocAdditionList h1 {
+  font-size: 1vw;
 }
 .documentCardContainer {
     position:sticky;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: white;
+    color: black;
     height: 46.5vw;
     width: 98%;
     left: 0vw;
-    border: 1px solid gray;
+    border: 1px solid black;
     border-radius: 1vw;
-    background-color: #2e2e2e;
+    background-color: #EAEAEA;
     margin-top: 5vw;
     margin-left: 1vw;
     margin-right: 1vw;
 }
 .DocumentCardDataContainer {
-  height: 34.3vw;
-    width: 49vw;
-    border: 1px solid gray;
-    border-radius: 0.5vw;
-    margin: 1vw;
+  height: 33.3vw;
+  width: 25vw;
+  border: 1px solid black;
+  border-radius: 0.5vw;
+  margin: 1vw;
+  margin-right: 0;
 }
 .DocumentCardDataContainer h1 {
-  width: 14vw;
-  color: white;
-  display: flex;
-  align-items: center;
-  font-size: 1.052vw;
+  width: 10vw;
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
+    margin-top: 0;
+    margin-left: 0.5vw;
+    margin-right: 1.5vw;
+    margin-bottom: 0;
+}
+.DocumentCardDataTitleContent {
+    position: absolute;
+    top: 36vw;
+    left: 1vw;
+    height: 9vw;
+    width: 47.7vw;
+    display: block;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 0.5vw;
+    padding-bottom: 0.5vw;
+    margin-bottom: 0;
+}
+.DocumentCardDataTitleContent h1 {
+  color: black;
+  font-size: 1vw;
   margin-left: 1vw;
-  margin-right: 1vw;
+}
+.DocumentCardDataTitleContent textarea {
+  font-size: 1vw;
+    overflow-y: auto;
+    color: black;
+    height: 5.2vw;
+    width: 42.5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    resize: none;
+    border: 1px solid black;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 0.5vw;
+    background-color: aliceblue;
 }
 .additionBlockContainer {
-  color: white;
+  color: black;
   text-decoration: none;
+}
+.DocCardDataTitle {
+  height: 2.73vw;
+  display: flex;
+  align-items: center;
 }

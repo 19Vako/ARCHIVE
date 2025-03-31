@@ -23,8 +23,8 @@
   background: none;
 }
 .addManager img {
-  height: 1vw;
-  width: 1vw;
+  height: 1.5vw;
+  width: 1.5vw;
   margin-left: 0.5vw;
 }
 .addCard {
@@ -42,8 +42,8 @@
   background: none;                                                           
 }
 .addCard img {
-  height: 1vw;
-  width: 1vw;
+  height: 1.5vw;
+  width: 1.5vw;
   margin-right: 0.5vw;
 }
 .mainContainer {

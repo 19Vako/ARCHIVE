@@ -1,0 +1,27 @@
+.cardAdditionListContainer {
+   position: absolute;
+   left: 25vw;
+   display: flex;
+   width: 23vw;
+   align-items: center;
+   flex-direction: column;
+   height: 45.5vw;
+   border: 1px solid black;
+   border-radius: 1vw;
+   padding-bottom: 1vw;
+   background-color: #EAEAEA;                                          
+}
+
+#addAddition {
+   height: 2.2vw;
+   margin-top: 0.5vw;
+   margin-bottom: 1vw;
+   font-size: 1vw;
+   color: white;
+   background-color: #004884;
+   border: 1px solid gray;
+}
+
+#addAddition:hover {
+   background-color: #023a68;
+}
