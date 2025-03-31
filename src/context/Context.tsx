@@ -21,14 +21,6 @@ type CardType = {
   cardLink: string;
 };
 
-const today = new Date().toISOString().split("T")[0];
-function reverseWord(str: string): string {
-    return str
-      .split('-')
-      .reverse()
-      .join('-');
-};
-
 type ContextType = {
 
   log_in: boolean;
@@ -46,8 +38,11 @@ type ContextType = {
   showCardDataLog: string;
   setShowCardDataLog: (log:string) => void;
 
-  formData: any
+  formData: any;
   setFormData: (data:any) => void;
+
+  filterFormData: any;
+  setFilterFormData: (data:any) => void;
 
   showSaveChangesButton: boolean;
   setShowSaveChangesButton: (stateCard:boolean) => void;
@@ -65,10 +60,10 @@ type ContextType = {
   setPdfURL: (state:any) => void;
 
   showCardPDF: any;
-  setShowCardPDF: (date:any) => void;
+  setShowCardPDF: (data:any) => void;
 
   getCardError: any;
-  setGetCardError: (date:any) => void;
+  setGetCardError: (data:any) => void;
 
   fileLog: boolean;
   setFileLog: (state:boolean) => void;
@@ -87,17 +82,36 @@ type ContextType = {
 
   showAddition: boolean;
   setShowAddition: (state: boolean) => void;
-};
 
+  showAddAddition: boolean;
+  setShowAddAddition: (state: boolean) => void;
+
+  showAddAdditionData: any;
+  setShowAddAdditionData: (data:any) => void;
+
+  showAddAdditionCardPDF: any;
+  setShowAddAdditionCardPDF: (data:any) => void;
+
+  addAdditionLog: string;
+  setAddAdditionLog: (data:string) => void;
+
+};
 const Context = createContext<ContextType | undefined>(undefined);
 
 export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    function reverseWord(str: string): string {
+    return str
+      .split('-')
+      .reverse()
+      .join('-');
+    };
+    const today = new Date().toISOString().split("T")[0];
     const [log_in, setLog_in] = useState(false);
     const [userName, setUserName] = useState<string>(() => {return localStorage.getItem("userName") || "";});
     const [cards, setCards] = useState<CardType[]>([]);
     const [showCard, setShowCard] = useState(false);
     const [showCardDataLog, setShowCardDataLog] = useState('');
-    const [showSaveChangesButton, setShowSaveChangesButton] = useState(false)
+    const [showSaveChangesButton, setShowSaveChangesButton] = useState(false);
     const initialFormData = {
         _id: "",
         docId: "",
@@ -118,6 +132,17 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
         createDate: reverseWord(today),
     };
     const [formData, setFormData] = useState(initialFormData); // Форма для відправки 
+
+    useEffect(() => {
+      if (userName) {
+        setFormData((prev: any) => ({
+          ...prev,
+          createDate: reverseWord(today)
+        }));
+      }
+    }, [userName, setFormData]);
+
+    const [filterFormData, setFilterFormData] = useState(initialFormData);
     const [showFilter, setShowFilter] = useState(false);
     const [fileName, setFileName] = useState('');
     const [file, setFile] = useState<File | string>(String);
@@ -128,8 +153,13 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
     const [filterLog, setFilterLog] = useState('');  // Логування помилок при фільтрації
     const [findAuthor, setFindAuthor] = useState('');
     const [createCardError, setCreateCardError] = useState(false); // Зміна кольору логу при створенні картки
-    const [additions, setAdditions] = useState<any[]>([]) 
-    const [showAddition, setShowAddition] = useState(false)
+    const [additions, setAdditions] = useState<any[]>([]);
+    const [showAddition, setShowAddition] = useState(false);
+    const [showAddAddition, setShowAddAddition] = useState(false);
+    const [showAddAdditionData, setShowAddAdditionData] = useState(initialFormData);
+    const [showAddAdditionCardPDF, setShowAddAdditionCardPDF] = useState({nameHostAndPort:"http://116.202.198.11/api/pdf-files/", fileName:""});
+    const [addAdditionLog, setAddAdditionLog] = useState('')
+
     useEffect(() => {
         localStorage.setItem("userName", userName);
     }, [userName]);
@@ -178,7 +208,17 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
           additions, 
           setAdditions,
           showAddition, 
-          setShowAddition
+          setShowAddition,
+          filterFormData, 
+          setFilterFormData,
+          showAddAddition, 
+          setShowAddAddition,
+          showAddAdditionData, 
+          setShowAddAdditionData,
+          showAddAdditionCardPDF, 
+          setShowAddAdditionCardPDF,
+          addAdditionLog, 
+          setAddAdditionLog
         }}>
           {children}
         </Context.Provider>
