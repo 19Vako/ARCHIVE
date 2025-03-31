@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import './styles/documentCard.css'
+import '../components/styles/header.css'
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import { useStore } from '../context/Context';
-import Header from '../components/Header';
 
 function DocumentCard() {
   const { id } = useParams()
+
   const {
     setShowCardDataLog,
     formData, 
@@ -20,7 +21,6 @@ function DocumentCard() {
     additions,
     setShowAddition,
   } = useStore();
-
   const GetCard = async () => {
     await axios.post("http://116.202.198.11/api/find/Card", {id:id})
     .then((data) => {
@@ -49,11 +49,11 @@ function DocumentCard() {
 
   return (
     <>
-    <Header/>
+    <header className='headerContainer' /> 
     <div className='documentCardContainer'>
       <div className='cardContainerBlock'>
-        <div className='cardDataButtons'>   
-          <div className='additionList'>
+        <div className='DocCardDataButtons'>   
+          <div className='DocAdditionList'>
                  {additions ? (
                    additions.slice().reverse().map((card:any, index:any) => (
                     <Link key={index} to={card.cardLink} className='additionBlockContainer'>
@@ -69,65 +69,65 @@ function DocumentCard() {
           </div>
         </div>
         <div className='DocumentCardDataContainer'>
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Найменування:</h1>
             <h1>{formData.name}</h1>
            </div>
-           <div className='cardDataTitle'>
+
+           <div className='DocCardDataTitle'>
             <h1>Автор:</h1>
             <h1>{formData.author}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Тип договору:</h1>
             <h1>{formData.contractType}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Тип документу:</h1>
             <h1>{formData.docType}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Найменування:</h1>
             <h1>{formData.counterpartyName}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Найменування контерагента:</h1>
             <h1>{formData.counterpartyCode}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Дата створення:</h1>
             <h1>{formData.docCreateDate}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Дата підписання:</h1>
             <h1>{formData.docSigningDate}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Срок дії до:</h1>
             <h1>{formData.validityPeriod} </h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Найменування організації:</h1>
             <h1>{formData.organizationName}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Код ЄДРПОУ організації:</h1>
             <h1>{formData.organisationCode}</h1>
            </div>
 
-           <div className='cardDataTitle'>
+           <div className='DocCardDataTitle'>
             <h1>Код ЄДРПОУ контрагента:</h1>
             <h1>{formData.counterpartyCode}</h1>
            </div>
-
          </div>
          <iframe 
           className='cardPdfDocContainer' 
@@ -135,13 +135,11 @@ function DocumentCard() {
           src={`${showCardPDF.nameHostAndPort}${showCardPDF.fileName}`}
           style={{ height: "34.1vw"}}
          />
-
-
-        </div>
-            <div className='cardDataTitleContent'>
-          <h1>Короткий зміст:</h1>
-          <h1 className='contentTitle'>{formData.content}</h1>
-        </div>
+      </div>
+      <div className='DocumentCardDataTitleContent'>
+        <h1>Короткий зміст:</h1>
+        <h1 className='DocContentTitle'>{formData.content}</h1>
+      </div>
     </div>
     </>
   )
