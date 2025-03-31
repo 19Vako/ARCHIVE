@@ -9,9 +9,10 @@
    flex-direction: column;
    height: 100%;
    width: 22vw;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 1vw;
    margin-right: 0.8vw;
+   background-color: #EAEAEA;
 }
 .filter {
    margin-top: 0.4vw;
@@ -22,7 +23,7 @@
    width: 100%;
 }
 .findErrorLog {
-   color: white;
+   color: black;
    font-size: 1vw;
 }
 .inputButtonFind {
@@ -44,38 +45,48 @@
    padding: 0.5vw;
    padding-left: 3vw;
    padding-right: 3vw;
-   font-size: 1vw;
+   font-size: 1.3vw;
    height: 2.5vw;
    width: 15vw;
    background: none;
-   border: 1px solid gray;
-   color: white;
+   border: 1px solid black;
+   color: black;
+   background-color: aliceblue;
 }
 .list {
-   width: 25;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 22vw;
    height: 100%;
    overflow-y: auto;
 }
 .managerBlock {
    display: flex;
-   justify-content: space-between;
    align-items: center;
-   border: 1px solid gray;
+   border: 1px solid black;
    padding: 1vw;
    border-radius: 0.5vw;
    height: 2vw;
-   width: 19vw;
+   width: 18vw;
    margin-top: 0.5vw;
    margin-bottom: 0.5vw;
    cursor: pointer;
+   background-color: aliceblue;
 }
 .managerBlock:hover {
    background-color: #034d89;
+   color: white;
+}
+.managerBlock img {
+   width: 2vw;
+   height: 2vw;
 }
 .managerName {
-   color: white;
-   font-size: 1vw;
+   font-size: 1.2vw;
 }
+
+
 .deleteButton {
    border: none;
    display: flex;
@@ -88,7 +99,7 @@
 }
 .deleteModalManagerContainer {
    position: absolute;
-   background: #2e2e2e;
+   background:  #EAEAEA;
    top: 9vw;
    left: 38vw;
    width: 50vw;
@@ -97,7 +108,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   color: white;
+   color: black
 }
 .deleteModalManagerContainer h1 {
    width: 25vw;
@@ -134,16 +145,19 @@
 .closeModalButton:hover {
    background-color: #023a68;
 }
+
+
 .addManagerForm {
    position: absolute;
    display: flex;
    align-items: center;
    flex-direction: column;
-   color: white;
+   background-color: #EAEAEA;
+   color: black;
    height: 46.501vw;
    width: 75vw;
    left: 23.88vw;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 1vw;
 }
 .addForm {
@@ -161,15 +175,16 @@
 }
 .addManagerInput {
    background:none;
-   border: 1px solid gray;
-   color: white;
+   border: 1px solid black;
+   color: black;
    border-radius: 0.5vw;
    padding-left: 1vw;
    padding-right: 1vw;
-   font-size: 1vw;
+   font-size: 1.5vw;
    width: 20vw;
-   height: 2vw;
+   height: 3vw;
    margin-bottom: 1vw;
+   background-color: aliceblue;
 }
 .addManagerForm .logs {
    font-size: 1vw;
@@ -180,14 +195,14 @@
    height: 3vw;
    border-radius: 0.5vw;
    background:none;
-   font-size: 1vw;
+   font-size: 1.2vw;
    border: 1px solid gray;
    color: white;
    background-color: #004884;
    cursor: pointer;
 }
 .addButton:hover {
-   background-color: #034d89;
+   background-color:#023a68;
 }
 .emptyText {
    margin-top: 2vw;
@@ -198,6 +213,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   justify-content: center;
    padding: 1vw;
 }
 .managerOptions h1{
@@ -222,6 +238,11 @@
    align-items:flex-end;
    margin-left: 3vw;
 }
+.dataContainer img {
+   width: 2vw;
+   height: 2vw;
+   margin-right: 0.5vw;
+}
 .dataContainer h1 {
    font-size: 1.5vw;
    margin-bottom: 0;
@@ -230,8 +251,12 @@
    margin-left: 1vw;
    background: none;
    border: none;
-   color: white;
+   color: black;
    font-size: 1.5vw;
+   background-color: aliceblue;
+}
+.dataContainer input:hover {
+   background-color: silver;
 }
 .optionButtons {
    width: 10vw;
@@ -255,7 +280,5 @@
 .saveButton:hover {
    background-color: #023a68;
 }
-.cardDataButtons button {
-   font-size: 0.8vw;
-}
+
 

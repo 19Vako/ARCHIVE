@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import "./styles/addManager.css"
 import axios from 'axios';
+
 
 
 function AddManager() {
@@ -29,10 +30,9 @@ function AddManager() {
 
   
   const getManagers = async () => {
-    const { data } = await axios.get("http://116.202.198.11/api/get/Managers")
+    const { data } = await axios.post("http://116.202.198.11/api/get/Managers")
     setManagers(data.managers);
   };
-
   useEffect(() => {
     getManagers()
   },[]);
@@ -45,7 +45,7 @@ function AddManager() {
       setFindError(err.response.data.error)
     })
   };
-  const CleanInput = async () => {
+  const CleanInput = () => {
     setFindName('')
     getManagers();
     setFindError('')
@@ -78,7 +78,7 @@ function AddManager() {
     setDeleteManagerModal(false)
     setShowManager(false)
     await axios.post("http://116.202.198.11/api/delete/Manager", { _id:changeManagerID });
-    setManagers((prev) => prev.filter((mng: any) => mng.name !== ManagerName));
+    setManagers((prev) => prev.filter((mng: any) => mng._id !== changeManagerID));
   };
   const DeletModal = () => {
     if(deleteManagerModal){
@@ -103,7 +103,7 @@ function AddManager() {
       <div className='managerList'>
         <div className='filter'>
           <img onClick={() => FindManager()} className='inputButtonFind' style={{width: "1.5vw", height: "1.5vw"}} src={require("../icons/magnifier.png")} alt='' />
-          <input value={findName} onChange={(name) => {setFindName(name.target.value)}} className='filterInput' placeholder='Пошук менеджера'/>
+          <input value={findName} onChange={(name) => {setFindName(name.target.value); FindManager()}} className='filterInput' placeholder='Пошук менеджера'/>
           <img onClick={() => {CleanInput()}} className='inputButtonClean' src={require("../icons/letter-x.png")} alt=''/>
         </div>
         <div className='list'>
@@ -121,8 +121,9 @@ function AddManager() {
                 setOptionsLog('')
               }} 
               className="managerBlock"
-            >
-              <h1 className='managerName'>Ім'я: {mng.name}</h1>
+            > 
+              <img src={require('../icons/userBlack.png')} alt=''/>
+              <h1 className='managerName'>: {mng.name}</h1>
             </div>
             ))
             : 
@@ -145,6 +146,7 @@ function AddManager() {
               <div className='managerDataForm'>
 
                 <div className='dataContainer'>
+                  <img src={require('../icons/userBlack.png')} alt=''/>
                   <h1>Ім'я:</h1>
                   <input 
                   value={ManagerName}
@@ -152,6 +154,7 @@ function AddManager() {
                   />
                 </div>
                 <div className='dataContainer'>
+                  <img src={require('../icons/padlock.png')} alt=''/>
                   <h1>Пароль:</h1>
                   <input 
                   value={ManagerPassword}
@@ -169,8 +172,7 @@ function AddManager() {
                   src={require('../icons/delete.png')} 
                   alt=''
                 />
-                </button>
-                
+                </button>  
               </div>
             </div>
             <h1 style={optionsLogError ? {color:'red'} : {color: 'green'}}>
