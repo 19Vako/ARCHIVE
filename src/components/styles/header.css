@@ -1,7 +1,7 @@
 .headerContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:end;
   height: 3vw;
   background-color: #004884;
   color: white;
@@ -9,4 +9,14 @@
 
 .headerContainer p {
   font-size: 1.5vw;
+}
+
+.exitButton {
+  height: 2.5vw;
+  width: 2.5vw;
+  margin-right: 1vw;
+}
+.exitButton img {
+  height: 100%;
+  width: 100%;
 }
