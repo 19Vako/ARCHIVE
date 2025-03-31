@@ -1,84 +1,83 @@
-.cardContainer {
+.cardBlockContainer {
+   display: flex;
    position: absolute;
+   height: 45.5vw;
+   width: 50vw;
+   left: 49.2vw;
+   padding-top: 1vw;
+   color: black;
+   background-color:#EAEAEA;
+   border: 1px solid black;
+   border-radius: 1vw;
+}
+.cardContainer {
+   position: relative;
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
-   color: white;
-   height: 46.5vw;
-   width: 75vw;
-   left: 23.88vw;
-   border: 1px solid gray;
-   border-radius: 1vw;
-   background-color:#2e2e2e;
+   align-items: center;
+   color: black;
+   height: 44.4vw;
+   width: 50vw;
+   overflow-y: scroll;
 }
-
 .cardContainerBlock {
    display: flex;
-   justify-content: end;
+   justify-content: space-between;
 }
-
 .cardDataButtons {
-   position: absolute;
    display: flex;
    flex-direction: column;
    align-items: center;
-   left: 0;
-   margin-top: 1vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
+   margin-bottom: 1vw;
    height: 34.3vw;
-   width: 18.6vw;
-   border: 1px solid gray;
+   width: 21.5vw;
+   border: 1px solid black;
    border-radius: 0.5vw;
+   z-index: 2;
 }
-
 .cardDataButtonsContainer {
-   padding-top: 1vw;
-   width: 18.6vw;
    display: flex;
+   width: 21.5vw;
+   padding-top: 1vw;
    flex-direction: column;
    align-items: center;
-   border-bottom: 1px solid gray;
+   border-bottom: 1px solid black;
 }
-
 .backButton {
    width: 100%;
 }
-
 .cardDataButtons .backButton button {
    border: none;
    height: 3vw;
    width: 3vw;
    font-size: 2vw;
    font-family: sans-serif;
-   color: gray;
+   background-color: lavenderblush;
+   color: black;
    margin: 0;
    margin-left: 1vw;
    background: none;
 }
-
 .cardDataButtons h1 {
    width: 16vw;
    font-size: 1vw;
    display: flex;
    flex-direction: column;
 }
-
 .changeFileButton {
    display: flex;
    align-items: center;
    justify-content: center;
    font-family: sans-serif;
    height: 2vw;
-   width: 10vw;
-   background: whitesmoke;
-   font-size: 0.8vw; 
+   width: 11vw;
+   font-size: 1vw; 
+   background: aliceblue;
    color: black;
    border-radius: 0.5vw;
-   border: 1px solid gray;
+   border: 1px solid black;
    cursor: pointer;
 }
-
 .showFileTitle {
    display: flex;
    align-items: center;
@@ -88,139 +87,170 @@
    overflow: hidden; 
    text-overflow: ellipsis; 
 }
-
+.cardDataButtons button {
+   height: 2vw;
+   width: 11vw;
+   font-size: 1vw;
+   margin-bottom: 0.5vw;
+   border-radius: 0.5vw;
+   padding: 0;
+   border: 1px solid black;
+   cursor: pointer;
+   background-color: aliceblue;
+}
 .saveCangesButton {
    position: absolute;
-   top: 32.3vw;
-   left: 62.9vw;
+   height: 2vw;
+   width: 10vw;
+   top: 32.45vw;
+   left: 37.6vw;
    font-size: 1vw;
+   border: 1px solid black;
+   border-radius: 0.5vw;
    cursor: pointer;
+   color: white;
+   background-color: #004884;
 }
-
-.deleteCard {
-   background: #b00303;
+.saveCangesButton:hover {
+   background-color: #023a68;
+}
+.cardDataButtons .deleteCard {
+   background-color: #b00303;
    color: white;
    cursor: pointer;
 }
-
 .deleteCard:hover {
    background-color: #8b0606;
 }
-
 .additionList {
-   width: 100%;
+   width: 21.5vw;
    height: 17vw;
    display: flex;
    align-items: center;
    flex-direction: column;
-   overflow-x: scroll;
-   padding-bottom: 0.5vw;
+   overflow-y: scroll;
+   margin-bottom: 0.5vw;
 }
-
 .additionList h1 {
    display: flex;
    justify-content: center;
 }
-
 .additionBlockContainer {
    display: flex;
-   width: 17.3vw;
+   width: 18.6vw;
    flex-direction: column;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 0.5vw;
    margin-top: 0.5vw;
    padding-top: 1vw;
    padding-bottom: 0.5vw;
+   background-color: aliceblue;
 }
-
 .additionBlockContainer h1 {
    font-size: 0.8vw;
     margin: 0;
     margin-left: 1vw;
     margin-bottom: 0.5vw;
 }
-
-.additionBlockContainer:hover {
-   background-color: #023a68;
-}
-
-.cardDataContainer {
-   height: 34.3vw;
-   width: 26vw;
-   border: 1px solid gray;
+.cardDataContainerBox {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 1vw;
+   width: 24vw; 
+   border: 1px solid black;
    border-radius: 0.5vw;
-   margin: 1vw;
-   
+   z-index: 100;
+   background-color: #EAEAEA;
 }
-
+.cardDataContainer {  
+      width: 24vw;
+      height:95%;
+      padding-top: 1vw;
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      z-index: 10;
+}
 .cardDataTitle {
+   height: 3vw;
    display: flex;
    align-items: center;
-}
-
-.cardDataContainer h1 {
-   width: 8vw;
-   color: white;
-   display: flex;
-   align-items: center;
-   font-size: 0.95vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
-}
-
-.cardDataContainer input {
-   font-size: 0.8vw;
-   margin: 0;
-   color: white;
-   background: none;
-   border: 1px solid gray;
-   border-radius: 0.2vw;
-}
-
-.cardDataContainer select {
-   font-size: 0.8vw;
-   margin: 0;
-   color: white;
-   background: none;
-   border: 1px solid gray;
-   border-radius: 0.2vw;
-}
-
-.cardDataTitleContent {
-   height: 9vw;
-   display: block;
-   align-items: center;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
    margin-bottom: 1vw;
 }
-
+.cardDataTitle p {
+   margin: 0;
+   font-size: 1vw;
+}
+.cardDataContainer h1 {
+   width: 8vw;
+   color: black;
+   display: flex;
+   align-items: center;
+   font-size: 1vw;
+   margin-top: 0;
+   margin-left: 0.5vw;
+   margin-right: 1.5vw;
+   margin-bottom: 0;
+}
+.cardDataContainer input {
+   height: 2vw;
+    width: 12.4vw;
+    font-size: 1vw;
+    background: none;
+    border: 1px solid black;
+    border-radius: 0.5vw;
+    color: black;
+    background-color: aliceblue;
+}
+.cardDataContainer select {
+    height: 2vw;
+    width: 12.2vw;
+    font-size: 1vw;
+    background: none;
+    border: 1px solid black;
+    border-radius: 0.5vw;
+    color: black;
+    background-color: aliceblue;
+}
+.cardDataTitleContent {
+   height: 9vw;
+   width: 46.8vw;
+   display: block;
+   align-items: center;
+   border: 1px solid black;
+   border-radius: 0.5vw;
+   padding-bottom: 0.5vw;
+   margin-bottom: 0;
+}
 .cardDataTitleContent h1 {
+   color: black;
    font-size: 1vw;
    margin-left: 1vw;
 }
-
 .cardDataTitleContent textarea {
    font-size: 1vw;
    overflow-y: auto;
-   background: none;
-   color: white;
-   border: none;
+   color: black;
    height: 5.2vw;
-   width: 70.5vw;
+   width: 42.5vw;
    margin-left: 1vw;
    margin-right: 1vw;
    resize: none;
+   border: 1px solid black;
+   padding-left: 1vw;
+   padding-right: 1vw;
+   border-radius: 0.5vw;
+   background-color: aliceblue;
 }
-
 .cardPdfDocContainer {
    z-index: 2;
-   width: 26vw;
    margin-top: 1vw;
    margin-right: 1vw;
-   background-color: #2e2e2e;
-   height: 32.1vw;
-   width: 26vw;
+   margin-left: 1vw;
+   border: 1px solid black;
+   border-radius: 0.5vw;
+   min-height: 44.4vw;
+   width: 46.8vw;
+   background-color: aliceblue;
 }

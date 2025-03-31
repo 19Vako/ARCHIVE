@@ -2,6 +2,7 @@
 import React from 'react'
 import { useStore } from '../context/Context';
 import axios from 'axios';
+import AddAddition from './AddAddition';
 
 function ShowCard() {
   const today = new Date().toISOString().split("T")[0];
@@ -11,17 +12,18 @@ function ShowCard() {
       .reverse()
       .join('-');
   };
-
   const { 
+     cards, 
      setCards,
+     getCardError,
      setShowCard, 
      showCardDataLog, 
      setShowCardDataLog,
      formData, 
      setFormData,
      userName,
-     showSaveChangesButton, 
      setShowSaveChangesButton,
+     showSaveChangesButton,
      setShowFilter,
      fileName, 
      setFileName,
@@ -34,7 +36,12 @@ function ShowCard() {
      additions,
      setAdditions,
      setShowAddition,
+     showAddAddition, 
+     setShowAddAddition,
+     showAddAdditionData, 
+     setShowAddAdditionData
   } = useStore()
+
   const initialFormData = {
     _id: "",
     docId: "",
@@ -73,7 +80,7 @@ function ShowCard() {
     createDate: reverseWord(today),
   }
   const GetCards = async () => {
-    await axios.get("http://116.202.198.11/api/get/Cards")
+    await axios.post("http://116.202.198.11/api/get/Cards")
     .then((data) => {
       setCards(data.data.cards)
     })
@@ -118,6 +125,7 @@ function ShowCard() {
 
     await axios.post("http://116.202.198.11/api/update/Card", data)
     .then((data) => {
+      GetCards()
       choiseListCard(data.data.data)
       setShowCardDataLog(data.data.message)
     })
@@ -144,19 +152,15 @@ function ShowCard() {
   }
 
   return (
-    <div className='cardContainer'>
-            <div className='cardContainerBlock'>
-              <div className='cardDataButtons'>
-                <div className='cardDataButtonsContainer'>
-                  <div className='backButton'>
-                    <button onClick={() => {
-                      setShowCard(false); 
-                      setShowCardDataLog(''); 
-                      setFormData(initialFormData);
-                      setShowSaveChangesButton(false)
-                      setShowFilter(false)
-                    }}>←</button>
-                  </div>
+    <>
+      {showAddAddition ?
+        <AddAddition/>
+      :
+       <>
+        <div className='cardContainerBlock'>
+          
+        <div className='cardDataButtons'>
+          <div className='cardDataButtonsContainer'>
                   <button 
                     onClick={() => {
                       setShowCard(false); 
@@ -167,6 +171,9 @@ function ShowCard() {
                       setShowAddition(true)
                     }}
                     >
+                    Створити посилання
+                  </button>
+                  <button onClick={() => {setShowAddAddition(true); setShowCard(false)}}>
                     Додати посилання
                   </button>
                   <button >Відправити на 1С</button>
@@ -175,12 +182,11 @@ function ShowCard() {
                     Замінити файл
                   </label>
                   <h1 className='showFileTitle'>{fileName}</h1>
-                  <button className='saveCangesButton' onClick={() => changeCard()}>Зберегти зміни</button>
                   <button className='deleteCard' onClick={() => deleteCard()} >Видалити</button>
                   <h1>{showCardDataLog}</h1>
-                </div>
-                <div className='additionList'>
-                 {additions ? (
+          </div>
+          <div className='additionList'>
+            {additions ? (
                    additions.slice().reverse().map((card:any, index:any) => (
                     <div key={index} onClick={() => choiseListCard(card)} className='additionBlockContainer'>
                       <h1>Організація: {card.organizationName}</h1>
@@ -188,15 +194,13 @@ function ShowCard() {
                       <h1>Срок дії до: {card.validityPeriod}</h1>
                     </div>
                    ))
-                  ):(
-                    <h1>❌ Список посилань пустий</h1>
-                  )
-                 }
-                </div>
-              </div>
-              {formData._id && 
-              <>
-              <div className='cardDataContainer'>
+              ):(<h1>❌ Список посилань пустий</h1>)
+            }
+          </div>
+        </div>
+        <>
+          <div className='cardDataContainerBox' style={showSaveChangesButton ? {height: "31vw"} : {height: "34.3vw"}}>
+            <div className='cardDataContainer' >
                <div className='cardDataTitle'>
                 <h1>Найменування:</h1>
                 <input 
@@ -206,7 +210,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Автор:</h1>
                 <input 
@@ -216,7 +219,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Тип договору:</h1>
                 <select 
@@ -228,7 +230,6 @@ function ShowCard() {
                   <option value="Отримання послуг">Отримання послуг</option>
                 </select>
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Тип документу:</h1>
                 <select 
@@ -238,7 +239,6 @@ function ShowCard() {
                   <option value="Наказ">Наказ</option>
                 </select>
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Найменування:</h1>
                 <input 
@@ -248,7 +248,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Найменування контерагента:</h1>
                 <input 
@@ -258,7 +257,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Дата створення:</h1>
                 <input 
@@ -268,7 +266,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Дата підписання:</h1>
                 <input 
@@ -278,7 +275,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Срок дії до:</h1>
                 <input 
@@ -288,7 +284,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Найменування організації:</h1>
                 <input 
@@ -298,7 +293,6 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-
                <div className='cardDataTitle'>
                 <h1>Код ЄДРПОУ організації:</h1>
                 <input 
@@ -317,25 +311,27 @@ function ShowCard() {
                   onChange={handleChangeCard}
                 />
                </div>
-              </div>
-              <iframe 
-                className='cardPdfDocContainer' 
-                title='Doc' 
-                src={`${showCardPDF.nameHostAndPort}${showCardPDF.fileName}`}
-                style={showSaveChangesButton ? {height: "31vw"} : {height: "34.1vw"} }
-              />
-              </>
-              }
             </div>
-            <div className='cardDataTitleContent'>
-              <h1>Короткий зміст:</h1>
-                <textarea
-                  name='content'
-                  value={formData.content}
-                  onChange={handleChangeCard}
-                />
-            </div>
-    </div>
+          </div>
+          <button className='saveCangesButton' onClick={() => {changeCard()}}>Зберегти зміни</button>
+        </>
+        </div>
+        <div className='cardDataTitleContent'>
+        <h1>Короткий зміст:</h1>
+          <textarea
+            name='content'
+            value={formData.content}
+            onChange={handleChangeCard}
+          />
+        </div>
+        <iframe 
+          className='cardPdfDocContainer'
+          title='Doc' 
+          src={`${showCardPDF.nameHostAndPort}${showCardPDF.fileName}`}
+        /> 
+       </> 
+      }  
+    </>
   )
 }
 
