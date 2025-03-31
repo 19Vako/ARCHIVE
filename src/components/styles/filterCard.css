@@ -1,27 +1,63 @@
+.cardFilterListContainer {
+   position: absolute;
+   left: 25vw;
+   display: flex;
+   width: 23vw;
+   align-items: center;
+   flex-direction: column;
+   height: 45vw;
+   border: 1px solid black;
+   border-radius: 1vw;
+   padding-bottom: 1vw;
+   padding-top: 0.5vw;
+   background-color: #EAEAEA;
+}
+.filterAdditionTitle {
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid black;
+}
+.filterAdditionTitle h1 {
+   display: flex;
+   justify-content: center;
+   width: 23vw;
+   font-size: 1.5vw;
+   margin-top: 1.635vw;
+   margin-bottom: 1.635vw;
+}
+.CardBlockFilter {
+   border: 1px solid black;
+    border-radius: 0.5vw;
+    width: 20vw;
+    margin-top: 0.5vw;
+    color: black;
+    cursor: pointer;
+    padding-top: 1vw;
+    padding-bottom: 0.5vw;
+    background-color: aliceblue;
+}
 .filterContainer {
    position: absolute;
    display: flex;
    flex-direction: column;
    align-items: center;
-   color: white;
+   color: black;
    height: 46.5vw;
-   width: 75vw;
-   left: 23.88vw;
-   border: 1px solid gray;
-   background-color:#2e2e2e;
+   width: 23vw;
+   left: 0.88vw;
+   border: 1px solid black;
+   background-color: #EAEAEA;
    border-radius: 1vw;
 }
-
 .filterTitle {
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
-   width: 73vw;
+   width: 22vw;
 }
-
 .filterTitle button {
-   color: gray;
+   color: black;
    font-size: 2vw;
    font-family: sans-serif;
    height: 3vw;
@@ -33,18 +69,15 @@
    background: none;
    cursor: pointer;
 }
-
 .filterTitle button img {
    height: 2vw;
    width: 2vw;
 }
-
 .filterTitle h1 {
    font-size: 1.5vw;
    margin-top: 1.635vw;
    margin-bottom: 1.635vw;
 }
-
 .filterContainer input {
    width: 13vw;
    height: 2vw;
@@ -54,77 +87,76 @@
    border: 1px solid gray;
    color: white;
 }
-
 .filterCardFormInput {
    display: flex;
-   width: 73vw;
-   flex-direction: row;
-   justify-content: space-between;
-   border-radius: 0.5vw;
-   border: 1px solid gray;
-   border-bottom-right-radius: 0;
-   border-bottom-left-radius: 0;
-   padding-top: 1vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
+   width: 23vw;
+   height: 41.5vw;
+   align-items: center;
+   flex-direction: column;
+   overflow-y: scroll;
+   border-top: 1px solid black;
+   border-bottom: 1px solid black;
 }
-
 .filterErrorTitle {
    font-size: 1vw;
 }
-
 .inputsContainer {
    display: flex;
-   width: 23.3vw;
+   width: 21.9vw;
    flex-direction: column;
-   margin-right: 1vw;
+   margin-right: 0vw;
 }
-
 .addInput {
    height: 3vw;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding-left: 1vw;
+   margin-left: 0.5vw;
+   margin-right: 0.5vw;
    margin-bottom: 1vw;
 }
-
 .addInput h1 {
    font-size: 1vw;
    width: 9vw;
    margin: 0;
 }
-
 .addInput select {
    height: 2vw;
-   width: 13.4vw;
+   width: 12.4vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid gray;
+   border: 1px solid black;
    border-radius: 0.5vw;
-   color: white;
+   color: black;
+   background-color: aliceblue;
 }
-
 .addInput input {
-   width: 13vw;
+   width: 12vw;
    height: 2vw;
    border-radius: 0.5vw;
    font-size: 1vw;
+   font-family: sans-serif;
    background: none;
-   border: 1px solid gray;
-   color: white;
+   border: 1px solid black;
+   color: black;
+   background-color: aliceblue;
 }
-
-.addButtons {
+.filterButtons {
    margin-top: 0.5vw;
-   width: 73vw;
+   width: 21vw;
    display: flex;
    justify-content: end;
 }
-
-.addButtons button {
+.filterButtons button {
+   background-color: #004884;
+   color: white;
+   border: 1px solid gray;
+   border-radius: 0.5vw;
    height: 2vw;
    width: 10vw;
    font-size: 1vw;
    cursor: pointer;
+}
+.filterButtons button:hover {
+   background-color: #023a68;
 }
