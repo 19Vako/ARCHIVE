@@ -12,8 +12,28 @@ function Admin() {
     <div className='adminContainer'>
       <Header />
       <nav className='choiseOption'>
-        <button style={ addCardOrUser ? {background: '#004884'} : {background:'none'}} className='addManager' onClick={() => setaddCardOrUser(true)}>Додати менеджера <img src={require('../icons/userIcon.png')} alt=''/></button>
-        <button style={ !addCardOrUser ? {background: '#004884'} : {background:'none'}} className='addCard' onClick={() => setaddCardOrUser(false)}><img src={require('../icons/inbox-icon.png')} alt=''/> Додати картку</button>
+        <button 
+          style={ 
+            addCardOrUser ? 
+            {background: '#004884'} : 
+            {background:'#EAEAEA', color: 'black'}} 
+            className='addManager' 
+          onClick={() => setaddCardOrUser(true)}
+        >
+          Додати менеджера 
+          <img src={addCardOrUser ? require('../icons/userIcon.png') : require('../icons/addUserBlack.png')} alt=''/>
+        </button>
+        <button 
+          style={ 
+            !addCardOrUser ? 
+            {background: '#004884'} : 
+            {background:'#EAEAEA', color: 'black'}} 
+            className='addCard' 
+          onClick={() => setaddCardOrUser(false)}
+        >
+          <img src={!addCardOrUser ? require('../icons/inbox-icon.png') : require('../icons/inboxBlack.png')} alt=''/> 
+          Додати картку
+        </button>
       </nav>
 
       <main className='mainContainer'>
