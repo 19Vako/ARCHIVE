@@ -68,8 +68,6 @@
    padding-bottom: 0.5vw;
    background-color: aliceblue;
 }
-
-
 .CardBlock h1 {
    margin: 0;
    margin-left: 1vw;
@@ -170,7 +168,6 @@ input[type="date"] {
 input[type="date"]:hover {
    background-color:silver; 
 }
-
 .choosePDFContainer {
    width: 73vw;
    border: 1px solid black;
@@ -316,8 +313,6 @@ input[type="date"]:hover {
    overflow-wrap: break-word;
    white-space: normal;
 }
-
-
 .approveModalContainer .approveModalContent {
    margin-top: 0;
    width: 28vw;
@@ -347,112 +342,7 @@ input[type="date"]:hover {
    height: 35vw;
    width: 41.6vw;
 }
-.cardDataTitle {
-   display: flex;
-   align-items: center;
-}
-.cardDataContainer input {
-   font-size: 0.8vw;
-   margin: 0;
-   color: white;
-   background: none;
-   border: 1px solid gray;
-   border-radius: 0.2vw;
-}
-.cardDataContainer select {
-   font-size: 0.8vw;
-   margin: 0;
-   color: white;
-   background: none;
-   border: 1px solid gray;
-   border-radius: 0.2vw;
-}
-.cardDataTitleContent {
-   height: 9vw;
-   width: 46.8vw;
-   display: block;
-   align-items: center;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   margin-bottom: 1vw;
-}
-.cardDataTitleContent h1 {
-   font-size: 1vw;
-   margin-left: 1vw;
-}
-.cardDataTitleContent textarea {
-   font-size: 1vw;
-   overflow-y: auto;
-   background: none;
-   color: white;
-   border: none;
-   height: 5.2vw;
-   width: 69.5vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
-   resize: none;
-}
-.cardPdfDocContainer {
-   z-index: 2;
-   background-color: #2e2e2e;
-   height: 32.1vw;
-   width: 26vw;
-}
 .backButton {
    color: black;
    width: 100%;
 }
-.cardDataButtons .backButton button {
-   border: none;
-   height: 3vw;
-   width: 3vw;
-   font-size: 2vw;
-   font-family: sans-serif;
-   margin: 0;
-   margin-left: 1vw;
-   background: none;
-}
-.cardDataButtons h1 {
-   width: 16vw;
-   font-size: 1vw;
-   display: flex;
-   flex-direction: column;
-}
-.cardDataButtonsContainer {
-   width: 21.5vw;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   border-bottom: 1px solid black;
-}
-.deleteCard {
-   background: #b00303;
-   color: white;
-   cursor: pointer;
-}
-.deleteCard:hover {
-   background-color: #8b0606;
-}
-.additionList {
-   width: 22.5vw;
-   height: 100%;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   padding-bottom: 0.5vw;
-}
-.additionList h1 {
-   display: flex;
-   justify-content: center;
-}
-.showFileTitle {
-   display: flex;
-   align-items: center;
-   width: 15vw;
-   font-size: 1vw;
-   white-space: nowrap; 
-   overflow: hidden; 
-   text-overflow: ellipsis; 
-}
-
-
