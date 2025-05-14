@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { reverseWord, today } from "../utils/Utils";
 
 type CardType = {
   _id: string;
@@ -95,17 +97,23 @@ type ContextType = {
   addAdditionLog: string;
   setAddAdditionLog: (data:string) => void;
 
+  showApproveModal: boolean; 
+  setShowApproveModal: (state: boolean) => void;
+
+  page: any;
+  setPage: (data: any) => void;
+
+  loading: boolean;
+  setLoading: (state: boolean) => void;
+
+  hasMore: boolean;
+  setHasMore: (state: boolean) => void;
+
 };
 const Context = createContext<ContextType | undefined>(undefined);
 
 export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    function reverseWord(str: string): string {
-    return str
-      .split('-')
-      .reverse()
-      .join('-');
-    };
-    const today = new Date().toISOString().split("T")[0];
+
     const [log_in, setLog_in] = useState(false);
     const [userName, setUserName] = useState<string>(() => {return localStorage.getItem("userName") || "";});
     const [cards, setCards] = useState<CardType[]>([]);
@@ -132,7 +140,6 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
         createDate: reverseWord(today),
     };
     const [formData, setFormData] = useState(initialFormData); // Форма для відправки 
-
     useEffect(() => {
       if (userName) {
         setFormData((prev: any) => ({
@@ -141,7 +148,6 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
         }));
       }
     }, [userName, setFormData]);
-
     const [filterFormData, setFilterFormData] = useState(initialFormData);
     const [showFilter, setShowFilter] = useState(false);
     const [fileName, setFileName] = useState('');
@@ -159,18 +165,22 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
     const [showAddAdditionData, setShowAddAdditionData] = useState(initialFormData);
     const [showAddAdditionCardPDF, setShowAddAdditionCardPDF] = useState({nameHostAndPort:"http://116.202.198.11/api/pdf-files/", fileName:""});
     const [addAdditionLog, setAddAdditionLog] = useState('')
+    const [showApproveModal, setShowApproveModal] = useState(false);
+    const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
 
     useEffect(() => {
-        localStorage.setItem("userName", userName);
+      localStorage.setItem("userName", userName);
     }, [userName]);
     useEffect(() => {
-        localStorage.setItem("cards", JSON.stringify(cards));
+      localStorage.setItem("cards", JSON.stringify(cards));
     }, [cards]);
 
 
     return (
         <Context.Provider 
-        value={{ 
+        value={{
           log_in,
           setLog_in,
           userName, 
@@ -218,7 +228,15 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
           showAddAdditionCardPDF, 
           setShowAddAdditionCardPDF,
           addAdditionLog, 
-          setAddAdditionLog
+          setAddAdditionLog,
+          showApproveModal, 
+          setShowApproveModal,
+          page, 
+          setPage,
+          loading, 
+          setLoading,
+          hasMore, 
+          setHasMore
         }}>
           {children}
         </Context.Provider>
@@ -228,7 +246,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) 
 export const useStore = (): ContextType => {
     const context = useContext(Context);
     if (!context) {
-        throw new Error('useStore must be used within a Provider');
+      throw new Error('useStore must be used within a Provider');
     }
     return context;
 };
