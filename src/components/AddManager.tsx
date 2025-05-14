@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import './styles/addManager.css'
+
 import {useEffect, useState} from 'react';
-import "./styles/addManager.css"
 import axios from 'axios';
 
 
