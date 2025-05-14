@@ -1,3 +1,6 @@
+.cardContainerBlock {
+  display: flex;
+}
 .DocCardDataButtons {
   display: flex;
   flex-direction: column;
@@ -5,7 +8,7 @@
   margin-bottom: 1vw;
   height: 33.3vw;
   width: 21.5vw;
-  border: 1px solid black;
+  border: 0.05208vw solid black;
   border-radius: 0.5vw;
   z-index: 2;
   margin-top: 1vw;
@@ -17,7 +20,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 0.5vw;
+  padding-top: 1vw;
+  overflow-y: scroll;
 }
 .DocAdditionList h1 {
   font-size: 1vw;
@@ -31,7 +35,7 @@
     height: 46.5vw;
     width: 98%;
     left: 0vw;
-    border: 1px solid black;
+    border: 0.05208vw solid black;
     border-radius: 1vw;
     background-color: #EAEAEA;
     margin-top: 5vw;
@@ -39,12 +43,14 @@
     margin-right: 1vw;
 }
 .DocumentCardDataContainer {
-  height: 33.3vw;
-  width: 25vw;
-  border: 1px solid black;
+  height: 32vw;
+  min-width: 21.5vw;
+  border: 0.05208vw solid black;
   border-radius: 0.5vw;
   margin: 1vw;
+  padding-top: 1.3vw;
   margin-right: 0;
+  overflow-y: scroll;
 }
 .DocumentCardDataContainer h1 {
   width: 10vw;
@@ -62,10 +68,10 @@
     top: 36vw;
     left: 1vw;
     height: 9vw;
-    width: 47.7vw;
+    width: 44.27vw;
     display: block;
     align-items: center;
-    border: 1px solid black;
+    border: 0.05208vw solid black;
     border-radius: 0.5vw;
     padding-bottom: 0.5vw;
     margin-bottom: 0;
@@ -74,28 +80,32 @@
   color: black;
   font-size: 1vw;
   margin-left: 1vw;
-}
-.DocumentCardDataTitleContent textarea {
-  font-size: 1vw;
-    overflow-y: auto;
-    color: black;
-    height: 5.2vw;
-    width: 42.5vw;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    resize: none;
-    border: 1px solid black;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    border-radius: 0.5vw;
-    background-color: aliceblue;
+  margin-right: 1vw;
 }
 .additionBlockContainer {
-  color: black;
-  text-decoration: none;
+  display: flex;
+  width: 19.6vw;
+  flex-direction: column;
+  border: 0.05208vw solid black;
+  border-radius: 0.5vw;
+  margin-bottom: 0.5vw;
+  padding-top: 1vw;
+  padding-bottom: 0.5vw;
+  background-color: aliceblue;
+}
+.additionBlockContainer h1 {
+  font-size: 0.8vw;
+   margin: 0;
+   margin-left: 1vw;
+   margin-bottom: 0.5vw;
 }
 .DocCardDataTitle {
-  height: 2.73vw;
   display: flex;
   align-items: center;
+  margin-bottom: 1vw;
+}
+.DocCardPdfDocContainer {
+  height: 44.4vw;
+  width: 100%;
+  margin: 1vw;
 }
