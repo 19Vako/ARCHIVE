@@ -6,7 +6,7 @@
    align-items: center;
    flex-direction: column;
    height: 45vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 1vw;
    padding-bottom: 1vw;
    padding-top: 0.5vw;
@@ -15,7 +15,7 @@
 .filterAdditionTitle {
    display: flex;
    align-items: center;
-   border-bottom: 1px solid black;
+   border-bottom: 0.05208vw solid black;
 }
 .filterAdditionTitle h1 {
    display: flex;
@@ -26,7 +26,7 @@
    margin-bottom: 1.635vw;
 }
 .CardBlockFilter {
-   border: 1px solid black;
+   border: 0.05208vw solid black;
     border-radius: 0.5vw;
     width: 20vw;
     margin-top: 0.5vw;
@@ -45,7 +45,7 @@
    height: 46.5vw;
    width: 23vw;
    left: 0.88vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    background-color: #EAEAEA;
    border-radius: 1vw;
 }
@@ -68,6 +68,7 @@
    border: none;
    background: none;
    cursor: pointer;
+   padding: 0;
 }
 .filterTitle button img {
    height: 2vw;
@@ -84,7 +85,7 @@
    border-radius: 0.5vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    color: white;
 }
 .filterCardFormInput {
@@ -94,8 +95,8 @@
    align-items: center;
    flex-direction: column;
    overflow-y: scroll;
-   border-top: 1px solid black;
-   border-bottom: 1px solid black;
+   border-top: 0.05208vw solid black;
+   border-bottom: 0.05208vw solid black;
 }
 .filterErrorTitle {
    font-size: 1vw;
@@ -120,16 +121,28 @@
    width: 9vw;
    margin: 0;
 }
+
+
+
+
 .addInput select {
    height: 2vw;
    width: 12.4vw;
    font-size: 1vw;
-   background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    color: black;
    background-color: aliceblue;
 }
+.addInput select:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+input select:-webkit-autofill {
+   font-size: 1vw;
+}
+
 .addInput input {
    width: 12vw;
    height: 2vw;
@@ -137,10 +150,43 @@
    font-size: 1vw;
    font-family: sans-serif;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
+   padding: 0.3vw;
 }
+.addInput input:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+.addInput input:-webkit-autofill {
+   font-size: 1vw;
+}
+
+.addInput textarea {
+   border-radius: 0.5vw;
+   font-size: 1vw;
+   font-family:sans-serif;
+   background: none;
+   border: 0.05208vw solid black;
+   color: black;
+   background-color: aliceblue;
+   resize: none;
+   padding: 0.3vw;
+}
+.addInput textarea:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+.addInput textarea:-webkit-autofill {
+   font-size: 1vw;
+}
+
+
+
+
 .filterButtons {
    margin-top: 0.5vw;
    width: 21vw;
@@ -150,7 +196,7 @@
 .filterButtons button {
    background-color: #004884;
    color: white;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    height: 2vw;
    width: 10vw;
