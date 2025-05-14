@@ -9,7 +9,7 @@
    align-items: center;
    flex-direction: column;
    height: 46.001vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    background-color: #EAEAEA;
    border-radius: 1vw;
    padding-bottom: 0.5vw;
@@ -19,7 +19,7 @@
    align-items: center;
    justify-content: space-between;
    color: black;
-   border-bottom: 1px solid black;
+   border-bottom: 0.05208vw solid black;
    width: 100%;
    padding-bottom: 1.5vw;
    padding-top: 1.5vw;
@@ -40,6 +40,7 @@
    height: 2vw;
    width: 2vw;
    margin-right: 1vw;
+   padding: 0;
 }
 .cardListTitle img {
    height: 2vw;
@@ -58,7 +59,7 @@
    font-size: 1vw;
 }
 .CardBlock {
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    width: 20.1vw;
    margin-top: 0.5vw;
@@ -91,7 +92,7 @@
    height: 46.501vw;
    width: 75vw;
    left: 23.88vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 1vw;
    background-color: #EAEAEA;
 }
@@ -107,7 +108,7 @@
   flex-direction: row;
   justify-content: space-between;
   border-radius: 0.5vw;
-  border: 1px solid black;
+  border: 0.05208vw solid black;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   padding-top: 1vw;
@@ -118,59 +119,103 @@
    flex-direction: column;
    margin-right: 1vw;
 }
-.addInput {
-   height: 3vw;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-left: 0.5vw;
-   margin-right: 0.5vw;
-   margin-bottom: 1vw;
-}
 .addInput h1 {
    font-size: 1vw;
    width: 9vw;
    margin: 0;
 }
+
+
+
 .addInput select {
-   height: 2vw;
-   width: 13.4vw;
-   font-size: 1vw;
-   background: none;
-   border: 1px solid black;
+   background-color: #f0f8ff;
    border-radius: 0.5vw;
-   color: black;
-   background-color: aliceblue;
+   color: #000;
+   font-size: 1vw;
+   padding-left: 0.3vw;
+   height: 2vw;
+   border: 0.05208vw solid #000;
+   width: 12.6vw;
+   appearance: none;
+   background-position: right 1vw center;
+   background-repeat: no-repeat;
+   background-size: 1vw;
+   padding-right: 0vw;
+   background-image: url(../../icons/down-arrow.png);
 }
+.addInput select:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+input select:-webkit-autofill {
+   font-size: 1vw;
+}
+
 .addInput input {
    width: 13vw;
    height: 2vw;
    border-radius: 0.5vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
 }
+.addInput input:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+.addInput input:-webkit-autofill {
+   font-size: 1vw;
+}
+
 .addInput textarea {
    border-radius: 0.5vw;
    font-size: 1vw;
    font-family:sans-serif;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
    resize: none;
+   padding: 0.3vw;
 }
+.addInput textarea:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+.addInput textarea:-webkit-autofill {
+   font-size: 1vw;
+}
+
+
+.addInput {
+   align-items: center;
+   display: flex;
+   height: 3vw;
+   justify-content: space-between;
+   margin-bottom: 1vw;
+   margin-left: 0.5vw;
+   margin-right: 0.5vw;
+}
+
+
+
+
 input[type="date"] {
    font-family:sans-serif;
+   font-size: 1vw
 }
 input[type="date"]:hover {
    background-color:silver; 
 }
+
 .choosePDFContainer {
    width: 73vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-bottom-right-radius: 0.5vw;
    border-bottom-left-radius: 0.5vw;
    border-top: none;
@@ -231,7 +276,7 @@ input[type="date"]:hover {
    padding: 1vw;
    font-size: 1vw;
    border-radius: 0.5vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
    resize: none;
@@ -248,7 +293,7 @@ input[type="date"]:hover {
    width: 12vw;
    font-size: 1vw;
    cursor: pointer;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    background-color: #004884;
    color: white;
@@ -298,7 +343,7 @@ input[type="date"]:hover {
    align-items: center;
    padding-top: 1vw;
    padding-bottom: 1vw;
-   border-bottom: 1px solid black;
+   border-bottom: 0.05208vw solid black;
 }
 .approveModalContainer h1 {
    font-size: 1.3vw;
@@ -336,7 +381,7 @@ input[type="date"]:hover {
    overflow-x: hidden;
    padding-bottom: 1vw;
    border-radius: 0.5vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
 }
 .pdfDocContainer {
    height: 35vw;
