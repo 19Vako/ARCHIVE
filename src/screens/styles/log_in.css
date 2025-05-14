@@ -13,7 +13,7 @@
    justify-content: center;
    height: 30vw;
    width: 30vw;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 1vw;
    background-color: #F0F0F0;
    box-shadow: 0vw 0.5vw 1vw 0;
@@ -29,7 +29,7 @@
 
 .log_in_input {
    font-family: sans-serif;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    color: black;
    width: 20vw;
@@ -38,6 +38,14 @@
    margin-bottom: 1vw;
    padding-left: 0.5vw;
    padding-right: 0.5vw;
+}
+.log_in_input:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+.log_in_input:-webkit-autofill {
+   font-size: 1vw;
 }
 
 .log_in_text {
@@ -62,7 +70,7 @@
    font-size: 1.5vw;
    border-radius: 0.5vw;
    background-color: #004884;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    color: white;
    margin-bottom: 1vw;
    cursor: pointer;
