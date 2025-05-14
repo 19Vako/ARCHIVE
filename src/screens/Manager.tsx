@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useStore } from '../context/Context';
@@ -5,12 +6,15 @@ import Header from '../components/Header';
 import AddAddition from '../components/AddAddition';
 import '../components/styles/addCard.css'
 import './styles/manager.css'
+import CardList from '../components/CardList';
+import AddCardForm from '../components/AddCardForm';
+import ApproveModal from '../components/ApproveModal';
+import AdditionCardList from '../components/AdditionCardList';
+import { reverseWord, today, formatDateForInput } from '../utils/Utils';
 
 function Manager() {
-  const today = new Date().toISOString().split("T")[0];
   const {
     userName,  
-    cards, 
     setCards,
     showCard, 
     setShowCard,
@@ -27,16 +31,12 @@ function Manager() {
     file, 
     setFile,
     setFilterLog,
-    pdfURL, 
-    setPdfURL,
     showCardPDF,
     setShowCardPDF,
-    getCardError, 
     setGetCardError,
     setAdditions,
     additions,
     setShowAddition,
-    showAddition,
     filterLog,
     findAuthor, 
     setFindAuthor,
@@ -44,9 +44,10 @@ function Manager() {
     setFilterFormData,
     setShowAddAddition,
     showAddAddition,
-    setShowAddAdditionData,
-    setShowAddAdditionCardPDF,
-    setAddAdditionLog,
+    showApproveModal, 
+    setLoading,
+    setHasMore,
+    setPage,
   } = useStore();
   useEffect(() => {
       if (userName) {
@@ -56,7 +57,7 @@ function Manager() {
           createDate: reverseWord(today)
         }));
       }
-    }, [userName, setFormData]);
+  }, [userName, setFormData]);
   const initialFormData = {
     _id: "",
     docId: "",
@@ -94,19 +95,24 @@ function Manager() {
     author: userName,
     createDate: reverseWord(today),
   }
-  const [showApproveModal, setShowApproveModal] = useState(false); // Стан модального вікна
-  const [createCardLog, setCreateCardLog] = useState(''); // Логування при створення нових карток
-  const [createCardError, setCreateCardError] = useState(false); // Зміна кольору логу при створенні картки 
-  const [fileLog, setFileLog] = useState(false);
-
+  const [createCardError, setCreateCardError] = useState(false);
   const GetCards = async () => {
-    await axios.post("http://116.202.198.11/api/get/Cards")
-    .then((data) => {
-      setCards(data.data.cards)
-    })
-    .catch((err) => {
-      setGetCardError(err.response.data.error)
-    })
+    setLoading(true);
+    setGetCardError(null);
+
+    try {
+      const res = await axios.post("http://116.202.198.11/api/get/Cards", {page: 1, limit: 50});
+      const newCards = res.data.cards || [];
+      setCards(newCards); // просто ставим новые карточки
+      setHasMore(newCards.length === 50); // true если ровно 50 карточек
+      setPage(1);
+
+    } catch (err: any) {
+      setGetCardError(err?.response?.data?.error || 'Помилка при завантаженні карток');
+    } finally {
+      setLoading(false);
+    }
+
   }
   useEffect(() => {
     GetCards()
@@ -120,29 +126,6 @@ function Manager() {
       console.log(err.response.data.error)
     })
   }
-  const handleFileChoose = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files?.[0];
-      setFileName(file.name);
-      setFile(e.target.files[0]);
-      setPdfURL(URL.createObjectURL(e.target.files[0]));
-    }
-  };
-  function reverseWord(str: string): string {
-    return str
-      .split('-')
-      .reverse()
-      .join('-');
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    if (["docCreateDate", "docSigningDate", "validityPeriod"].includes(name)) {
-      const [year, month, day] = value.split("-");
-      setFormData({ ...formData, [name]: `${day}-${month}-${year}` });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  }; 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (["docCreateDate", "docSigningDate", "validityPeriod"].includes(name)) {
@@ -152,44 +135,9 @@ function Manager() {
           setFilterFormData({ ...filterFormData, [name]: value });
         }
   }; 
-  const formatDateForInput = (date: string): string => {
-    if (!date) return "";
-    const [day, month, year] = date.split("-");
-    return `${year}-${month}-${day}`;
-  };
   const cleanInputs = () => {
     setFilterFormData(initialFormData)
     setFormData(initialFormData)
-  }
-  const createCard = async () => {
-    const data = new FormData();
-    Object.entries(formData as Record<string, any>).forEach(([key, value]) => {
-      data.append(key, value)
-    })
-    data.append("docPDF", file);
-    await axios.post("http://116.202.198.11/api/add/Card_or_Addition", data)
-    .then(() => {
-      setCreateCardError(false)
-      setShowApproveModal(false)
-      cleanInputs()
-      setFileName('')
-      setFile(null)
-    })
-    .catch((err) => {
-      setCreateCardLog(err.response.data.error)
-      setCreateCardError(true)
-    })
-    GetCards()
-
-  };
-  const openApproveModal = () => {
-    if(fileName){
-      setShowApproveModal(true)
-      setFileLog(false)
-    }
-    else {
-      setFileLog(true)
-    }
   }
   const choiceFilter = () => {
     setShowFilter(true); 
@@ -209,13 +157,6 @@ function Manager() {
     setShowAddition(false)
     GetAdditions(card._id)
   }
-  const choiseListAdditionCard = (card:any) => {
-    setShowAddAdditionData({...card})
-    setShowAddAdditionCardPDF((prev: any) => ({ ...prev, fileName: card.docPDF }));
-    GetAdditions(card._id);
-    setShowAddition(false);
-    setAddAdditionLog('')
-  }
   const filterCard = async () => {
     await axios.post("http://116.202.198.11/api/find/Cards", {
       docType: filterFormData.docType, 
@@ -232,7 +173,6 @@ function Manager() {
       contractType:filterFormData.contractType
     })
     .then((res) => {
-      console.log(res.data.data)
       setCards(res.data.data)
       setFilterLog('')
       setCreateCardError(false)
@@ -291,287 +231,31 @@ function Manager() {
             <img src={require('../icons/filter.png')} alt=''/>
           </button>
         </div>
-        <div className='cardList'>
-        {cards ? 
-          cards.slice().reverse().map((card:any, index:any) => (
-          <div key={index} onClick={() => choiseListCard(card)} className='CardBlock'>
-            <div className='cardBlockDateContainer'>
-              <h1>Організація: {card.organizationName}</h1>
-              <h1>Дата створення: {card.docCreateDate}</h1>
-              <h1>Срок дії до: {card.validityPeriod}</h1>
-            </div>
-          </div>
-          ))
-          :(<h1>{getCardError}</h1>)
-        }
-        </div>
+        <CardList/>
       </div>
       {!showFilter ? (
         <div className='addCardForm'>
           {!showApproveModal ? (
-            <>
-            {showAddition ? (<h1>Створити додаток</h1>) : (<h1>Додати картку документу</h1>)}
-            <div className='addCardFormInput'>
-
-              <div className='inputsContainer'>
-
-              <div className='addInput'>
-                <h1>Тип Документа:</h1>
-                <select 
-                  name='contractType'
-                  value={formData.contractType}
-                  onChange={handleChange}
-                  >
-                  <option value="">Тип Документа</option>
-                  <option value="Договір">Договір</option>
-                  <option value="Наказ">Наказ</option>
-                </select>
-              </div>
-              <div className='addInput'>
-                <h1>Дата створення:</h1>
-                <input 
-                  type='date' 
-                  name='docCreateDate' 
-                  value={formatDateForInput(formData.docCreateDate)} 
-                  onChange={handleChange} 
-                  placeholder='дата створення'
-                />
-              </div>
-              <div className='addInput'>
-                <h1>Дата підписання:</h1>
-                <input 
-                  type='date' 
-                  name='docSigningDate' 
-                  value={formatDateForInput(formData.docSigningDate)}
-                  onChange={handleChange}  
-                  placeholder='дата підписання'
-                />
-              </div>
-              <div className='addInput'>
-                <h1>Срок дії:</h1>
-                <input 
-                  type='date' 
-                  name='validityPeriod'
-                  value={formatDateForInput(formData.validityPeriod)}
-                  onChange={handleChange} 
-                  placeholder='Срок дії'
-                />
-              </div>
-  
-              </div>
-
-              <div className='inputsContainer'>
-              
-              <div className='addInput' style={{height: "3vw"}}>
-                <h1>Найменування:</h1>
-                <textarea
-                  name='name'
-                  value={formData.name}
-                  onChange={handleChange}
-                  style={{width: "12vw", height: "3vw"}}
-                  placeholder='Найменування'
-                />
-              </div>
-              <div className='addInput' >
-                <h1>Найменування організації:</h1>
-                <input
-                  name='organizationName'
-                  value={formData.organizationName}
-                  onChange={handleChange}
-                  placeholder='Найменування організації'
-                />
-              </div>
-              <div className='addInput'>
-                <h1>Код ЄДРПОУ організації:</h1>
-                <input
-                  name='organisationCode'
-                  value={formData.organisationCode}
-                  onChange={handleChange}
-                  placeholder='Код ЄДРПОУ організації'
-                />
-              </div>
-              <div className='addInput'>
-                <h1>Код ЄДРПОУ контрагента:</h1>
-                <input 
-                  name='counterpartyCode' 
-                  value={formData.counterpartyCode} 
-                  onChange={handleChange}
-                  placeholder='Код ЄДРПОУ контрагента'
-                />
-              </div>
-  
-              </div>
-              
-              <div className='inputsContainer'>
-  
-              <div className='addInput'>
-                <h1>Тип Договору:</h1>
-                <select 
-                  name='docType' 
-                  value={formData.docType} 
-                  onChange={handleChange}>
-                  <option value="">Тип Договору</option>
-                  <option value="Продаж">Продаж</option>
-                  <option value="Замовлення">Замовлення</option>
-                  <option value="Надання послуг">Надання послуг</option>
-                  <option value="Отримання послуг">Отримання послуг</option>
-                </select>
-              </div>
-              <div className='addInput'>
-                <h1>Особистий номер:</h1>
-                <input 
-                  name='docNumber'
-                  value={formData.docNumber}
-                  onChange={handleChange}
-                  placeholder='Особистий номер документу'
-                />
-              </div>
-              <div className='addInput'>
-                <h1>Найменування контрагенту:</h1>
-                <input 
-                  name='counterpartyName'
-                  value={formData.counterpartyName}
-                  onChange={handleChange}
-                  placeholder='Найменування контрагенту'
-                />
-              </div>
-              </div>
-
-            </div>
-            <div className="choosePDFContainer">
-                  <input 
-                    id="pdfUpload" 
-                    type="file" 
-                    accept="application/pdf" 
-                    onChange={handleFileChoose} 
-                    style={{ display: "none" }} 
-                  />
-                  <label htmlFor="pdfUpload" className="custom-file-label">
-                    Виберіть файл
-                  </label>
-                  <span>{fileName}</span>
-            </div>
-            <div className='contentContainer'>
-                  <h1>Короткий зміст:</h1>
-                  <textarea
-                    name='content'
-                    value={formData.content}
-                    onChange={handleChange}
-                    placeholder="Введіть текст..."
-                  />
-            </div> 
-            {fileLog && <h1 style={{color:'red', fontSize:"1vw", margin:0, marginTop:0}}>❌ Файл не вибраний!</h1>}
-            <div className='addButtons'>
-                <button onClick={() => openApproveModal()}>Додати</button>
-            </div>
-            </>
+            <AddCardForm/>
           ):(
-            <>
-               <div className='addCardFormHeader'>
-                <button onClick={() => setShowApproveModal(false)}>←</button>
-                <h1>Перевірка даних</h1>
-               </div>
-               <div className='approveModalContainer'>
-                <div className='sendDataContainer'>
-
-                 <div className='sendData'>
-                  <h1>Найменування:</h1>
-                  <p>{formData.name}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Автор:</h1>
-                  <p>{userName}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Тип документу:</h1>
-                  <p>{formData.contractType}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Тип договору:</h1>
-                  <p>{formData.docType}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Тип найменування:</h1>
-                  <p>{formData.counterpartyName}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Найменування контерагента:</h1>
-                  <p>{formData.counterpartyCode}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Дата створення:</h1>
-                  <p>{formData.docCreateDate}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Дата підписання:</h1>
-                  <p>{formData.docSigningDate}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Срок дії:</h1>
-                  <p>{formData.validityPeriod}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Найменування організації:</h1>
-                  <p>{formData.organizationName}</p>
-                 </div>
-                 <div className='sendData'>
-                  <h1>Код ЄДРПОУ організації:</h1>
-                  <p>{formData.organisationCode}</p>
-                 </div>
-                 <h1 className='approveModalContentTitle'>Короткий зміст:</h1>
-                 <p className='approveModalContent'>{formData.content}</p>
-
-                </div>
-                {pdfURL && (
-                  <iframe className='pdfDocContainer' src={pdfURL} />
-                )}
-               </div>
-               <h1 id='approvedLog'  style={ createCardError ? {color:'red'} : {color:'green'}}>{createCardLog}</h1>
-               <div className='addButtons'>
-                  <button onClick={() => {createCard();  setShowAddition(false); showAddition && setFormData(initialFormData)}}>Додати</button>
-               </div>
-            </>
+            <ApproveModal/>
           )}
         </div>
       ):(
-       <>
-        {showAddAddition ? 
-          <div className='cardAdditionListContainer'>
+      <>
+      {showAddAddition ? 
+        <div className='cardAdditionListContainer'>
           <div className='filterAdditionTitle'>
             <h1>Виберіть картку посилання</h1>
           </div>
-          <div className='cardList'>
-          {cards ? 
-            cards.slice().reverse().map((card:any, index:any) => (
-              <div key={index} onClick={() => {choiseListAdditionCard(card); setShowCard(true)}} className='CardBlockFilter'>
-                <div className='cardBlockDateContainer'>
-                  <h1>Організація: {card.organizationName}</h1>
-                  <h1>Дата створення: {card.docCreateDate}</h1>
-                  <h1>Срок дії до: {card.validityPeriod}</h1>
-                </div>
-              </div>
-            ))
-          :(<h1>{getCardError}</h1>)}
-          </div>
-          </div>
-          :
-          <div className='cardFilterListContainer'>
-          <div className='cardList'>
-          {cards ? 
-            cards.slice().reverse().map((card:any, index:any) => (
-              <div key={index} onClick={() => choiseListCard(card)} className='CardBlockFilter'>
-                <div className='cardBlockDateContainer'>
-                  <h1>Організація: {card.organizationName}</h1>
-                  <h1>Дата створення: {card.docCreateDate}</h1>
-                  <h1>Срок дії до: {card.validityPeriod}</h1>
-                </div>
-              </div>
-            ))
-          :(<h1>{getCardError}</h1>)}
-          </div>
-          </div>
-        }
-        <div className='filterContainer'>
+          <AdditionCardList/>
+        </div>
+      :
+        <div className='cardFilterListContainer'>
+          <CardList/>
+        </div>
+      }
+      <div className='filterContainer'>
         <div className='filterTitle'>
           <button onClick={() => {
             setShowFilter(false); 
@@ -710,9 +394,9 @@ function Manager() {
           </button>
         </div>
         <h1 style={createCardError ? {color:'red'} : {color:'green'}} className='filterErrorTitle'>{filterLog}</h1>
-        </div>
-
-        <div className='cardBlockContainer'>
+      </div>
+      
+      <div className='cardBlockContainer'>
         {formData._id && 
          <div className='cardContainer'>
          {showCard ?
@@ -783,11 +467,6 @@ function Manager() {
                    </div>
     
                    <div className='cardDataTitle'>
-                    <h1>Найменування:</h1>
-                    <p>{formData.counterpartyName}</p>
-                   </div>
-    
-                   <div className='cardDataTitle'>
                     <h1>Найменування контерагента:</h1>
                     <p>{formData.counterpartyCode}</p>
                    </div>
@@ -829,7 +508,7 @@ function Manager() {
 
                   </div>
                   </div>
-                    <button className='saveCangesButton' onClick={() => changeCard()}>Зберегти зміни</button>
+                  <button className='saveCangesButton' onClick={() => changeCard()}>Зберегти зміни</button>
                   </>
                 }
               </div>
@@ -838,7 +517,6 @@ function Manager() {
           <textarea
             name='content'
             value={formData.content}
-            onChange={handleChangeCard}
           />
               </div>
               <iframe 
@@ -852,8 +530,8 @@ function Manager() {
          }
          </div>  
         }
-        </div>
-       </>
+      </div>
+      </>
       )}
      </div>
     </div>
