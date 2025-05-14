@@ -9,13 +9,13 @@
 
 .contentTitle {
   font-size: 1vw;
-    overflow-y: scroll;
-    background: none;
-    color: black;
-    border: none;
-    height: 5.2vw;
-    width: 70.5vw;
-    margin-left: 1vw;
-    margin-right: 1vw;
+  overflow-y: scroll;
+  background: none;
+  color: black;
+  border: none;
+  height: 5.2vw;
+  width: 70.5vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
