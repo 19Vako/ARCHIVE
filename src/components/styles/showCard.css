@@ -7,7 +7,7 @@
    padding-top: 1vw;
    color: black;
    background-color:#EAEAEA;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 1vw;
 }
 .cardContainer {
@@ -33,7 +33,7 @@
    padding-bottom: 1vw;
    height: 33.3vw;
    width: 21.5vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    z-index: 2;
 }
@@ -66,7 +66,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   border-bottom: 1px solid black;
+   border-bottom: 0.05208vw solid black;
    padding-top: 1vw;
 }
 .changeFileButton {
@@ -80,11 +80,9 @@
    background: aliceblue;
    color: black;
    border-radius: 0.5vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    cursor: pointer;
 }
-
-
 .showFileTitle {
    display: flex;
    align-items: center;
@@ -103,7 +101,7 @@
    margin-bottom: 0.5vw;
    border-radius: 0.5vw;
    padding: 0;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    cursor: pointer;
    background-color: aliceblue;
 }
@@ -114,11 +112,12 @@
    top: 32.45vw;
    left: 37.6vw;
    font-size: 1vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    cursor: pointer;
    color: white;
    background-color: #004884;
+   padding: 0;
 }
 .saveCangesButton:hover {
    background-color: #023a68;
@@ -140,6 +139,7 @@
    background-color: #8b0606;
 }
 
+
 .additionList {
    width: 21.5vw;
    height: 100%;
@@ -153,12 +153,11 @@
    display: flex;
    justify-content: center;
 }
-
 .additionBlockContainer {
    display: flex;
    width: 18.6vw;
    flex-direction: column;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    margin-top: 0.5vw;
    padding-top: 1vw;
@@ -177,7 +176,7 @@
    align-items: center;
    margin-left: 1vw;
    width: 24vw; 
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    z-index: 100;
    background-color: #EAEAEA;
@@ -193,34 +192,42 @@
 }
 
 .cardDataContainer input {
-   border: 1px solid #000;
+   border: 0.05208vw solid #000;
    border-radius: 0.5vw;
    color: #000;
    font-size: 1vw;
    width: 12.4vw;
    background-color: #f0f8ff;
    height: 2vw;
+   padding: 0.3vw;
 }
 .cardDataContainer textarea {
    height: 3vw;
    width: 12.4vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    color: black;
    background-color: aliceblue;
    resize: none;
+   padding: 0.3vw;
 }
 .cardDataContainer select {
-    height: 2vw;
-    width: 12.2vw;
-    font-size: 1vw;
-    background: none;
-    border: 1px solid black;
+    background-color: #f0f8ff;
     border-radius: 0.5vw;
-    color: black;
-    background-color: aliceblue;
+    color: #000;
+    font-size: 1vw;
+    padding-left: 0.3vw;
+    height: 2vw;
+    border: 0.05208vw solid #000;
+    width: 13.2vw;
+    appearance: none;
+    background-position: right 1vw center;
+    background-repeat: no-repeat;
+    background-size: 1vw;
+    padding-right: 0vw;
+    background-image: url(../../icons/down-arrow.png);
 }
 
 
@@ -248,19 +255,18 @@
 
 
 .cardDataTitleContent {
-   height: 9vw;
+   height: 11.5vw;
    width: 46.8vw;
    display: block;
    align-items: center;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
-   padding-bottom: 0.5vw;
    margin-bottom: 0;
 }
 .cardDataTitleContent h1 {
    color: black;
    font-size: 1vw;
-   margin-left: 1vw;
+   margin: 1vw
 }
 .cardDataTitleContent textarea {
    font-size: 1vw;
@@ -268,12 +274,13 @@
    color: black;
    height: 5.2vw;
    width: 42.5vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
+   margin: 1vw;
    resize: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    padding-left: 1vw;
    padding-right: 1vw;
+   padding-bottom: 1vw;
+   margin-bottom: 1vw;
    border-radius: 0.5vw;
    background-color: aliceblue;
 }
@@ -285,7 +292,7 @@
    margin-top: 1vw;
    margin-right: 1vw;
    margin-left: 1vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 0.5vw;
    min-height: 44.4vw;
 }
