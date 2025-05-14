@@ -12,6 +12,7 @@
 }
 
 .exitButton {
+  display: flex;
   height: 2.5vw;
   width: 2.5vw;
   margin-right: 1vw;
