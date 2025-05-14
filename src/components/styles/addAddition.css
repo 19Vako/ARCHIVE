@@ -6,7 +6,7 @@
    align-items: center;
    flex-direction: column;
    height: 45.5vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 1vw;
    padding-bottom: 1vw;
    background-color: #EAEAEA;                                          
@@ -19,7 +19,7 @@
    font-size: 1vw;
    color: white;
    background-color: #004884;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
 }
 
 #addAddition:hover {
