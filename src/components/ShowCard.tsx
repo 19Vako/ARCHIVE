@@ -1,21 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import './styles/showCard.css'
+
 import React from 'react'
 import { useStore } from '../context/Context';
 import axios from 'axios';
 import AddAddition from './AddAddition';
+import { reverseWord, today } from '../utils/Utils';
 
 function ShowCard() {
-  const today = new Date().toISOString().split("T")[0];
-  function reverseWord(str: string): string {
-    return str
-      .split('-')
-      .reverse()
-      .join('-');
-  };
   const { 
-     cards, 
+     setPage,
+     setHasMore,
+     setLoading,
      setCards,
-     getCardError,
      setShowCard, 
      showCardDataLog, 
      setShowCardDataLog,
@@ -38,10 +35,7 @@ function ShowCard() {
      setShowAddition,
      showAddAddition, 
      setShowAddAddition,
-     showAddAdditionData, 
-     setShowAddAdditionData
   } = useStore()
-
   const initialFormData = {
     _id: "",
     docId: "",
@@ -80,14 +74,24 @@ function ShowCard() {
     createDate: reverseWord(today),
   }
   const GetCards = async () => {
-    await axios.post("http://116.202.198.11/api/get/Cards")
-    .then((data) => {
-      setCards(data.data.cards)
-    })
-    .catch((err) => {
-      setGetCardError(err.response.data.error)
-    })
-  };
+
+    setLoading(true);
+    setGetCardError(null); // обнуляем возможную старую ошибку
+
+    try {
+      const res = await axios.post("http://116.202.198.11/api/get/Cards", {page: 1, limit: 50});
+      const newCards = res.data.cards || [];
+      setCards(newCards); // просто ставим новые карточки
+      setHasMore(newCards.length === 50); // true если ровно 50 карточек
+      setPage(1);
+
+    } catch (err: any) {
+      setGetCardError(err?.response?.data?.error || 'Помилка при завантаженні карток');
+    } finally {
+      setLoading(false);
+    }
+    
+  }
   const GetAdditions = async (_id:any) => {
     await axios.post("http://116.202.198.11/api/get/Additions", {docId:_id})
     .then((data) => {
@@ -158,7 +162,6 @@ function ShowCard() {
       :
        <>
         <div className='cardContainerBlock'>
-          
         <div className='cardDataButtons'>
           <div className='cardDataButtonsContainer'>
                   <button 
@@ -203,8 +206,7 @@ function ShowCard() {
             <div className='cardDataContainer' >
                <div className='cardDataTitle'>
                 <h1>Найменування:</h1>
-                <input 
-                  type="text" 
+                <textarea 
                   name='name'
                   value={formData.name}
                   onChange={handleChangeCard}
@@ -238,15 +240,6 @@ function ShowCard() {
                   <option value="Договір">Договір</option>
                   <option value="Наказ">Наказ</option>
                 </select>
-               </div>
-               <div className='cardDataTitle'>
-                <h1>Найменування:</h1>
-                <input 
-                  type='text'
-                  name='counterpartyName'
-                  value={formData.counterpartyName} 
-                  onChange={handleChangeCard}
-                />
                </div>
                <div className='cardDataTitle'>
                 <h1>Найменування контерагента:</h1>
