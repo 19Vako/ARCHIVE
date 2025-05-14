@@ -9,7 +9,7 @@
    flex-direction: column;
    height: 100%;
    width: 22vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 1vw;
    margin-right: 0.8vw;
    background-color: #EAEAEA;
@@ -49,7 +49,7 @@
    height: 2.5vw;
    width: 15vw;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
 }
@@ -64,7 +64,7 @@
 .managerBlock {
    display: flex;
    align-items: center;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    padding: 1vw;
    border-radius: 0.5vw;
    height: 2vw;
@@ -120,7 +120,7 @@
 }
 .deleteModalButton {
    background: #b00303;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    height: 3vw;
    width: 10vw;
@@ -138,7 +138,7 @@
    width: 10vw;
    cursor: pointer;
    color: white;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    font-size: 1vw;
 }
@@ -157,7 +157,7 @@
    height: 46.501vw;
    width: 75vw;
    left: 23.88vw;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    border-radius: 1vw;
 }
 .addForm {
@@ -167,7 +167,7 @@
    align-items: center;
    justify-content: center;
    flex-direction: column;
-   border-bottom: 1px solid gray;
+   border-bottom: 0.05208vw solid gray;
    padding: 1vw;
 }
 .addManagerForm h1 {
@@ -175,7 +175,7 @@
 }
 .addManagerInput {
    background:none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    border-radius: 0.5vw;
    padding-left: 1vw;
@@ -196,7 +196,7 @@
    border-radius: 0.5vw;
    background:none;
    font-size: 1.2vw;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    color: white;
    background-color: #004884;
    cursor: pointer;
@@ -272,7 +272,7 @@
    background-color: #004884;
    color: white;
    font-size: 1vw;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    margin-right: 1vw;
    cursor: pointer;
