@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Routes, Route, Navigate} from 'react-router'; 
+import { Routes, Route, Navigate} from 'react-router-dom'; 
 import { useStore } from '../context/Context';
 import Log_in from '../screens/Log_in';
 import Manager from '../screens/Manager';
