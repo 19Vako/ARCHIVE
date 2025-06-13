@@ -1,9 +1,9 @@
 .log_inContainer {
    height: 100vh;
+   width: 100vw;
    display: flex;
    align-items: center;
    justify-content: center;
-   background-color: #F5F5F5;
 }
 
 .log_inForm {
@@ -13,11 +13,9 @@
    justify-content: center;
    height: 30vw;
    width: 30vw;
-   border: 0.05208vw solid gray;
+   border: 0.05208vw solid #7d7d7d;
    border-radius: 1vw;
-   background-color: #F0F0F0;
-   box-shadow: 0vw 0.5vw 1vw 0;
-
+   background-color: #171717;;
 }
 
 .back_button_container {
@@ -28,16 +26,20 @@
 
 
 .log_in_input {
-   font-family: sans-serif;
-   border: 0.05208vw solid gray;
-   border-radius: 0.5vw;
-   color: black;
-   width: 20vw;
-   height: 3vw;
-   font-size: 1.5vw;
-   margin-bottom: 1vw;
-   padding-left: 0.5vw;
-   padding-right: 0.5vw;
+    --default-font-size: 1.5vw !important;
+    background-color: #171717 !important;
+    border: .05208vw solid #7d7d7d !important;
+    border-radius: 0.5vw !important;
+    color: #fff !important;
+    font-family: sans-serif !important;
+    font-size: 1.5vw !important;
+    height: 3vw !important;
+    margin: 0 0 1vw !important;
+    min-height: 3vw !important;
+    padding: 0 !important;
+    padding-right: 0.5vw !important;
+    padding-left: 0.5vw !important;
+    width: 20vw !important;
 }
 .log_in_input:focus {
    outline: none;
@@ -49,14 +51,14 @@
 }
 
 .log_in_text {
-   color: #004884;
+   color: white;
    margin: 0;
    font-size: 3vw;
    margin-bottom: 1vw;
 }
 
 .log_text {
-   color: black;
+   color: white;
    font-family:sans-serif;
    font-size: 1vw;
    margin-top: 0;
@@ -64,18 +66,22 @@
 }
 
 .sendButton {
-   font-family:sans-serif;
-   width: 21.195vw;
-   height: 3vw;
-   font-size: 1.5vw;
-   border-radius: 0.5vw;
-   background-color: #004884;
-   border: 0.05208vw solid gray;
-   color: white;
-   margin-bottom: 1vw;
-   cursor: pointer;
+   font-family: sans-serif;
+    margin-bottom: 1vw !important;
+    background-color: #004884 !important;
+    border: .05208vw solid gray !important;
+    border-radius: 0.5vw !important;
+    color: white !important;
+    cursor: pointer !important;
+    font-size: 1.5vw !important;
+    height: 3vw !important;
+    min-height: 3vw !important;
+    width: 20vw !important;
+    margin: 0;
+    padding: 0 !important;
 }
 
 .sendButton:hover {
-   background-color: #023a68;
+   background-color: #0091f2 !important;
+   color: black !important;
 }
