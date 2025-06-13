@@ -60,9 +60,13 @@ function AddCardForm() {
   const handleFileChoose = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files?.[0];
+      const reader = new FileReader()
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setPdfURL(reader.result as string); // теперь это будет data:application/pdf;base64,...
+      };
       setFileName(file.name);
       setFile(e.target.files[0]);
-      setPdfURL(URL.createObjectURL(e.target.files[0]));
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -74,7 +78,6 @@ function AddCardForm() {
       setFormData({ ...formData, [name]: value });
     }
   }; 
- 
   const openApproveModal = () => {
     if(fileName){
       setShowApproveModal(true)
@@ -220,17 +223,17 @@ function AddCardForm() {
 
       </div>
       <div className="choosePDFContainer">
-                  <input 
-                    id="pdfUpload" 
-                    type="file" 
-                    accept="application/pdf" 
-                    onChange={handleFileChoose} 
-                    style={{ display: "none" }} 
-                  />
-                  <label htmlFor="pdfUpload" className="custom-file-label">
-                    Виберіть файл
-                  </label>
-                  <span>{fileName}</span>
+        <input 
+          id="pdfUpload" 
+          type="file" 
+          accept="application/pdf" 
+          onChange={handleFileChoose} 
+          style={{ display: "none" }} 
+        />
+        <label htmlFor="pdfUpload" className="custom-file-label">
+          Виберіть файл
+        </label>
+        <span>{fileName}</span>
       </div>
       <div className='contentContainer'>
                   <h1>Короткий зміст:</h1>
