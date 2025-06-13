@@ -8,7 +8,7 @@
   margin-bottom: 1vw;
   height: 33.3vw;
   width: 21.5vw;
-  border: 0.05208vw solid black;
+  border: 0.05208vw solid #7d7d7d;
   border-radius: 0.5vw;
   z-index: 2;
   margin-top: 1vw;
@@ -31,13 +31,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: black;
+    color: white;
     height: 46.5vw;
     width: 98%;
     left: 0vw;
-    border: 0.05208vw solid black;
+    border: 0.05208vw solid #7d7d7d;
     border-radius: 1vw;
-    background-color: #EAEAEA;
+    background-color: #171717;
     margin-top: 5vw;
     margin-left: 1vw;
     margin-right: 1vw;
@@ -45,7 +45,7 @@
 .DocumentCardDataContainer {
   height: 32vw;
   min-width: 21.5vw;
-  border: 0.05208vw solid black;
+  border: 0.05208vw solid #7d7d7d;
   border-radius: 0.5vw;
   margin: 1vw;
   padding-top: 1.3vw;
@@ -71,7 +71,7 @@
     width: 44.27vw;
     display: block;
     align-items: center;
-    border: 0.05208vw solid black;
+    border: 0.05208vw solid #7d7d7d;
     border-radius: 0.5vw;
     padding-bottom: 0.5vw;
     margin-bottom: 0;
@@ -82,23 +82,31 @@
   margin-left: 1vw;
   margin-right: 1vw;
 }
+
+
 .additionBlockContainer {
   display: flex;
   width: 19.6vw;
   flex-direction: column;
-  border: 0.05208vw solid black;
+  border: 0.05208vw solid #7d7d7d;
   border-radius: 0.5vw;
   margin-bottom: 0.5vw;
   padding-top: 1vw;
   padding-bottom: 0.5vw;
-  background-color: aliceblue;
+  background-color: #171717;
 }
+.additionBlockContainer:hover {
+   background-color: #0091f2 !important;
+   color: black !important;
+} 
 .additionBlockContainer h1 {
-  font-size: 0.8vw;
-   margin: 0;
-   margin-left: 1vw;
-   margin-bottom: 0.5vw;
+  font-size: 1vw;
+   margin: 0 0 .5vw 1vw;
+   line-height: 1vw;
+   text-align: start;
 }
+
+
 .DocCardDataTitle {
   display: flex;
   align-items: center;
