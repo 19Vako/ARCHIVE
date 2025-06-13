@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="AppContainer">
       <Provider>
-        <Router>
+        <Router basename="/index.php/apps/archive">
           <AppRoutes />
         </Router>
       </Provider>
