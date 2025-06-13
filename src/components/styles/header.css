@@ -1,10 +1,10 @@
 .headerContainer {
-  display: flex;
+  width: 100%;
   align-items: center;
-  justify-content:end;
-  height: 3vw;
-  background-color: #004884;
-  color: white;
+  color: #fff;
+  display: flex;
+  justify-content: end;
+  margin-top: 1vw;
 }
 
 .headerContainer p {
