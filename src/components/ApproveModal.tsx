@@ -8,8 +8,8 @@ import '../screens/styles/manager.css'
 import { today, reverseWord } from '../utils/Utils';
 
 
-function ApproveModal() {
 
+function ApproveModal() {
 
   const {
     userName,  
@@ -161,10 +161,10 @@ function ApproveModal() {
                  <h1 className='approveModalContentTitle'>Короткий зміст:</h1>
                  <p className='approveModalContent'>{formData.content}</p>
 
-         </div>
-         {pdfURL && (
+        </div>
+          {pdfURL && (
             <iframe className='pdfDocContainer' src={pdfURL} />
-         )}
+          )}
       </div>
       <h1 id='approvedLog'  style={ createCardError ? {color:'red'} : {color:'green'}}>{createCardLog}</h1>
       <div className='addButtons'>
