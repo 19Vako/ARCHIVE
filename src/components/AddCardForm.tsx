@@ -63,7 +63,7 @@ function AddCardForm() {
       const reader = new FileReader()
       reader.readAsDataURL(file);
       reader.onload = () => {
-        setPdfURL(reader.result as string); // теперь это будет data:application/pdf;base64,...
+        setPdfURL(reader.result as string); 
       };
       setFileName(file.name);
       setFile(e.target.files[0]);
