@@ -21,6 +21,7 @@ function DocumentCard() {
     additions,
     setShowAddition,
   } = useStore();
+
   const GetCard = async () => {
     await axios.post("http://116.202.198.11/api/find/Card", {id:id})
     .then((data) => {
@@ -54,18 +55,18 @@ function DocumentCard() {
       <div className='cardContainerBlock'>
         <div className='DocCardDataButtons'>   
           <div className='DocAdditionList'>
-                 {additions ? (
-                   additions.slice().reverse().map((card:any, index:any) => (
-                    <Link key={index} to={card.cardLink} className='additionBlockContainer'>
+            {additions ? (
+              additions.slice().reverse().map((card:any, index:any) => (
+                <Link key={index} to={card.cardLink} className='additionBlockContainer'>
                       <h1>Організація: {card.organizationName}</h1>
                       <h1>Дата створення: {card.docCreateDate}</h1>
                       <h1>Срок дії до: {card.validityPeriod}</h1>
-                    </Link>
-                   ))
-                  ):(
-                    <h1>❌ Список посилань пустий</h1>
-                  )
-                 }
+                </Link>
+              ))
+              ):(
+                <h1>❌ Список посилань пустий</h1>
+              )
+            }
           </div>
         </div>
         <div className='DocumentCardDataContainer'>
@@ -130,10 +131,9 @@ function DocumentCard() {
            </div>
          </div>
          <iframe 
-          className='cardPdfDocContainer' 
+          className='DocCardPdfDocContainer' 
           title='Document Preview' 
           src={`${showCardPDF.nameHostAndPort}${showCardPDF.fileName}`}
-          style={{ height: "34.1vw"}}
          />
       </div>
       <div className='DocumentCardDataTitleContent'>

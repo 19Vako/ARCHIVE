@@ -1,23 +1,14 @@
-import React from 'react'
-import './styles/addCard.css'
+import './styles/showCard.css';
+import './styles/addAddition.css';
+import './styles/addCard.css';
+
 import axios from 'axios';
 import { useStore } from '../context/Context';
-import './styles/showCard.css'
-import './styles/addAddition.css'
 
 
 function AddAddition() {
   const { 
-     setShowCard, 
-     setShowCardDataLog,
      formData, 
-     setFormData,
-     setShowSaveChangesButton,
-     showSaveChangesButton,
-     setFileName,
-     file,
-     setFile,
-     setShowCardPDF,
      additions,
      setAdditions,
      setShowAddAddition,
@@ -34,11 +25,6 @@ function AddAddition() {
     .catch((err) => {
       console.log(err.response.data.error)
     })
-  }
-  const handleChangeCard = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setShowSaveChangesButton(true)
   }
   const addAddition = async () => {
     await axios.post("http://116.202.198.11/api/add/Addition", {docId:formData._id, additionDocId:showAddAdditionData._id})
@@ -58,7 +44,7 @@ function AddAddition() {
       <div className='cardContainerBlock'>
         <div className='cardDataButtons'>
           <div className='cardDataButtonsContainer'>
-              
+            
             <button id='addAddition' onClick={() => {addAddition()}}>
               Додати як посилання
             </button>
@@ -145,7 +131,6 @@ function AddAddition() {
                     <h1>Код ЄДРПОУ контрагента:</h1>
                     <p>{showAddAdditionData.counterpartyCode}</p>
                    </div>
-
             </div>
            </div>
           </>
@@ -156,7 +141,6 @@ function AddAddition() {
           <textarea
             name='content'
             value={formData.content}
-            onChange={handleChangeCard}
           />
       </div>
       <iframe 

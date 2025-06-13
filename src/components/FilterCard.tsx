@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import './styles/filterCard.css'
+
+import React from 'react'
 import { useStore } from '../context/Context';
 import axios from 'axios';
-import './styles/filterCard.css'
 import ShowCard from './ShowCard';
+import CardList from './CardList';
+import AdditionCardList from './AdditionCardList';
+import { today, reverseWord, formatDateForInput } from '../utils/Utils'
 
 function FilterCard() {
-  const today = new Date().toISOString().split("T")[0];
-  function reverseWord(str: string): string {
-    return str
-      .split('-')
-      .reverse()
-      .join('-');
-  };
   const { 
+    setLoading,
+    setHasMore,
+    setPage,
     userName,
     formData,
     setCards,
@@ -25,46 +26,34 @@ function FilterCard() {
     setFindAuthor,
     createCardError, 
     setCreateCardError,
-    cards, 
     showCard, 
     setShowCard,
     setShowCardDataLog,
     setShowSaveChangesButton,
-    setFileName,
-    setFile,
-    setShowCardPDF,
-    getCardError, 
-    setAdditions,
-    setShowAddition,
     filterFormData, 
     setFilterFormData,
     showAddAddition,
-    setShowAddAdditionData, 
-    setShowAddAdditionCardPDF,
-    setAddAdditionLog,
     setShowAddAddition,
   } = useStore();  
-  const GetAdditions = async (_id:any) => {
-    await axios.post("http://116.202.198.11/api/get/Additions", {docId:_id})
-    .then((data) => {
-      setAdditions(data.data.data)
-    })
-    .catch((err) => {
-      console.log(err.response.data.error)
-    })
-  };
   const GetCards = async () => {
-    await axios.post("http://116.202.198.11/api/get/Cards")
-    .then((data) => {
-      setCards(data.data.cards)
-    })
-    .catch((err) => {
-      setGetCardError(err.response.data.error)
-    })
-  };
-  useEffect(() => {
-    GetCards()
-  },[]);
+
+    setLoading(true);
+    setGetCardError(null); // обнуляем возможную старую ошибку
+
+    try {
+      const res = await axios.post("http://116.202.198.11/api/get/Cards", {page: 1, limit: 50});
+      const newCards = res.data.cards || [];
+      setCards(newCards); // просто ставим новые карточки
+      setHasMore(newCards.length === 50); // true если ровно 50 карточек
+      setPage(1);
+
+    } catch (err: any) {
+      setGetCardError(err?.response?.data?.error || 'Помилка при завантаженні карток');
+    } finally {
+      setLoading(false);
+    }
+    
+  }
   const initialFormData = {
     _id: "",
     docId: "",
@@ -93,11 +82,6 @@ function FilterCard() {
         setFilterFormData({ ...filterFormData, [name]: value });
       }
   }; 
-  const formatDateForInput = (date: string): string => {
-    if (!date) return "";
-    const [day, month, year] = date.split("-");
-    return `${year}-${month}-${day}`;
-  };
   const filterCard = async () => {
     await axios.post("http://116.202.198.11/api/find/Cards", {
       docType: filterFormData.docType, 
@@ -123,24 +107,6 @@ function FilterCard() {
       setFilterLog(err.response.data.error);
   });
   };
-  const choiseListCard = (card:any) => {
-    setShowCard(true); 
-    setFormData({...card});
-    setShowCardPDF((prev: any) => ({ ...prev, fileName: card.docPDF }));
-    setShowCardDataLog('');
-    setFile('');
-    setFileName('');
-    setShowSaveChangesButton(false);
-    setShowAddition(false);
-    GetAdditions(card._id);
-  };
-  const choiseListAdditionCard = (card:any) => {
-    setShowAddAdditionData({...card})
-    setShowAddAdditionCardPDF((prev: any) => ({ ...prev, fileName: card.docPDF }));
-    GetAdditions(card._id);
-    setShowAddition(false);
-    setAddAdditionLog('')
-  }
 
   return (
     <>
@@ -149,35 +115,11 @@ function FilterCard() {
         <div className='filterAdditionTitle'>
           <h1>Виберіть картку посилання</h1>
         </div>
-        <div className='cardList'>
-          {cards ? 
-            cards.slice().reverse().map((card:any, index:any) => (
-              <div key={index} onClick={() => {choiseListAdditionCard(card); setShowCard(true)}} className='CardBlockFilter'>
-                <div className='cardBlockDateContainer'>
-                  <h1>Організація: {card.organizationName}</h1>
-                  <h1>Дата створення: {card.docCreateDate}</h1>
-                  <h1>Срок дії до: {card.validityPeriod}</h1>
-                </div>
-              </div>
-            ))
-          :(<h1>{getCardError}</h1>)}
-        </div>
+        <AdditionCardList/>
       </div>
     :
       <div className='cardFilterListContainer'>
-        <div className='cardList'>
-          {cards ? 
-            cards.slice().reverse().map((card:any, index:any) => (
-              <div key={index} onClick={() => choiseListCard(card)} className='CardBlockFilter'>
-                <div className='cardBlockDateContainer'>
-                  <h1>Організація: {card.organizationName}</h1>
-                  <h1>Дата створення: {card.docCreateDate}</h1>
-                  <h1>Срок дії до: {card.validityPeriod}</h1>
-                </div>
-              </div>
-            ))
-          :(<h1>{getCardError}</h1>)}
-        </div>
+        <CardList/>
       </div>
     }
     <div className='filterContainer'>

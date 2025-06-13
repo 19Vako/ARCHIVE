@@ -1,12 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./styles/admin.css";
 import Header from '../components/Header';
 import AddManager from '../components/AddManager';
 import AddCard from '../components/AddCard';
+import { useStore } from '../context/Context';
+import axios from 'axios';
 
 
 function Admin() {
   const [addCardOrUser, setaddCardOrUser] = useState(true)
+  const {
+      setCards,
+      setGetCardError,
+      setLoading,
+      setHasMore,
+      setPage,
+  } = useStore();
+    const GetCards = async () => {
+    setLoading(true);
+    setGetCardError(null);
+
+    try {
+      const res = await axios.post("http://116.202.198.11/api/get/Cards", {page: 1, limit: 50});
+      const newCards = res.data.cards || [];
+      setCards(newCards); // просто ставим новые карточки
+      setHasMore(newCards.length === 50); // true если ровно 50 карточек
+      setPage(1);
+
+    } catch (err: any) {
+      setGetCardError(err?.response?.data?.error || 'Помилка при завантаженні карток');
+    } finally {
+      setLoading(false);
+    }
+
+  }
+  useEffect(() => {
+    GetCards()
+  },[]);
 
   return (
     <div className='adminContainer'>

@@ -1,36 +1,40 @@
 .addCardContainer {
-   height: 100%;    
+   height: 100%;  
+   width: 100% !important;  
    display: flex;
    flex-direction: row;
+   font-weight: bold !important;
 }
+
+
 .cardListContainer {
    display: flex;
    width: 22vw;
    align-items: center;
    flex-direction: column;
-   height: 46.001vw;
-   border: 1px solid black;
-   background-color: #EAEAEA;
+   height: 40.501vw;
+   background-color: #171717;
+   border: .05208vw solid #7d7d7d;
    border-radius: 1vw;
    padding-bottom: 0.5vw;
 }
 .cardListTitle {
+   height: 8vw;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   color: black;
-   border-bottom: 1px solid black;
+   border-bottom: 0.05208vw solid #7d7d7d;
    width: 100%;
-   padding-bottom: 1.5vw;
-   padding-top: 1.5vw;
    margin-bottom: 0.5vw;
 }
 .cardListTitle h1 {
    margin: 0;
+   color: white;
    font-size: 1.5vw;
    margin-left: 1vw;
 }
 .cardListTitle button {
+   margin: 0 !important;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -38,8 +42,11 @@
    border: none;
    cursor: pointer;
    height: 2vw;
+   min-height: 2vw;
    width: 2vw;
-   margin-right: 1vw;
+   margin: 0;
+   margin-right: 1vw !important;
+   padding: 0;
 }
 .cardListTitle img {
    height: 2vw;
@@ -56,22 +63,24 @@
 }
 .cardList h1 {
    font-size: 1vw;
+   margin-top: 1vw;
 }
+
+
 .CardBlock {
-   border: 1px solid black;
+   border: 0.05208vw solid #7d7d7d;
    border-radius: 0.5vw;
    width: 20.1vw;
    margin-top: 0.5vw;
-   color: black;
+   color: white;
    cursor: pointer;
    padding-top: 1vw;
    padding-bottom: 0.5vw;
-   background-color: aliceblue;
+   background-color: #171717;
 }
-
-
 .CardBlock h1 {
    margin: 0;
+   color: white;
    margin-left: 1vw;
    font-size: 1vw;
 }
@@ -80,36 +89,40 @@
    flex-direction: column;
 }
 .cardBlockDateContainer h1 {
-   font-size: 0.8vw;
+   line-height: 1vw;
+   font-size: 1vw;
    margin: 0;
    margin-left: 1vw;
    margin-bottom: 0.5vw;
 }
+
+
 .addCardForm {
-   position: absolute;
+   position: relative;
    display: flex;
    flex-direction: column;
    align-items: center;
-   height: 46.501vw;
-   width: 75vw;
-   left: 23.88vw;
-   border: 1px solid black;
+   height: 40.501vw;
+   width: 100%;
+   margin-left: 1vw;
    border-radius: 1vw;
-   background-color: #EAEAEA;
+   background-color: #171717;
+   border: 0.05208vw solid #7d7d7d;
 }
 .addCardForm h1 {
-   color: black;
+   color: white;
    font-size: 1.5vw;
-   margin-top: 1.635vw;
-   margin-bottom: 1.635vw;
+   margin-bottom: 2.15vw;
+   margin-top: 2.15vw;
+   --default-line-height: 1.5vw;
 }
 .addCardFormInput {
   display: flex;
-  width: 73vw;
+  width: 71.2vw;
   flex-direction: row;
   justify-content: space-between;
   border-radius: 0.5vw;
-  border: 1px solid black;
+  border: .05208vw solid #7d7d7d;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   padding-top: 1vw;
@@ -120,60 +133,100 @@
    flex-direction: column;
    margin-right: 1vw;
 }
-.addInput {
-   height: 3vw;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-left: 0.5vw;
-   margin-right: 0.5vw;
-   margin-bottom: 1vw;
-}
 .addInput h1 {
    font-size: 1vw;
    width: 9vw;
    margin: 0;
 }
+
+
 .addInput select {
-   height: 2vw;
-   width: 13.4vw;
-   font-size: 1vw;
-   background: none;
-   border: 1px solid black;
+   background-color: #f0f8ff;
    border-radius: 0.5vw;
-   color: black;
-   background-color: aliceblue;
+   color: #000;
+   font-size: 1vw;
+   padding-left: 0.3vw;
+   height: 2vw;
+   border: 0.05208vw solid #000;
+   width: 12vw;
+   appearance: none;
+   background-position: right 1vw center;
+   background-repeat: no-repeat;
+   background-size: 1vw;
+   padding-right: 0vw;
+   background-image: url(../../icons/down-arrow.png);
 }
+.addInput select:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+input select:-webkit-autofill {
+   font-size: 1vw;
+}
+
+
 .addInput input {
    width: 13vw;
    height: 2vw;
    border-radius: 0.5vw;
    font-size: 1vw;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
 }
+.addInput input:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
+}
+.addInput input:-webkit-autofill {
+   font-size: 1vw;
+}
+
+
 .addInput textarea {
    border-radius: 0.5vw;
    font-size: 1vw;
    font-family:sans-serif;
    background: none;
-   border: 1px solid black;
+   border: 0.05208vw solid black;
    color: black;
    background-color: aliceblue;
    resize: none;
+   padding: 0.3vw;
 }
-input[type="date"] {
-   font-family:sans-serif;
+.addInput textarea:focus {
+   outline: none;
+   border: 0.05208vw solid #2a65d1;
+   border-radius: 0.5vw;
 }
-input[type="date"]:hover {
-   background-color:silver; 
+.addInput textarea:-webkit-autofill {
+   font-size: 1vw;
+}
+.addInput {
+   align-items: center;
+   display: flex;
+   height: 3vw;
+   justify-content: space-between;
+   margin-left: 0.5vw;
+   margin-right: 0.5vw;
 }
 
+
+input[type="date"] {
+   font-family:sans-serif;
+   font-size: 1vw
+}
+input[type="date"]:hover {
+   background-color:silver !important; 
+}
+
+
 .choosePDFContainer {
-   width: 73vw;
-   border: 1px solid black;
+   width: 71.2vw;
+   border: .05208vw solid #7d7d7d;
    border-bottom-right-radius: 0.5vw;
    border-bottom-left-radius: 0.5vw;
    border-top: none;
@@ -196,6 +249,8 @@ input[type="date"]:hover {
    font-family: sans-serif;
    margin-left: 1vw;
 }
+
+
 .custom-file-label {
    display: flex;
    height: 2vw;
@@ -211,14 +266,19 @@ input[type="date"]:hover {
    cursor: pointer;
 }
 .custom-file-label:hover {
-   background-color: #023a68;
+   background-color: #2a65d1 !important;
+   color: #000 !important;
 }
+
+
 .mt-2 {
    font-size: 1vw;
    margin-left: 1vw;
 }
+
+
 .contentContainer {
-   width: 73vw;
+   width: 71.2vw !important;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -227,38 +287,52 @@ input[type="date"]:hover {
 }
 .contentContainer h1 {
    font-size: 1vw;
+   margin-bottom: 0.5vw;
+   line-height: 0.5vw;
 }
 .contentContainer textarea {
    height: 8vw;
+   width: 71.2vw;
+   margin: 0;
    border: none;
    padding: 1vw;
    font-size: 1vw;
    border-radius: 0.5vw;
-   border: 1px solid black;
+   background-color: #f0f8ff;
+   border: .05208vw solid #7d7d7d !important;
    color: black;
-   background-color: aliceblue;
    resize: none;
    margin-bottom: 1vw;
+   --default-font-size: 1vw;
 }
+
+
 .addButtons {
-   margin-top: 0.5vw;
-   width: 73vw;
+   position: absolute;
+   top: 37.5vw;
+   width: 71.2vw;
    display: flex;
    justify-content: end;
 }
 .addButtons button {
-   height: 3vw;
-   width: 12vw;
-   font-size: 1vw;
-   cursor: pointer;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   background-color: #004884;
-   color: white;
+    margin: 0 !important;
+    background-color: #004884;
+    border: .05208vw solid gray;
+    border-radius: .5vw;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1vw !important;
+    height: 2vw !important;
+    min-height: 2vw !important;
+    width: 12vw;
+    padding: 0;
 }
 .addButtons button:hover {
-   background-color: #023a68;
+   background-color: #2a65d1 !important;
+   color: #000 !important;
 }
+
+
 .logContainer {
    margin-top: 0.5vw;
    margin-bottom: 0.5vw;
@@ -269,45 +343,54 @@ input[type="date"]:hover {
    font-size: 1vw;
    margin: 0;
 }
+
+
 .addCardFormHeader {
-   width: 73vw;
+   width: 71.6vw;
    display: flex;
    align-items: center;
 }
 .addCardFormHeader button {
-   color: black;
+    margin: 0 !important;
+    color: white;
     font-size: 2vw;
     font-family: sans-serif;
-    height: 3vw;
-    width: 3vw;
+    height: 2vw;
+    min-height: 2vw;
+    width: 2vw;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     background: none;
     cursor: pointer;
-    margin-right: 26vw;
+    margin-right: 27.3vw !important;
+    padding: 0;
 }
-.approveModalContainer {
-   width: 73vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
-   display: flex;
-   justify-content: space-between;
-}
+
+
 .sendData {
    display: flex;
    flex-direction: row;
    align-items: center;
    padding-top: 1vw;
    padding-bottom: 1vw;
-   border-bottom: 1px solid black;
+   border-bottom: 0.05208vw solid #7d7d7d;
+}
+
+
+.approveModalContainer {
+   width: 71.2vw;
+   display: flex;
+   justify-content: space-between;
 }
 .approveModalContainer h1 {
    font-size: 1.3vw;
    width: 13vw;
-   margin: 0;
-   margin-left: 1vw;
+   line-height: 1.5vw;
+   margin-left: 1vw !important;
+   margin-top: 0;
+   margin-bottom: 0 !important;
 }
 .approveModalContainer p {
    margin: 0;
@@ -316,8 +399,6 @@ input[type="date"]:hover {
    overflow-wrap: break-word;
    white-space: normal;
 }
-
-
 .approveModalContainer .approveModalContent {
    margin-top: 0;
    width: 28vw;
@@ -334,125 +415,27 @@ input[type="date"]:hover {
    margin: 0;
    margin-top: 1vw;
 }
+
+
 .sendDataContainer {
-   height: 34.2vw;
+   height: 30vw;
    width: 30vw;
    overflow-y: scroll;
    overflow-x: hidden;
    padding-bottom: 1vw;
    border-radius: 0.5vw;
-   border: 1px solid black;
+   border: 0.05208vw solid #7d7d7d;
 }
+
+
 .pdfDocContainer {
-   height: 35vw;
-   width: 41.6vw;
-}
-.cardDataTitle {
-   display: flex;
-   align-items: center;
-}
-.cardDataContainer input {
-   font-size: 0.8vw;
-   margin: 0;
-   color: white;
-   background: none;
-   border: 1px solid gray;
-   border-radius: 0.2vw;
-}
-.cardDataContainer select {
-   font-size: 0.8vw;
-   margin: 0;
-   color: white;
-   background: none;
-   border: 1px solid gray;
-   border-radius: 0.2vw;
-}
-.cardDataTitleContent {
-   height: 9vw;
-   width: 46.8vw;
-   display: block;
-   align-items: center;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   margin-bottom: 1vw;
-}
-.cardDataTitleContent h1 {
-   font-size: 1vw;
+   height: 30vw;
+   width: 40.6vw;
    margin-left: 1vw;
 }
-.cardDataTitleContent textarea {
-   font-size: 1vw;
-   overflow-y: auto;
-   background: none;
-   color: white;
-   border: none;
-   height: 5.2vw;
-   width: 69.5vw;
-   margin-left: 1vw;
-   margin-right: 1vw;
-   resize: none;
-}
-.cardPdfDocContainer {
-   z-index: 2;
-   background-color: #2e2e2e;
-   height: 32.1vw;
-   width: 26vw;
-}
+
+
 .backButton {
    color: black;
    width: 100%;
 }
-.cardDataButtons .backButton button {
-   border: none;
-   height: 3vw;
-   width: 3vw;
-   font-size: 2vw;
-   font-family: sans-serif;
-   margin: 0;
-   margin-left: 1vw;
-   background: none;
-}
-.cardDataButtons h1 {
-   width: 16vw;
-   font-size: 1vw;
-   display: flex;
-   flex-direction: column;
-}
-.cardDataButtonsContainer {
-   width: 21.5vw;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   border-bottom: 1px solid black;
-}
-.deleteCard {
-   background: #b00303;
-   color: white;
-   cursor: pointer;
-}
-.deleteCard:hover {
-   background-color: #8b0606;
-}
-.additionList {
-   width: 22.5vw;
-   height: 100%;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   padding-bottom: 0.5vw;
-}
-.additionList h1 {
-   display: flex;
-   justify-content: center;
-}
-.showFileTitle {
-   display: flex;
-   align-items: center;
-   width: 15vw;
-   font-size: 1vw;
-   white-space: nowrap; 
-   overflow: hidden; 
-   text-overflow: ellipsis; 
-}
-
-

@@ -3,16 +3,18 @@
    display: flex;
    flex-direction: row;
 }
+
+
 .managerList {
    display: flex;
+   width: 22vw;
    align-items: center;
    flex-direction: column;
-   height: 100%;
-   width: 22vw;
-   border: 1px solid black;
+   height: 40.501vw;
+   background-color: #171717;
+    border: .05208vw solid #7d7d7d;
    border-radius: 1vw;
-   margin-right: 0.8vw;
-   background-color: #EAEAEA;
+   padding-bottom: 0.5vw;
 }
 .filter {
    margin-top: 0.4vw;
@@ -23,36 +25,42 @@
    width: 100%;
 }
 .findErrorLog {
-   color: black;
    font-size: 1vw;
 }
+
+
 .inputButtonFind {
-  height: 1vw;
-  width: 1vw;
-  left: 2.5vw;
+  height: 1.2vw !important;
+  width: 1.2vw !important;
+  left: 3vw;
   cursor: pointer;
   position: absolute;
 }
 .inputButtonClean {
-   height: 1vw;
-   width: 1vw;
-   left: 20.1vw;
+   height: 1.2vw !important;
+   width: 1.2vw !important;
+   left: 20vw;
    cursor: pointer;
    position: absolute;
- }
-.filterInput {
-   border-radius: 2vw;
-   padding: 0.5vw;
-   padding-left: 3vw;
-   padding-right: 3vw;
-   font-size: 1.3vw;
-   height: 2.5vw;
-   width: 15vw;
-   background: none;
-   border: 1px solid black;
-   color: black;
-   background-color: aliceblue;
 }
+
+
+.filterInput {
+   --default-font-size: 1vw;
+    margin: 0 !important;
+    background: none;
+    background-color: #f0f8ff !important;
+    border: .05208vw solid #000 !important;
+    border-radius: 2vw !important;
+    color: #000 !important;
+    font-size: 1vw !important;
+    height: 3.5vw !important;
+    min-height: 2.5vw !important;
+    padding: .5vw 3vw !important;
+    width: 20vw;
+}
+
+
 .list {
    display: flex;
    flex-direction: column;
@@ -61,22 +69,25 @@
    height: 100%;
    overflow-y: auto;
 }
+
+
 .managerBlock {
    display: flex;
    align-items: center;
-   border: 1px solid black;
-   padding: 1vw;
+   padding-left: 1vw;
+   border: 0.05208vw solid #7d7d7d;
    border-radius: 0.5vw;
-   height: 2vw;
-   width: 18vw;
+   height: 6vw;
+   width: 20.1vw;
    margin-top: 0.5vw;
-   margin-bottom: 0.5vw;
    cursor: pointer;
-   background-color: aliceblue;
+   padding-top: 1vw;
+   padding-bottom: 0.5vw;
+   background-color: #171717;
 }
 .managerBlock:hover {
-   background-color: #034d89;
-   color: white;
+   background-color: #2a65d1 !important;
+   color: #000 !important;
 }
 .managerBlock img {
    width: 2vw;
@@ -88,14 +99,17 @@
 
 
 .deleteButton {
-   border: none;
-   display: flex;
    align-items: center;
+   display: flex;
    justify-content: center;
-   background:none;
-   height: 1.5vw;
-   width: 1.5vw;
-   cursor: pointer;
+   margin: 0 !important;
+   padding: 0 !important;
+   background: none;
+   border: none !important;
+   cursor: pointer !important;
+   height: 3vw !important;
+   min-height: 3vw !important;
+   width: 3vw !important;
 }
 .deleteModalManagerContainer {
    position: absolute;
@@ -120,7 +134,7 @@
 }
 .deleteModalButton {
    background: #b00303;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    height: 3vw;
    width: 10vw;
@@ -132,13 +146,15 @@
 .deleteModalButton:hover {
    background-color: #8b0606;
 }
+
+
 .closeModalButton {
    background: #004884;
    height: 3vw;
    width: 10vw;
    cursor: pointer;
    color: white;
-   border: 1px solid gray;
+   border: 0.05208vw solid gray;
    border-radius: 0.5vw;
    font-size: 1vw;
 }
@@ -148,65 +164,74 @@
 
 
 .addManagerForm {
-   position: absolute;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   background-color: #EAEAEA;
-   color: black;
-   height: 46.501vw;
-   width: 75vw;
-   left: 23.88vw;
-   border: 1px solid black;
-   border-radius: 1vw;
+   position: relative;
+    align-items: center;
+    background-color: #171717;
+    border: .05208vw solid #7d7d7d;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    height: 40.501vw;
+    margin-left: 1vw;
+    width: 100%;
 }
 .addForm {
    height: 60%;
-   width: 73vw;
+   width: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
-   border-bottom: 1px solid gray;
+   border-bottom: 0.05208vw solid gray;
    padding: 1vw;
 }
 .addManagerForm h1 {
    font-size: 1.5vw;
 }
 .addManagerInput {
-   background:none;
-   border: 1px solid black;
-   color: black;
-   border-radius: 0.5vw;
-   padding-left: 1vw;
-   padding-right: 1vw;
-   font-size: 1.5vw;
-   width: 20vw;
-   height: 3vw;
-   margin-bottom: 1vw;
-   background-color: aliceblue;
+   margin: 0 !important;
+    --default-font-size: 1vw;
+    background: none;
+    background-color: #f0f8ff !important;
+    border: .05208vw solid #7d7d7d !important;
+    border-radius: .5vw !important;
+    color: #000 !important;
+    font-size: 1vw !important;
+    height: 3vw !important;
+    min-height: 3vw !important;
+    margin-bottom: 1vw !important;
+    padding-left: 1vw !important;
+    padding-right: 1vw !important;
+    width: 20vw;
 }
 .addManagerForm .logs {
    font-size: 1vw;
    margin-top: 0;
 }
 .addButton {
-   width: 22vw;
-   height: 3vw;
-   border-radius: 0.5vw;
-   background:none;
-   font-size: 1.2vw;
-   border: 1px solid gray;
-   color: white;
-   background-color: #004884;
-   cursor: pointer;
+    margin: 0 !important;
+    background: none;
+    background-color: #004884 !important;
+    border: .05208vw solid #7d7d7d !important;
+    border-radius: .5vw !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    font-size: 1.2vw !important;
+    height: 3vw !important;
+    min-height: 3vw !important;
+    width: 20vw !important;
+    padding: 0 !important;
 }
 .addButton:hover {
    background-color:#023a68;
 }
+
+
 .emptyText {
    margin-top: 2vw;
 }
+
+
 .managerOptions {
    height: 15vw;
    width: 73vw;
@@ -221,7 +246,7 @@
 }
 .managerOptionsContainer {
    display: flex;
-   width: 73vw;
+   width: 71vw;
    margin-top: 1vw;
    justify-content: space-between;
    flex-direction: row;
@@ -233,10 +258,13 @@
    justify-content: center;
    flex-direction: column;
 }
+
+
 .dataContainer {
    display: flex;
-   align-items:flex-end;
+   align-items: center;
    margin-left: 3vw;
+   margin-bottom: 1vw;
 }
 .dataContainer img {
    width: 2vw;
@@ -248,34 +276,47 @@
    margin-bottom: 0;
 }
 .dataContainer input {
-   margin-left: 1vw;
-   background: none;
-   border: none;
-   color: black;
-   font-size: 1.5vw;
-   background-color: aliceblue;
+    height: 3vw !important;
+    min-height: 3vw !important;
+    width: 15vw;
+    --default-font-size: 1vw;
+    margin: 0 !important;
+    border-radius: 0.5vw !important;
+    border: .05208vw solid #7d7d7d !important;
+    background-color: #f0f8ff;
+    color: #000;
+    font-size: 1vw !important;
+    margin-left: 1vw !important;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
 }
 .dataContainer input:hover {
    background-color: silver;
 }
+
+
 .optionButtons {
-   width: 10vw;
+   width: 15vw;
    margin-right: 3vw;
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
 }
+
+
 .saveButton {
-   height: 3vw;
-   width: 7vw;
-   background-color: #004884;
-   color: white;
-   font-size: 1vw;
-   border: 1px solid gray;
-   border-radius: 0.5vw;
-   margin-right: 1vw;
-   cursor: pointer;
+   margin: 0 !important;
+    background-color: #004884 !important;
+    border: .05208vw solid #7d7d7d !important;
+    border-radius: .5vw !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    font-size: 1vw !important;
+    height: 3vw;
+    min-height: 3vw !important;
+    width: 9vw !important;
+    padding: 0 !important;
 }
 .saveButton:hover {
    background-color: #023a68;

@@ -32,7 +32,7 @@ function Log_in() {
       <div className='log_inForm'>
         <h1 className='log_in_text'>Вхід</h1>
         <input className='log_in_input' placeholder="Ім'я" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <input className='log_in_input' placeholder='Пароль' type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className='log_in_input' placeholder='Пароль' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <h1 className='log_text' style={status === "success" ? {color:"green"} : {color:"red"}}>{log}</h1>
         <button className='sendButton' onClick={() => log_in()}>Вхід</button>
       </div>
