@@ -87,8 +87,8 @@ function AddManager() {
         <div className="deleteModalManagerContainer">
           <h1>Ви впевнені що хочете видалити цього менеджера?</h1>
           <div className='deleteModalManagerButtons'>
-              <button className="deleteModalButton" onClick={() => DeleteManager()}>Видалити</button>
-              <button className="closeModalButton" onClick={() => setDeleteManagerModal(false)}>Відмінити</button>
+            <button className="deleteModalButton" onClick={() => DeleteManager()}>Видалити</button>
+            <button className="closeModalButton" onClick={() => setDeleteManagerModal(false)}>Відмінити</button>
           </div> 
         </div>
       );
@@ -123,7 +123,7 @@ function AddManager() {
               }} 
               className="managerBlock"
             > 
-              <img src={require('../icons/userBlack.png')} alt=''/>
+              <img src={require('../icons/user.png')} alt=''/>
               <h1 className='managerName'>: {mng.name}</h1>
             </div>
             ))
@@ -147,7 +147,7 @@ function AddManager() {
               <div className='managerDataForm'>
 
                 <div className='dataContainer'>
-                  <img src={require('../icons/userBlack.png')} alt=''/>
+                  <img src={require('../icons/user.png')} alt=''/>
                   <h1>Ім'я:</h1>
                   <input 
                   value={ManagerName}
