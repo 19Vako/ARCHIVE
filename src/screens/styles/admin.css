@@ -1,4 +1,4 @@
-.adminContainer{
+.adminContainer {
   height: 100%;
 }
 
@@ -45,15 +45,14 @@
   font-size: 1vw !important;
   text-decoration: none;
   border: 0.05208vw solid gray !important;
-  border-radius: 0 2vw 2vw 0 !important;  
-  background: none;                                                           
+  border-radius: 0 2vw 2vw 0 !important;
+  background: none;
 }
 .addCard img {
   height: 1.5vw;
   width: 1.5vw;
   margin-right: 0.5vw;
 }
-
 
 .mainContainer {
   height: 46.5vw;

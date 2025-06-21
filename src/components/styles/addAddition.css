@@ -1,27 +1,27 @@
 .cardAdditionListContainer {
-   align-items: center;
-   background-color: #171717;
-   border: .05208vw solid #7d7d7d;
-   border-radius: 1vw;
-   display: flex;
-   flex-direction: column;
-   height: 40.501vw;
-   margin-left: 1vw;
-   padding-bottom: 1vw;
-   padding-top: .5vw;
-   width: 23vw;                                     
+  align-items: center;
+  background-color: #171717;
+  border: 0.05208vw solid #7d7d7d;
+  border-radius: 1vw;
+  display: flex;
+  flex-direction: column;
+  height: 40.501vw;
+  margin-left: 1vw;
+  padding-bottom: 1vw;
+  padding-top: 0.5vw;
+  width: 23vw;
 }
 
 #addAddition {
-   height: 2.2vw;
-   margin-top: 0.5vw;
-   margin-bottom: 1vw;
-   font-size: 1vw;
-   color: white;
-   background-color: #004884;
-   border: 0.05208vw solid gray;
+  height: 2.2vw;
+  margin-top: 0.5vw;
+  margin-bottom: 1vw;
+  font-size: 1vw;
+  color: white;
+  background-color: #004884;
+  border: 0.05208vw solid gray;
 }
 
 #addAddition:hover {
-   background-color: #023a68;
+  background-color: #023a68;
 }

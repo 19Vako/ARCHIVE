@@ -1,6 +1,5 @@
-
-import { BrowserRouter as Router } from 'react-router-dom'; 
-import { Provider } from './context/Context';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "./context/Context";
 import AppRoutes from "./components/AppRoutes";
 import "./App.css";
 
