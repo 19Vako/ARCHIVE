@@ -1,16 +1,15 @@
-h1{
-   font-family:sans-serif;
+h1 {
+  font-family: sans-serif;
 }
 
-p{
-   font-family:sans-serif;
+p {
+  font-family: sans-serif;
 }
 
 .AppContainer {
-   height: 100vh;
+  height: 100vh;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-   filter: invert(1); /* Инвертирует цвет (на черном фоне будет белым) */
+  filter: invert(1);
 }
-

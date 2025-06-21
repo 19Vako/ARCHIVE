@@ -1,35 +1,34 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import './styles/addCard.css'
+import "./styles/addCard.css";
 
-import { useEffect } from 'react'
-import { useStore } from '../context/Context';
-import { reverseWord, today } from '../utils/Utils';
-import FilterCard from './FilterCard';
-import CardList from './CardList';
-import AddCardForm from './AddCardForm'
-import ApproveModal from './ApproveModal';
-
+import { useEffect } from "react";
+import { useStore } from "../context/Context";
+import { reverseWord, today } from "../utils/Utils";
+import FilterCard from "./FilterCard";
+import CardList from "./CardList";
+import AddCardForm from "./AddCardForm";
+import ApproveModal from "./ApproveModal";
 
 function AddCard() {
-  const { 
-    userName,  
+  const {
+    userName,
     setCards,
     setFormData,
-    showFilter, 
+    showFilter,
     setShowFilter,
     setShowAddition,
-    showApproveModal, 
+    showApproveModal,
     setPage,
-    setHasMore
+    setHasMore,
   } = useStore();
   useEffect(() => {
     if (userName) {
       setFormData((prev: any) => ({
         ...prev,
         author: userName,
-        createDate: reverseWord(today)
+        createDate: reverseWord(today),
       }));
     }
   }, [userName, setFormData]);
@@ -52,43 +51,38 @@ function AddCard() {
     createDate: reverseWord(today),
   };
   const cleanInputs = () => {
-    setFormData(initialFormData)
-  }
+    setFormData(initialFormData);
+  };
   const choiceFilter = () => {
-    setShowFilter(true); 
-    cleanInputs()
-    setShowAddition(false)
+    setShowFilter(true);
+    cleanInputs();
+    setShowAddition(false);
     setCards([]);
     setPage(1);
     setHasMore(true);
-  }
+  };
 
-  
   return (
-    <div className='addCardContainer'>
-      <div className='cardListContainer'>
-        <div className='cardListTitle'>
+    <div className="addCardContainer">
+      <div className="cardListContainer">
+        <div className="cardListTitle">
           <h1>Фільтрувати архів</h1>
           <button onClick={() => choiceFilter()}>
-            <img src={require('../icons/filter.png')} alt=''/>
+            <img src={require("../icons/filter.png")} alt="" />
           </button>
         </div>
-        <CardList/>
+        <CardList />
       </div>
 
       {!showFilter ? (
-        <div className='addCardForm'>
-          {!showApproveModal ? (
-            <AddCardForm/>
-          ):(
-            <ApproveModal/>
-          )}
+        <div className="addCardForm">
+          {!showApproveModal ? <AddCardForm /> : <ApproveModal />}
         </div>
-      ):(
-        <FilterCard/>
+      ) : (
+        <FilterCard />
       )}
     </div>
-  )
+  );
 }
 
-export default AddCard
+export default AddCard;

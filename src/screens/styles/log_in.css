@@ -1,87 +1,85 @@
 .log_inContainer {
-   height: 100vh;
-   width: 100vw;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .log_inForm {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   height: 30vw;
-   width: 30vw;
-   border: 0.05208vw solid #7d7d7d;
-   border-radius: 1vw;
-   background-color: #171717;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vw;
+  width: 30vw;
+  border: 0.05208vw solid #7d7d7d;
+  border-radius: 1vw;
+  background-color: #171717;
 }
 
 .back_button_container {
-   width: 100%;
-   padding-left: 8.5vw;
+  width: 100%;
+  padding-left: 8.5vw;
 }
-
-
 
 .log_in_input {
-    --default-font-size: 1.5vw !important;
-    background-color: #171717 !important;
-    border: .05208vw solid #7d7d7d !important;
-    border-radius: 0.5vw !important;
-    color: #fff !important;
-    font-family: sans-serif !important;
-    font-size: 1.5vw !important;
-    height: 3vw !important;
-    margin: 0 0 1vw !important;
-    min-height: 3vw !important;
-    padding: 0 !important;
-    padding-right: 0.5vw !important;
-    padding-left: 0.5vw !important;
-    width: 20vw !important;
+  --default-font-size: 1.5vw !important;
+  background-color: #171717 !important;
+  border: 0.05208vw solid #7d7d7d !important;
+  border-radius: 0.5vw !important;
+  color: #fff !important;
+  font-family: sans-serif !important;
+  font-size: 1.5vw !important;
+  height: 3vw !important;
+  margin: 0 0 1vw !important;
+  min-height: 3vw !important;
+  padding: 0 !important;
+  padding-right: 0.5vw !important;
+  padding-left: 0.5vw !important;
+  width: 20vw !important;
 }
 .log_in_input:focus {
-   outline: none;
-   border: 0.05208vw solid #2a65d1;
-   border-radius: 0.5vw;
+  outline: none;
+  border: 0.05208vw solid #2a65d1;
+  border-radius: 0.5vw;
 }
 .log_in_input:-webkit-autofill {
-   font-size: 1vw;
+  font-size: 1vw;
 }
 
 .log_in_text {
-   color: white;
-   margin: 0;
-   font-size: 3vw;
-   margin-bottom: 1vw;
+  color: white;
+  margin: 0;
+  font-size: 3vw;
+  margin-bottom: 1vw;
 }
 
 .log_text {
-   color: white;
-   font-family:sans-serif;
-   font-size: 1vw;
-   margin-top: 0;
-   margin-bottom: 1vw;
+  color: white;
+  font-family: sans-serif;
+  font-size: 1vw;
+  margin-top: 0;
+  margin-bottom: 1vw;
 }
 
 .sendButton {
-   font-family: sans-serif;
-    margin-bottom: 1vw !important;
-    background-color: #004884 !important;
-    border: .05208vw solid gray !important;
-    border-radius: 0.5vw !important;
-    color: white !important;
-    cursor: pointer !important;
-    font-size: 1.5vw !important;
-    height: 3vw !important;
-    min-height: 3vw !important;
-    width: 20vw !important;
-    margin: 0;
-    padding: 0 !important;
+  font-family: sans-serif;
+  margin-bottom: 1vw !important;
+  background-color: #004884 !important;
+  border: 0.05208vw solid gray !important;
+  border-radius: 0.5vw !important;
+  color: white !important;
+  cursor: pointer !important;
+  font-size: 1.5vw !important;
+  height: 3vw !important;
+  min-height: 3vw !important;
+  width: 20vw !important;
+  margin: 0;
+  padding: 0 !important;
 }
 
 .sendButton:hover {
-   background-color: #0091f2 !important;
-   color: black !important;
+  background-color: #0091f2 !important;
+  color: black !important;
 }

@@ -1,241 +1,236 @@
 .cardFilterListContainer {
-   display: flex;
-   width: 23vw;
-   align-items: center;
-   flex-direction: column;
-   height: 40.501vw;
-   background-color: #171717;
-   border: .05208vw solid #7d7d7d;
-   border-radius: 1vw;
-   padding-bottom: 1vw;
-   padding-top: 0.5vw;
-   margin-left: 1vw;
+  display: flex;
+  width: 23vw;
+  align-items: center;
+  flex-direction: column;
+  height: 40.501vw;
+  background-color: #171717;
+  border: 0.05208vw solid #7d7d7d;
+  border-radius: 1vw;
+  padding-bottom: 1vw;
+  padding-top: 0.5vw;
+  margin-left: 1vw;
 }
-
 
 .filterAdditionTitle {
-   display: flex;
-   align-items: center;
-   border-bottom: 0.05208vw solid black;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.05208vw solid black;
 }
 .filterAdditionTitle h1 {
-   display: flex;
-   justify-content: center;
-   width: 23vw;
-   font-size: 1.5vw;
-   margin-top: 1.635vw;
-   margin-bottom: 1.635vw;
+  display: flex;
+  justify-content: center;
+  width: 23vw;
+  font-size: 1.5vw;
+  margin-top: 1.635vw;
+  margin-bottom: 1.635vw;
 }
-
 
 .CardBlockFilter {
-   height: 6vw;
-   display: flex;
-   border: 0.05208vw solid #7d7d7d;
-   border-radius: 0.5vw;
-   width: 21vw;
-   margin-top: 0.5vw;
-   color: white;
-   cursor: pointer;
-   padding-top: 1vw;
-   padding-bottom: 0.5vw;
-   background-color: #171717;
+  height: 6vw;
+  display: flex;
+  border: 0.05208vw solid #7d7d7d;
+  border-radius: 0.5vw;
+  width: 21vw;
+  margin-top: 0.5vw;
+  color: white;
+  cursor: pointer;
+  padding-top: 1vw;
+  padding-bottom: 0.5vw;
+  background-color: #171717;
 }
 .CardBlockFilter:hover {
-   background-color: #0091f2 !important;
-   color: black !important;
+  background-color: #0091f2 !important;
+  color: black !important;
 }
-
 
 .filterContainer {
-   position: absolute;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   color: white;
-   height: 40.501vw;
-   width: 22vw;
-   left: 0.99vw;
-   background-color: #171717;
-   border: .05208vw solid #7d7d7d;
-   border-radius: 1vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  height: 40.501vw;
+  width: 22vw;
+  left: 0.99vw;
+  background-color: #171717;
+  border: 0.05208vw solid #7d7d7d;
+  border-radius: 1vw;
 }
 .filterTitle {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   height: 6.6vw;
-   min-height: 6.6vw !important;
-   flex-direction: row;
-   justify-content: space-between;
-   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.6vw;
+  min-height: 6.6vw !important;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 .filterTitle button {
-   color: white;
-   font-size: 2vw;
-   font-family: sans-serif;
-   height: 2vw;
-   min-height: 2vw;
-   margin: 0 !important;
-   margin-right: 1vw !important;
-   margin-left: 1vw !important;
-   width:2vw;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border: none;
-   background: none;
-   cursor: pointer;
-   padding: 0;
+  color: white;
+  font-size: 2vw;
+  font-family: sans-serif;
+  height: 2vw;
+  min-height: 2vw;
+  margin: 0 !important;
+  margin-right: 1vw !important;
+  margin-left: 1vw !important;
+  width: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
 }
 .filterTitle button img {
-   height: 2vw;
-   width: 2vw;
+  height: 2vw;
+  width: 2vw;
 }
 .filterTitle h1 {
-   height: 2vw;
-   font-size: 1.5vw;
-   margin-top: 1.635vw;
-   margin-bottom: 1.635vw;
+  height: 2vw;
+  font-size: 1.5vw;
+  margin-top: 1.635vw;
+  margin-bottom: 1.635vw;
 }
 .filterContainer input {
-   width: 13vw;
-   height: 2vw;
-   border-radius: 0.5vw;
-   font-size: 1vw;
-   background: none;
-   border: 0.05208vw solid gray;
-   color: white;
+  width: 13vw;
+  height: 2vw;
+  border-radius: 0.5vw;
+  font-size: 1vw;
+  background: none;
+  border: 0.05208vw solid gray;
+  color: white;
 }
 .filterCardFormInput {
-   display: flex;
-   width: 22vw;
-   align-items: center;
-   flex-direction: column;
-   overflow-y: scroll;
-   border-bottom: .05208vw solid #7d7d7d;
-   border-top: .05208vw solid #7d7d7d;
+  display: flex;
+  width: 22vw;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  border-bottom: 0.05208vw solid #7d7d7d;
+  border-top: 0.05208vw solid #7d7d7d;
 }
 .filterErrorTitle {
-   width: 100%;
-   font-size: 1vw;
-   margin-top: 0.5vw;
-   display: flex;
-   justify-content: center;
+  width: 100%;
+  font-size: 1vw;
+  margin-top: 0.5vw;
+  display: flex;
+  justify-content: center;
 }
-
 
 .inputsContainer {
-   display: flex;
-   width: 21.9vw;
-   flex-direction: column;
-   margin-right: 0vw;
+  display: flex;
+  width: 21.9vw;
+  flex-direction: column;
+  margin-right: 0vw;
 }
-
 
 .addInput {
-   height: 3vw;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-left: 0.5vw;
-   margin-right: 0.5vw;
-   margin-bottom: 1vw;
+  height: 3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  margin-bottom: 1vw;
 }
 .addInput h1 {
-   font-size: 1vw;
-   width: 9vw;
-   margin: 0 !important;
-   line-height: 1vw;
+  font-size: 1vw;
+  width: 9vw;
+  margin: 0 !important;
+  line-height: 1vw;
 }
 .addInput select {
-   background-color: #f0f8ff;
-   border: .05208vw solid #000;
-   border-radius: .5vw;
-   color: #000;
-   font-size: 1vw;
-   height: 2vw;
-   min-height: 2vw;
-   width: 11.983vw;
-   padding-left: 0.5vw !important;
-   padding-right: 0.5vw !important;
-   background-position: right 0.5vw center !important;
+  background-color: #f0f8ff;
+  border: 0.05208vw solid #000;
+  border-radius: 0.5vw;
+  color: #000;
+  font-size: 1vw;
+  height: 2vw;
+  min-height: 2vw;
+  width: 11.983vw;
+  padding-left: 0.5vw !important;
+  padding-right: 0.5vw !important;
+  background-position: right 0.5vw center !important;
 }
 .addInput select:focus {
-   outline: none;
-   border: 0.05208vw solid #2a65d1;
-   border-radius: 0.5vw;
+  outline: none;
+  border: 0.05208vw solid #2a65d1;
+  border-radius: 0.5vw;
 }
 input select:-webkit-autofill {
-   font-size: 1vw;
+  font-size: 1vw;
 }
 
 .addInput input {
-   width: 12vw;
-   height: 2vw !important;
-   min-height: 2vw !important;
-   border-radius: 0.5vw;
-   font-size: 1vw;
-   font-family: sans-serif;
-   background: none;
-   border: 0.05208vw solid black;
-   color: black;
-   background-color: aliceblue;
-   padding: 0.3vw;
-   --default-font-size: 1vw;
+  width: 12vw;
+  height: 2vw !important;
+  min-height: 2vw !important;
+  border-radius: 0.5vw;
+  font-size: 1vw;
+  font-family: sans-serif;
+  background: none;
+  border: 0.05208vw solid black;
+  color: black;
+  background-color: aliceblue;
+  padding: 0.3vw;
+  --default-font-size: 1vw;
 }
 .addInput input:focus {
-   outline: none;
-   border: 0.05208vw solid #2a65d1;
-   border-radius: 0.5vw;
+  outline: none;
+  border: 0.05208vw solid #2a65d1;
+  border-radius: 0.5vw;
 }
 .addInput input:-webkit-autofill {
-   font-size: 1vw;
+  font-size: 1vw;
 }
 
 .addInput textarea {
-   min-height: 1vw;
-   border-radius: 0.5vw;
-   font-size: 1vw;
-   font-family:sans-serif;
-   background: none;
-   border: 0.05208vw solid black;
-   color: black;
-   background-color: aliceblue;
-   resize: none;
-   padding: 0.3vw;
-   --default-font-size: 1vw;
+  min-height: 1vw;
+  border-radius: 0.5vw;
+  font-size: 1vw;
+  font-family: sans-serif;
+  background: none;
+  border: 0.05208vw solid black;
+  color: black;
+  background-color: aliceblue;
+  resize: none;
+  padding: 0.3vw;
+  --default-font-size: 1vw;
 }
 .addInput textarea:focus {
-   outline: none;
-   border: 0.05208vw solid #2a65d1;
-   border-radius: 0.5vw;
+  outline: none;
+  border: 0.05208vw solid #2a65d1;
+  border-radius: 0.5vw;
 }
 .addInput textarea:-webkit-autofill {
-   font-size: 1vw;
+  font-size: 1vw;
 }
 
 .filterButtons {
-   margin-top: 0.5vw;
-   display: flex;
-   justify-content: end;
-   width: 100%;
+  margin-top: 0.5vw;
+  display: flex;
+  justify-content: end;
+  width: 100%;
 }
 .filterButtons button {
-   background-color: #004884;
-   color: white;
-   border: 0.05208vw solid gray;
-   border-radius: 0.5vw;
-   height: 2vw;
-   min-height: 2vw;
-   width: 10vw;
-   font-size: 1vw;
-   padding: 0;
-   margin-right: 1vw !important;
-   cursor: pointer;
-   margin-right: 1vw;
+  background-color: #004884;
+  color: white;
+  border: 0.05208vw solid gray;
+  border-radius: 0.5vw;
+  height: 2vw;
+  min-height: 2vw;
+  width: 10vw;
+  font-size: 1vw;
+  padding: 0;
+  margin-right: 1vw !important;
+  cursor: pointer;
+  margin-right: 1vw;
 }
 .filterButtons button:hover {
-   background-color: #0091f2 !important;
-   color: black !important;
+  background-color: #0091f2 !important;
+  color: black !important;
 }
