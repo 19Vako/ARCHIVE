@@ -153,18 +153,72 @@ README.md
 - Перенаправляє неавторизованих користувачів на екран входу
 - Відображає сторінку документу по id
 
-### context.tsx — глобальний стан
-- **Поля стану:**
-  - log_in — статус авторизації
-  - userName — ім’я користувача
-  - cards — список карток
-  - getCardError, createCardError — логи помилок
-  - filterLog, addAdditionLog, showCardDataLog — логи дій
-  - showCard, showFilter, showAddition, showAddAddition, showApproveModal — прапори відображення
-  - formData, filterFormData — дані форм
-  - fileName, file, pdfURL, showCardPDF, showAddAdditionCardPDF — файли/перегляд PDF
-  - fileLog — повідомлення про проблеми з файлом
-  - findAuthor, additions — інші дані
+### context.tsx — глобальний стан (скорочено)
+
+#### Авторизація та користувач
+- `log_in: boolean` — стан авторизації
+- `setLog_in: (state: boolean) => void` — змінити стан авторизації
+- `userName: string` — ім’я користувача
+- `setUserName: (name: string) => void` — змінити ім’я користувача
+
+#### Картки
+- `cards: CardType[]` — список карток
+- `setCards: React.Dispatch<React.SetStateAction<CardType[]>>` — змінити список карток
+- `showCard: boolean` — показ картки
+- `setShowCard: (state: boolean) => void` — змінити стан показу
+- `showCardDataLog: string` — лог даних картки
+- `setShowCardDataLog: (log: string) => void` — змінити лог даних
+- `formData: any` — дані форми картки
+- `setFormData: (data: any) => void` — змінити дані форми
+- `filterFormData: any` — дані фільтру карток
+- `setFilterFormData: (data: any) => void` — змінити дані фільтру
+- `showSaveChangesButton: boolean` — стан кнопки "Зберегти зміни"
+- `setShowSaveChangesButton: (stateCard: boolean) => void` — змінити стан кнопки
+- `showFilter: boolean` — показ фільтру
+- `setShowFilter: (state: boolean) => void` — змінити стан показу
+
+#### Файли та PDF
+- `fileName: string` — назва файлу
+- `setFileName: (state: string) => void` — змінити назву файлу
+- `file: any` — файл (PDF або інше)
+- `setFile: (state: any) => void` — змінити файл
+- `pdfURL: any` — URL PDF
+- `setPdfURL: (state: any) => void` — змінити URL
+- `showCardPDF: any` — дані PDF картки
+- `setShowCardPDF: (data: any) => void` — змінити PDF картки
+- `getCardError: any` — лог помилок отримання картки
+- `setGetCardError: (data: any) => void` — змінити лог помилок
+- `fileLog: boolean` — логування стану файлу
+- `setFileLog: (state: boolean) => void` — змінити логування
+
+#### Фільтри та автори
+- `filterLog: string` — лог фільтру
+- `setFilterLog: (data: string) => void` — змінити лог фільтру
+- `findAuthor: string` — автор для пошуку
+- `setFindAuthor: (data: string) => void` — змінити автора
+
+#### Створення картки
+- `createCardError: boolean` — помилка при створенні картки
+- `setCreateCardError: (state: boolean) => void` — змінити стан помилки
+
+#### Додаткові документи
+- `additions: Array<any>` — список додаткових документів
+- `setAdditions: (additions: Array<any>) => void` — змінити список додаткових документів
+- `showAddition: boolean` — показ додаткового документа
+- `setShowAddition: (state: boolean) => void` — змінити стан показу
+- `showAddAddition: boolean` — показ модалки додавання документа
+- `setShowAddAddition: (state: boolean) => void` — змінити стан модалки
+- `showAddAdditionData: any` — дані форми додаткового документа
+- `setShowAddAdditionData: (data: any) => void` — змінити дані форми
+- `showAddAdditionCardPDF: any` — PDF додаткового документа
+- `setShowAddAdditionCardPDF: (data: any) => void` — змінити PDF
+- `addAdditionLog: string` — лог додавання документа
+- `setAddAdditionLog: (data: string) => void` — змінити лог
+
+#### Модальне вікно підтвердження
+- `showApproveModal: boolean` — показ модалки підтвердження
+- `setShowApproveModal: (state: boolean) => void` — змінити стан модалки
+
 
 ## Сторінки / screens
 
