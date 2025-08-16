@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { reverseWord, today } from "../utils/Utils";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 type CardType = {
@@ -32,7 +31,7 @@ type ContextType = {
   setUserName: (name: string) => void;
 
   cards: CardType[];
-  setCards: (cards: CardType[]) => void;
+  setCards: React.Dispatch<React.SetStateAction<CardType[]>>;
 
   showCard: boolean;
   setShowCard: (state: boolean) => void;
@@ -100,14 +99,6 @@ type ContextType = {
   showApproveModal: boolean;
   setShowApproveModal: (state: boolean) => void;
 
-  page: any;
-  setPage: (data: any) => void;
-
-  loading: boolean;
-  setLoading: (state: boolean) => void;
-
-  hasMore: boolean;
-  setHasMore: (state: boolean) => void;
 };
 const Context = createContext<ContextType | undefined>(undefined);
 
@@ -156,7 +147,7 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
   const [file, setFile] = useState<File | string>(String);
   const [pdfURL, setPdfURL] = useState<string | null>(null);
   const [showCardPDF, setShowCardPDF] = useState({
-    nameHostAndPort: env.NAME_HOST_AND_PORT,
+    nameHostAndPort: env.REACT_APP_NAME_HOST_AND_PORT,
     fileName: "",
   });
   const [getCardError, setGetCardError] = useState(""); // Логування помилок отриманні помилок
@@ -170,14 +161,11 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
   const [showAddAdditionData, setShowAddAdditionData] =
     useState(initialFormData);
   const [showAddAdditionCardPDF, setShowAddAdditionCardPDF] = useState({
-    nameHostAndPort: env.NAME_HOST_AND_PORT,
+    nameHostAndPort: env.REACT_APP_NAME_HOST_AND_PORT,
     fileName: "",
   });
   const [addAdditionLog, setAddAdditionLog] = useState("");
   const [showApproveModal, setShowApproveModal] = useState(false);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("userName", userName);
@@ -239,12 +227,6 @@ export const Provider: React.FC<{ children: React.ReactNode }> = ({
         setAddAdditionLog,
         showApproveModal,
         setShowApproveModal,
-        page,
-        setPage,
-        loading,
-        setLoading,
-        hasMore,
-        setHasMore,
       }}
     >
       {children}

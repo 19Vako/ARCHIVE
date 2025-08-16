@@ -5,35 +5,26 @@ import AddManager from "../components/AddManager";
 import AddCard from "../components/AddCard";
 import { useStore } from "../context/Context";
 import axios from "axios";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function Admin() {
+    const {
+      setCards,
+      setGetCardError,
+    } = useStore();
   const [addCardOrUser, setaddCardOrUser] = useState(true);
-  const { setCards, setGetCardError, setLoading, setHasMore, setPage } =
-    useStore();
   const GetCards = async () => {
-    setLoading(true);
-    setGetCardError(null);
-
-    try {
-      const res = await axios.post(env.GET_CARDS!, { page: 1, limit: 50 });
-      const newCards = res.data.cards || [];
-      setCards(newCards); // просто ставим новые карточки
-      setHasMore(newCards.length === 50); // true если ровно 50 карточек
-      setPage(1);
-    } catch (err: any) {
-      setGetCardError(
-        err?.response?.data?.error || "Помилка при завантаженні карток",
-      );
-    } finally {
-      setLoading(false);
-    }
+    await axios.post(env.REACT_APP_GET_CARDS!)
+    .then((data) => {
+      setCards(data.data.cards)
+    })
+    .catch((err) => {
+      setGetCardError(err.response.data.error)
+    })
   };
   useEffect(() => {
-    GetCards();
-  }, []);
-
+      GetCards()
+    }, []);
   return (
     <div className="adminContainer">
       <Header />

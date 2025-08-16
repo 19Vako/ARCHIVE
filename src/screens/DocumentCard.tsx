@@ -4,7 +4,6 @@ import "../components/styles/header.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useStore } from "../context/Context";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function DocumentCard() {
@@ -24,7 +23,7 @@ function DocumentCard() {
     setShowAddition,
   } = useStore();
   const GetCard = async () => {
-    await axios.post(env.FIND_CARDS!, { id: id }).then((data) => {
+    await axios.post(env.REACT_APP_FIND_CARDS!, { id: id }).then((data) => {
       setFormData({ ...data.data.data });
       setShowCardPDF((prev: any) => ({
         ...prev,
@@ -40,7 +39,7 @@ function DocumentCard() {
   };
   const GetAdditions = async (_id: any) => {
     await axios
-      .post(env.GET_ADDITIONCARDS!, { docId: _id })
+      .post(env.REACT_APP_GET_ADDITIONCARDS!, { docId: _id })
       .then((data) => {
         setAdditions(data.data.data);
       })

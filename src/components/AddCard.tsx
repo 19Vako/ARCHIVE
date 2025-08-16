@@ -6,12 +6,15 @@ import "./styles/addCard.css";
 import { useEffect } from "react";
 import { useStore } from "../context/Context";
 import { reverseWord, today } from "../utils/Utils";
+import axios from "axios";
+
 import FilterCard from "./FilterCard";
 import CardList from "./CardList";
 import AddCardForm from "./AddCardForm";
 import ApproveModal from "./ApproveModal";
 
 function AddCard() {
+  const env = process.env;
   const {
     userName,
     setCards,
@@ -20,9 +23,9 @@ function AddCard() {
     setShowFilter,
     setShowAddition,
     showApproveModal,
-    setPage,
-    setHasMore,
+    setGetCardError,
   } = useStore();
+
   useEffect(() => {
     if (userName) {
       setFormData((prev: any) => ({
@@ -50,6 +53,21 @@ function AddCard() {
     author: userName,
     createDate: reverseWord(today),
   };
+
+  const GetCards = async () => {
+    await axios.post(env.REACT_APP_GET_CARDS!, {page:1})
+      .then((data) => {
+        setCards(data.data.cards)
+      })
+      .catch((err) => {
+        setGetCardError(err.response.data.error)
+      })
+    };
+  useEffect(() => {
+    GetCards()
+  }, []);
+
+
   const cleanInputs = () => {
     setFormData(initialFormData);
   };
@@ -58,8 +76,6 @@ function AddCard() {
     cleanInputs();
     setShowAddition(false);
     setCards([]);
-    setPage(1);
-    setHasMore(true);
   };
 
   return (

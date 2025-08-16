@@ -9,6 +9,14 @@ p {
 .AppContainer {
   height: 100vh;
 }
+.input-filled {
+  background-color: silver !important;
+  border: 0.2vw solid #1284e7 !important;
+}
+.input-empty {
+  background-color: #f0f8ff !important;
+  border: 0.05208vw solid #000 !important;
+}
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);

@@ -3,7 +3,6 @@ import "./styles/addManager.css";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function AddManager() {
@@ -28,7 +27,7 @@ function AddManager() {
   const [deleteManagerModal, setDeleteManagerModal] = useState(false);
 
   const getManagers = async () => {
-    const { data } = await axios.post(env.GET_MANAGERS!);
+    const { data } = await axios.post(env.REACT_APP_GET_MANAGERS!);
     setManagers(data.managers);
   };
   useEffect(() => {
@@ -36,7 +35,7 @@ function AddManager() {
   }, []);
   const FindManager = async () => {
     await axios
-      .post(env.FIND_MANAGER!, { name: findName })
+      .post(env.REACT_APP_FIND_MANAGER!, { name: findName })
       .then((data) => {
         setManagers(data.data.managers);
       })
@@ -51,7 +50,7 @@ function AddManager() {
   };
   const AddManager = async () => {
     await axios
-      .post(env.ADD_MANAGER!, { name: name, password: password })
+      .post(env.REACT_APP_ADD_MANAGER!, { name: name, password: password })
       .then((data) => {
         setLog(data.data.message);
         getManagers();
@@ -64,7 +63,7 @@ function AddManager() {
   };
   const ChangeManager = async () => {
     await axios
-      .post(env.FIND_CHANGE_MANAGER!, {
+      .post(env.REACT_APP_FIND_CHANGE_MANAGER!, {
         _id: changeManagerID,
         changedName: ManagerName,
         changedPassword: ManagerPassword,
@@ -82,7 +81,7 @@ function AddManager() {
   const DeleteManager = async () => {
     setDeleteManagerModal(false);
     setShowManager(false);
-    await axios.post(env.DELETE_MANAGER!, { _id: changeManagerID });
+    await axios.post(env.REACT_APP_DELETE_MANAGER!, { _id: changeManagerID });
     setManagers((prev) =>
       prev.filter((mng: any) => mng._id !== changeManagerID),
     );

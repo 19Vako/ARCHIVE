@@ -10,8 +10,8 @@
   align-items: center;
   flex-direction: column;
   height: 40.501vw;
-  background-color: #171717;
-  border: 0.05208vw solid #7d7d7d;
+  background-color: var(--default-background);
+  border: var(--border-width) solid var(--border-color);
   border-radius: 1vw;
   padding-bottom: 0.5vw;
 }
@@ -47,7 +47,7 @@
   margin: 0 !important;
   background: none;
   background-color: #f0f8ff !important;
-  border: 0.05208vw solid #000 !important;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 2vw !important;
   color: #000 !important;
   font-size: 1vw !important;
@@ -70,7 +70,7 @@
   display: flex;
   align-items: center;
   padding-left: 1vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   height: 6vw;
   width: 20.1vw;
@@ -78,10 +78,10 @@
   cursor: pointer;
   padding-top: 1vw;
   padding-bottom: 0.5vw;
-  background-color: #171717;
+  background-color: var(--default-background);
 }
 .managerBlock:hover {
-  background-color: #2a65d1 !important;
+  background-color: var(--button-hover) !important;
   color: #000 !important;
 }
 .managerBlock img {
@@ -128,7 +128,7 @@
 }
 .deleteModalButton {
   background: #b00303;
-  border: 0.05208vw solid gray;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   height: 3vw;
   width: 10vw;
@@ -142,24 +142,24 @@
 }
 
 .closeModalButton {
-  background: #004884;
+  background: var(--button-background);
   height: 3vw;
   width: 10vw;
   cursor: pointer;
   color: white;
-  border: 0.05208vw solid gray;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   font-size: 1vw;
 }
 .closeModalButton:hover {
-  background-color: #023a68;
+  background-color: var(--button-hover);
 }
 
 .addManagerForm {
   position: relative;
   align-items: center;
-  background-color: #171717;
-  border: 0.05208vw solid #7d7d7d;
+  background-color: var(--default-background);
+  border: var(--border-width) solid var(--border-color);
   border-radius: 1vw;
   display: flex;
   flex-direction: column;
@@ -174,7 +174,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-bottom: 0.05208vw solid gray;
+  border: var(--border-width) solid var(--border-color);
   padding: 1vw;
 }
 .addManagerForm h1 {
@@ -185,7 +185,7 @@
   --default-font-size: 1vw;
   background: none;
   background-color: #f0f8ff !important;
-  border: 0.05208vw solid #7d7d7d !important;
+  border: var(--border-width) solid var(--border-color)!important;
   border-radius: 0.5vw !important;
   color: #000 !important;
   font-size: 1vw !important;
@@ -203,8 +203,8 @@
 .addButton {
   margin: 0 !important;
   background: none;
-  background-color: #004884 !important;
-  border: 0.05208vw solid #7d7d7d !important;
+  background-color: var(--button-background) !important;
+  border: var(--border-width) solid var(--border-color)!important;
   border-radius: 0.5vw !important;
   color: #fff !important;
   cursor: pointer !important;
@@ -215,7 +215,7 @@
   padding: 0 !important;
 }
 .addButton:hover {
-  background-color: #023a68;
+  background-color: var(--button-hover);
 }
 
 .emptyText {
@@ -271,7 +271,7 @@
   --default-font-size: 1vw;
   margin: 0 !important;
   border-radius: 0.5vw !important;
-  border: 0.05208vw solid #7d7d7d !important;
+  border: var(--border-width) solid var(--border-color)!important;
   background-color: #f0f8ff;
   color: #000;
   font-size: 1vw !important;
@@ -294,8 +294,8 @@
 
 .saveButton {
   margin: 0 !important;
-  background-color: #004884 !important;
-  border: 0.05208vw solid #7d7d7d !important;
+  background-color: var(--button-background)!important;
+  border: var(--border-width) solid var(--border-color)!important;
   border-radius: 0.5vw !important;
   color: #fff !important;
   cursor: pointer !important;
@@ -306,5 +306,5 @@
   padding: 0 !important;
 }
 .saveButton:hover {
-  background-color: #023a68;
+  background-color: var(--button-hover);
 }

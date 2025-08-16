@@ -4,8 +4,8 @@
   align-items: center;
   flex-direction: column;
   height: 40.501vw;
-  background-color: #171717;
-  border: 0.05208vw solid #7d7d7d;
+  background-color: var(--default-background);
+  border: var(--border-width) solid var(--border-color);
   border-radius: 1vw;
   padding-bottom: 1vw;
   padding-top: 0.5vw;
@@ -15,7 +15,7 @@
 .filterAdditionTitle {
   display: flex;
   align-items: center;
-  border-bottom: 0.05208vw solid black;
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 .filterAdditionTitle h1 {
   display: flex;
@@ -29,7 +29,7 @@
 .CardBlockFilter {
   height: 6vw;
   display: flex;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   width: 21vw;
   margin-top: 0.5vw;
@@ -37,7 +37,7 @@
   cursor: pointer;
   padding-top: 1vw;
   padding-bottom: 0.5vw;
-  background-color: #171717;
+  background-color: var(--default-background);
 }
 .CardBlockFilter:hover {
   background-color: #0091f2 !important;
@@ -53,8 +53,8 @@
   height: 40.501vw;
   width: 22vw;
   left: 0.99vw;
-  background-color: #171717;
-  border: 0.05208vw solid #7d7d7d;
+  background-color: var(--default-background);
+  border: var(--border-width) solid var(--border-color);
   border-radius: 1vw;
 }
 .filterTitle {
@@ -101,7 +101,7 @@
   border-radius: 0.5vw;
   font-size: 1vw;
   background: none;
-  border: 0.05208vw solid gray;
+  border: var(--border-width) solid var(--border-color);
   color: white;
 }
 .filterCardFormInput {
@@ -109,9 +109,10 @@
   width: 22vw;
   align-items: center;
   flex-direction: column;
-  overflow-y: scroll;
-  border-bottom: 0.05208vw solid #7d7d7d;
-  border-top: 0.05208vw solid #7d7d7d;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-bottom: var(--border-width) solid var(--border-color);
+  border-top: var(--border-width) solid var(--border-color);
 }
 .filterErrorTitle {
   width: 100%;
@@ -124,12 +125,14 @@
 .inputsContainer {
   display: flex;
   width: 21.9vw;
+  align-items: center;
   flex-direction: column;
   margin-right: 0vw;
 }
 
 .addInput {
   height: 3vw;
+  width: 92%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -139,21 +142,18 @@
 }
 .addInput h1 {
   font-size: 1vw;
-  width: 9vw;
+  width: 8vw;
   margin: 0 !important;
   line-height: 1vw;
 }
 .addInput select {
-  background-color: #f0f8ff;
-  border: 0.05208vw solid #000;
   border-radius: 0.5vw;
   color: #000;
   font-size: 1vw;
   height: 2vw;
   min-height: 2vw;
-  width: 11.983vw;
-  padding-left: 0.5vw !important;
-  padding-right: 0.5vw !important;
+  padding-right: 2vw !important;
+  width: 12vw;
   background-position: right 0.5vw center !important;
 }
 .addInput select:focus {
@@ -173,9 +173,7 @@ input select:-webkit-autofill {
   font-size: 1vw;
   font-family: sans-serif;
   background: none;
-  border: 0.05208vw solid black;
   color: black;
-  background-color: aliceblue;
   padding: 0.3vw;
   --default-font-size: 1vw;
 }
@@ -194,9 +192,7 @@ input select:-webkit-autofill {
   font-size: 1vw;
   font-family: sans-serif;
   background: none;
-  border: 0.05208vw solid black;
   color: black;
-  background-color: aliceblue;
   resize: none;
   padding: 0.3vw;
   --default-font-size: 1vw;
@@ -217,9 +213,9 @@ input select:-webkit-autofill {
   width: 100%;
 }
 .filterButtons button {
-  background-color: #004884;
+  background-color: var(--button-background);
   color: white;
-  border: 0.05208vw solid gray;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   height: 2vw;
   min-height: 2vw;
@@ -233,4 +229,60 @@ input select:-webkit-autofill {
 .filterButtons button:hover {
   background-color: #0091f2 !important;
   color: black !important;
+}
+
+
+.FilterDataModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--default-background);
+  height: 17vw;
+  position: absolute;
+  width: 26vw;
+  border-radius: 1vw;
+  z-index: 10;
+  top: 12.5vw;
+  left: 8.8vw;
+  border: var(--border-width) solid var(--border-color);
+}
+.FilterDataModal h1 {
+  font-size: 1.5vw;
+  margin: 0;
+  margin-top: 1vw;
+  margin-bottom: 0;
+}
+.FilterDataModal textarea {
+  background-color: #f0f8ff;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 0.5vw;
+  color: #000;
+  font-size: 1.5vw;
+  font-family: sans-serif;
+  height: 8.4vw;
+  min-height: 8.4vw;
+  margin-top: 1vw;
+  width: 25vw;
+  margin-bottom: 1vw;
+  margin-right: 0;
+  padding: 0.3vw;
+  resize: none;
+}
+.FilterDataModal button {
+  margin: 0 !important;
+  margin-bottom: 1vw !important;
+  background-color: var(--button-background);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 0.5vw;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1vw !important;
+  height: 2vw !important;
+  min-height: 2vw !important;
+  width: 12vw;
+  padding: 0;
+}
+.FilterDataModal button:hover {
+  background-color: var(--button-hover) !important;
+  color: #000 !important;
 }

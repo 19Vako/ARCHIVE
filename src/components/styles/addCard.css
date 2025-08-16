@@ -12,8 +12,8 @@
   align-items: center;
   flex-direction: column;
   height: 40.501vw;
-  background-color: #171717;
-  border: 0.05208vw solid #7d7d7d;
+  background-color: var(--default-background);
+  border: var(--border-width) solid var(--border-color);
   border-radius: 1vw;
   padding-bottom: 0.5vw;
 }
@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   width: 100%;
   margin-bottom: 0.5vw;
 }
@@ -53,7 +53,7 @@
 }
 .cardList {
   overflow-y: auto;
-  height: 100%;
+  height: 39vw;
   width: 23vw;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@
 }
 
 .CardBlock {
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   width: 20.1vw;
   margin-top: 0.5vw;
@@ -74,7 +74,7 @@
   cursor: pointer;
   padding-top: 1vw;
   padding-bottom: 0.5vw;
-  background-color: #171717;
+  background-color: var(--default-background);
 }
 .CardBlock h1 {
   margin: 0;
@@ -103,8 +103,8 @@
   width: 100%;
   margin-left: 1vw;
   border-radius: 1vw;
-  background-color: #171717;
-  border: 0.05208vw solid #7d7d7d;
+  background-color: var(--default-background);
+  border: var(--border-width) solid var(--border-color);
 }
 .addCardForm h1 {
   color: white;
@@ -119,7 +119,7 @@
   flex-direction: row;
   justify-content: space-between;
   border-radius: 0.5vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   padding-top: 1vw;
@@ -143,7 +143,7 @@
   font-size: 1vw;
   padding-left: 0.3vw;
   height: 2vw;
-  border: 0.05208vw solid #000;
+  border: var(--border-width) solid var(--border-color);
   width: 12vw;
   appearance: none;
   background-position: right 1vw center;
@@ -166,8 +166,7 @@ input select:-webkit-autofill {
   height: 2vw;
   border-radius: 0.5vw;
   font-size: 1vw;
-  background: none;
-  border: 0.05208vw solid black;
+  border: var(--border-width) solid var(--border-color);
   color: black;
   background-color: aliceblue;
 }
@@ -184,8 +183,7 @@ input select:-webkit-autofill {
   border-radius: 0.5vw;
   font-size: 1vw;
   font-family: sans-serif;
-  background: none;
-  border: 0.05208vw solid black;
+  border: var(--border-width) solid var(--border-color);
   color: black;
   background-color: aliceblue;
   resize: none;
@@ -194,7 +192,7 @@ input select:-webkit-autofill {
 .addInput textarea:focus {
   outline: none;
   border: 0.05208vw solid #2a65d1;
-  border-radius: 0.5vw;
+  border-radius: 0.5vw
 }
 .addInput textarea:-webkit-autofill {
   font-size: 1vw;
@@ -218,7 +216,7 @@ input[type="date"]:hover {
 
 .choosePDFContainer {
   width: 71.2vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-bottom-right-radius: 0.5vw;
   border-bottom-left-radius: 0.5vw;
   border-top: none;
@@ -250,14 +248,14 @@ input[type="date"]:hover {
   justify-content: center;
   font-family: sans-serif;
   font-size: 1vw;
-  background-color: #004884;
+  background-color: var(--button-background);
   color: white;
   border-radius: 0.3vw;
   border-top-left-radius: 0;
   cursor: pointer;
 }
 .custom-file-label:hover {
-  background-color: #2a65d1 !important;
+  background-color: var(--button-hover) !important;
   color: #000 !important;
 }
 
@@ -281,14 +279,13 @@ input[type="date"]:hover {
 }
 .contentContainer textarea {
   height: 8vw;
+  min-height: 8vw;
   width: 71.2vw;
   margin: 0;
   border: none;
   padding: 1vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  background-color: #f0f8ff;
-  border: 0.05208vw solid #7d7d7d !important;
   color: black;
   resize: none;
   margin-bottom: 1vw;
@@ -304,8 +301,8 @@ input[type="date"]:hover {
 }
 .addButtons button {
   margin: 0 !important;
-  background-color: #004884;
-  border: 0.05208vw solid gray;
+  background-color: var(--button-background);
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   color: #fff;
   cursor: pointer;
@@ -316,7 +313,7 @@ input[type="date"]:hover {
   padding: 0;
 }
 .addButtons button:hover {
-  background-color: #2a65d1 !important;
+  background-color: var(--button-hover) !important;
   color: #000 !important;
 }
 
@@ -360,7 +357,62 @@ input[type="date"]:hover {
   align-items: center;
   padding-top: 1vw;
   padding-bottom: 1vw;
-  border-bottom: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
+}
+
+.AddDataModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--default-background);
+  height: 17vw;
+  position: absolute;
+  width: 29vw;
+  border-radius: 1vw;
+  z-index: 10;
+  top: 6.5vw;
+  left: 39vw;
+  border: var(--border-width) solid var(--border-color);
+}
+.AddDataModal h1 {
+  font-size: 1.5vw;
+  margin: 0;
+  margin-top: 1vw;
+  margin-bottom: 0;
+}
+.AddDataModal textarea {
+  background-color: #f0f8ff;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 0.5vw;
+  color: #000;
+  font-size: 1.5vw;
+  font-family: sans-serif;
+  height: 8.4vw;
+  min-height: 8.4vw;
+  margin-top: 1vw;
+  width: 25vw;
+  margin-bottom: 1vw;
+  margin-right: 0;
+  padding: 0.3vw;
+  resize: none;
+}
+.AddDataModal button {
+  margin: 0 !important;
+  margin-bottom: 1vw !important;
+  background-color: var(--button-background);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 0.5vw;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1vw !important;
+  height: 2vw !important;
+  min-height: 2vw !important;
+  width: 12vw;
+  padding: 0;
+}
+.AddDataModal button:hover {
+  background-color: var(--button-hover) !important;
+  color: #000 !important;
 }
 
 .approveModalContainer {
@@ -407,7 +459,7 @@ input[type="date"]:hover {
   overflow-x: hidden;
   padding-bottom: 1vw;
   border-radius: 0.5vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
 }
 
 .pdfDocContainer {

@@ -8,7 +8,7 @@
   margin-bottom: 1vw;
   height: 33.3vw;
   width: 21.5vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   z-index: 2;
   margin-top: 1vw;
@@ -35,9 +35,9 @@
   height: 46.5vw;
   width: 98%;
   left: 0vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 1vw;
-  background-color: #171717;
+  background-color: var(--default-background);
   margin-top: 5vw;
   margin-left: 1vw;
   margin-right: 1vw;
@@ -45,7 +45,7 @@
 .DocumentCardDataContainer {
   height: 32vw;
   min-width: 21.5vw;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   margin: 1vw;
   padding-top: 1.3vw;
@@ -71,7 +71,7 @@
   width: 44.27vw;
   display: block;
   align-items: center;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   padding-bottom: 0.5vw;
   margin-bottom: 0;
@@ -87,12 +87,12 @@
   display: flex;
   width: 19.6vw;
   flex-direction: column;
-  border: 0.05208vw solid #7d7d7d;
+  border: var(--border-width) solid var(--border-color);
   border-radius: 0.5vw;
   margin-bottom: 0.5vw;
   padding-top: 1vw;
   padding-bottom: 0.5vw;
-  background-color: #171717;
+  background-color: var(--default-background);
 }
 .additionBlockContainer:hover {
   background-color: #0091f2 !important;

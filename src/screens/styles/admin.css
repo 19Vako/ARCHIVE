@@ -23,7 +23,7 @@
   color: white;
   font-size: 1vw !important;
   text-decoration: none;
-  border: 0.05208vw solid gray !important;
+  border: var(--border-width) solid var(--border-color) !important;
   border-radius: 2vw 0 0 2vw !important;
   background: none;
 }
@@ -44,7 +44,7 @@
   color: white;
   font-size: 1vw !important;
   text-decoration: none;
-  border: 0.05208vw solid gray !important;
+  border: var(--border-width) solid var(--border-color) !important;
   border-radius: 0 2vw 2vw 0 !important;
   background: none;
 }

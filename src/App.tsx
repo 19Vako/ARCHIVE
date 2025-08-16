@@ -3,6 +3,7 @@ import { Provider } from "./context/Context";
 import AppRoutes from "./components/AppRoutes";
 import "./App.css";
 
+
 function App() {
   return (
     <div className="AppContainer">

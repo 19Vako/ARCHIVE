@@ -1,19 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import "./styles/filterCard.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStore } from "../context/Context";
 import axios from "axios";
-import ShowCard from "./ShowCard";
 import CardList from "./CardList";
 import AdditionCardList from "./AdditionCardList";
 import { today, reverseWord, formatDateForInput } from "../utils/Utils";
 const env = process.env;
 
-function FilterCard() {
+function ManagerFilter() {
   const {
+    setLoading,
+    setHasMore,
+    setPage,
     userName,
-    formData,
     setCards,
     setFormData,
     setShowFilter,
@@ -36,18 +36,19 @@ function FilterCard() {
   const [modalDataName, setModalDataName] = useState("");
   const [titleFilterModalDataName, setTitleFilterModalDataName] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
-  
 
   
   const GetCards = async () => {
-    await axios.post(env.REACT_APP_GET_CARDS!, {page:1})
-      .then((data) => {
-        setCards(data.data.cards)
-      })
-      .catch((err) => {
-        setGetCardError(err.response.data.error)
-      })
+    await axios.post(env.REACT_APP_GET_CARDS!)
+    .then((data) => {
+      setCards(data.data.cards)
+    })
+    .catch((err) => {
+      setGetCardError(err.response.data.error)
+    })
   };
+
+
   const initialFormData = {
     _id: "",
     docId: "",
@@ -68,9 +69,7 @@ function FilterCard() {
     createDate: reverseWord(today),
   };
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    e: React.ChangeEvent< HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement >,
   ) => {
     const { name, value } = e.target;
     if (["docCreateDate", "docSigningDate", "validityPeriod"].includes(name)) {
@@ -118,7 +117,7 @@ function FilterCard() {
     setModalDataName(name);
     openFilterModal ? setOpenFilterModal(false) : setOpenFilterModal(true);
   };
-
+  
   return (
     <>
       {showAddAddition ? (
@@ -365,14 +364,8 @@ function FilterCard() {
           {filterLog}
         </h1>
       </div>
-
-      <div className="cardBlockContainer">
-        {formData._id && (
-          <div className="cardContainer">{showCard && <ShowCard />}</div>
-        )}
-      </div>
     </>
   );
 }
 
-export default FilterCard;
+export default ManagerFilter;

@@ -4,7 +4,6 @@ import "./styles/addCard.css";
 
 import axios from "axios";
 import { useStore } from "../context/Context";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function AddAddition() {
@@ -20,7 +19,7 @@ function AddAddition() {
   } = useStore();
   const GetAdditions = async (_id: any) => {
     await axios
-      .post(env.GET_ADDITIONCARDS!, { docId: _id })
+      .post(env.REACT_APP_GET_ADDITIONCARDS!, { docId: _id })
       .then((data) => {
         setAdditions(data.data.data);
       })
@@ -30,7 +29,7 @@ function AddAddition() {
   };
   const addAddition = async () => {
     await axios
-      .post(env.ADD_ADDITION!, {
+      .post(env.REACT_APP_ADD_ADDITION!, {
         docId: formData._id,
         additionDocId: showAddAdditionData._id,
       })

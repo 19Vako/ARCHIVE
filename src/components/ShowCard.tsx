@@ -1,19 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import "./styles/showCard.css";
 
-import React from "react";
+import React, { useState } from "react";
 import { useStore } from "../context/Context";
 import axios from "axios";
 import AddAddition from "./AddAddition";
 import { reverseWord, today } from "../utils/Utils";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function ShowCard() {
   const {
-    setPage,
-    setHasMore,
-    setLoading,
     setCards,
     setShowCard,
     showCardDataLog,
@@ -75,28 +71,24 @@ function ShowCard() {
     author: userName,
     createDate: reverseWord(today),
   };
+  const [modalDataName, setModalDataName] = useState("");
+  const [titleModalDataName, setTitleModalDataName] = useState("");
+  const [openDataModal, setOpenDataModal] = useState(false);
 
+  
   const GetCards = async () => {
-    setLoading(true);
-    setGetCardError(null); // обнуляем возможную старую ошибку
-
-    try {
-      const res = await axios.post(env.GET_CARDS!, { page: 1, limit: 50 });
-      const newCards = res.data.cards || [];
-      setCards(newCards);
-      setHasMore(newCards.length === 50);
-      setPage(1);
-    } catch (err: any) {
-      setGetCardError(
-        err?.response?.data?.error || "Помилка при завантаженні карток",
-      );
-    } finally {
-      setLoading(false);
-    }
+    await axios.post(env.REACT_APP_GET_CARDS!)
+    .then((data) => {
+      setCards(data.data.cards)
+    })
+    .catch((err) => {
+      setGetCardError(err.response.data.error)
+    })
   };
+
   const GetAdditions = async (_id: any) => {
     await axios
-      .post(env.GET_ADDITIONCARDS!, { docId: _id })
+      .post(env.REACT_APP_GET_ADDITIONCARDS!, { docId: _id })
       .then((data) => {
         setAdditions(data.data.data);
       })
@@ -122,6 +114,11 @@ function ShowCard() {
     setShowSaveChangesButton(false);
     GetAdditions(card._id);
   };
+  const openChangeDataModal = (name: string, titleName: string) => {
+    setTitleModalDataName(titleName);
+    setModalDataName(name);
+    openDataModal ? setOpenDataModal(false) : setOpenDataModal(true);
+  };
   const changeCard = async () => {
     const data = new FormData();
     Object.entries(formData as Record<string, any>).forEach(([key, value]) => {
@@ -131,7 +128,7 @@ function ShowCard() {
     data.append("docId", formData._id);
 
     await axios
-      .post(env.UPDATE_CARD!, data)
+      .post(env.REACT_APP_UPDATE_CARD!, data)
       .then((data) => {
         GetCards();
         choiseListCard(data.data.data);
@@ -153,7 +150,7 @@ function ShowCard() {
   };
   const deleteCard = async () => {
     await axios
-      .post(env.DELETE_CARD!, { docId: formData._id })
+      .post(env.REACT_APP_DELETE_CARD!, { docId: formData._id })
       .then((data) => {
         setShowCardDataLog(data.data.message);
         GetCards();
@@ -245,10 +242,26 @@ function ShowCard() {
                 }
               >
                 <div className="cardDataContainer">
+                  {openDataModal && (
+                    <div className="ChangeDataModal">
+                      <h1>{titleModalDataName}</h1>
+                      <textarea
+                        name={modalDataName}
+                        value={formData[modalDataName]}
+                        onChange={handleChangeCard}
+                      />
+                      <button onClick={() => setOpenDataModal(false)}>
+                        Підтвердити
+                      </button>
+                    </div>
+                  )}
                   <div className="cardDataTitle">
                     <h1>Найменування:</h1>
                     <textarea
                       name="name"
+                      onClick={() =>
+                        openChangeDataModal("name", "Найменування:")
+                      }
                       value={formData.name}
                       onChange={handleChangeCard}
                     />
@@ -256,8 +269,8 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Автор:</h1>
                     <input
-                      type="text"
                       name="author"
+                      onClick={() => openChangeDataModal("author", "Автор:")}
                       value={formData.author}
                       onChange={handleChangeCard}
                     />
@@ -283,8 +296,13 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Найменування контерагента:</h1>
                     <input
-                      type="text"
                       name="counterpartyCode"
+                      onClick={() =>
+                        openChangeDataModal(
+                          "counterpartyCode",
+                          "Найменування контерагента:",
+                        )
+                      }
                       value={formData.counterpartyCode}
                       onChange={handleChangeCard}
                     />
@@ -292,7 +310,6 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Дата створення:</h1>
                     <input
-                      type="text"
                       name="docCreateDate"
                       value={formData.docCreateDate}
                       onChange={handleChangeCard}
@@ -301,7 +318,6 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Дата підписання:</h1>
                     <input
-                      type="text"
                       name="docSigningDate"
                       value={formData.docSigningDate}
                       onChange={handleChangeCard}
@@ -310,7 +326,6 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Срок дії до:</h1>
                     <input
-                      type="text"
                       name="validityPeriod"
                       value={formData.validityPeriod}
                       onChange={handleChangeCard}
@@ -319,8 +334,13 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Найменування організації:</h1>
                     <input
-                      type="text"
                       name="organizationName"
+                      onClick={() =>
+                        openChangeDataModal(
+                          "organizationName",
+                          "Найменування організації:",
+                        )
+                      }
                       value={formData.organizationName}
                       onChange={handleChangeCard}
                     />
@@ -328,8 +348,13 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Код ЄДРПОУ організації:</h1>
                     <input
-                      type="text"
                       name="organisationCode"
+                      onClick={() =>
+                        openChangeDataModal(
+                          "organisationCode",
+                          "Код ЄДРПОУ організації:",
+                        )
+                      }
                       value={formData.organisationCode}
                       onChange={handleChangeCard}
                     />
@@ -337,8 +362,13 @@ function ShowCard() {
                   <div className="cardDataTitle">
                     <h1>Код ЄДРПОУ контрагента:</h1>
                     <input
-                      type="text"
                       name="counterpartyCode"
+                      onClick={() =>
+                        openChangeDataModal(
+                          "counterpartyCode",
+                          "Код ЄДРПОУ контрагента:",
+                        )
+                      }
                       value={formData.counterpartyCode}
                       onChange={handleChangeCard}
                     />

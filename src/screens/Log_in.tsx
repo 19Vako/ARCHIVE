@@ -3,7 +3,6 @@ import axios from "axios";
 import "./styles/log_in.css";
 import { useStore } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function Log_in() {
@@ -16,7 +15,7 @@ function Log_in() {
 
   const log_in = async () => {
     try {
-      const res = await axios.post(env.LOG_IN!, {
+      const res = await axios.post(env.REACT_APP_LOG_IN!, {
         name: name,
         password: password,
       });

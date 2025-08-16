@@ -6,7 +6,6 @@ import { useStore } from "../context/Context";
 import "../components/styles/addCard.css";
 import "../screens/styles/manager.css";
 import { today, reverseWord } from "../utils/Utils";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
 function ApproveModal() {
@@ -24,9 +23,6 @@ function ApproveModal() {
     showAddition,
     setFilterFormData,
     setShowApproveModal,
-    setPage,
-    setLoading,
-    setHasMore,
   } = useStore();
   useEffect(() => {
     if (userName) {
@@ -60,21 +56,13 @@ function ApproveModal() {
   const [createCardError, setCreateCardError] = useState(false);
 
   const GetCards = async () => {
-    setLoading(true);
-    setGetCardError(null);
-    try {
-      const res = await axios.post(env.GET_CARDS!, { page: 1, limit: 50 });
-      const newCards = res.data.cards || [];
-      setCards(newCards); // просто ставим новые карточки
-      setHasMore(newCards.length === 50); // true если ровно 50 карточек
-      setPage(1);
-    } catch (err: any) {
-      setGetCardError(
-        err?.response?.data?.error || "Помилка при завантаженні карток",
-      );
-    } finally {
-      setLoading(false);
-    }
+    await axios.post(env.REACT_APP_GET_CARDS!, {page:1})
+    .then((data) => {
+      setCards(data.data.cards)
+    })
+    .catch((err) => {
+      setGetCardError(err.response.data.error)
+    })
   };
   const cleanInputs = () => {
     setFilterFormData(initialFormData);
@@ -87,7 +75,7 @@ function ApproveModal() {
     });
     data.append("docPDF", file);
     await axios
-      .post(env.ADD_CARD_OR_ADDITION!, data)
+      .post(env.REACT_APP_ADD_CARD_OR_ADDITION!, data)
       .then(() => {
         setCreateCardError(false);
         setShowApproveModal(false);

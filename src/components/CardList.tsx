@@ -1,85 +1,69 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import "./styles/showCard.css";
-import "./styles/addAddition.css";
-import "./styles/addCard.css";
-
-import { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useStore } from "../context/Context";
-require("dotenv").config({ path: "../../.env" });
 const env = process.env;
 
-function CardList() {
+
+export default function CardList() {
   const {
-    hasMore,
-    setHasMore,
-    page,
-    setPage,
-    loading,
-    setLoading,
     setCards,
+    cards,
     setFormData,
     setShowFilter,
-    setGetCardError,
-    cards,
     setShowCard,
-    setShowCardDataLog,
-    setShowSaveChangesButton,
-    setFileName,
-    setFile,
     setShowCardPDF,
+    setShowCardDataLog,
+    setFile,
+    setFileName,
+    setShowSaveChangesButton,
     setAdditions,
     setShowAddition,
+    setGetCardError
   } = useStore();
-  const GetAdditions = async (_id: any) => {
-    await axios
-      .post(env.GET_ADDITIONCARDS!, { docId: _id })
-      .then((data) => {
-        setAdditions(data.data.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data.error);
-      });
-  };
-  const fetchCards = async () => {
-    if (loading || !hasMore) return;
-    setLoading(true);
-    try {
-      const res = await axios.post(env.GET_CARDS!, { page: page, limit: 50 });
-      const newCards = res.data.cards || [];
-      const updatedCards = [...cards, ...newCards];
-      setCards(updatedCards);
-      setPage((prev: number) => prev + 1);
-      if (newCards.length < 50) {
-        setHasMore(false);
-      }
-    } catch (err: any) {
-      setGetCardError(
-        err?.response?.data?.error || "Помилка при завантаженні карток",
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 300 &&
-        !loading &&
-        hasMore
-      ) {
-        fetchCards();
-      }
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading, hasMore]);
+  const listRef = useRef<HTMLDivElement>(null)
+  const [scrollCycles, setScrollCycles] = useState(1);
+
+  const GetCards = async (page = 1, limit = 10) => {
+    await axios.post(env.REACT_APP_GET_CARDS!, {page:page, limit:limit})
+    .then((data) => {
+      setCards(prev => [...prev, ...data.data.cards])
+    })
+    .catch((err) => {
+      setGetCardError(err.response.data.error)
+    })
+  };
+
   useEffect(() => {
-    fetchCards();
+    GetCards();
   }, []);
-  const choiseListCard = (card: any) => {
+
+  useEffect(() => {
+    const vwThreshold = window.innerWidth * 0.40501;
+
+    const listScroll = async (e: Event) => {
+      const target = e.target as HTMLDivElement;
+      const scrollTop = target.scrollTop;
+      
+      if(scrollTop >= vwThreshold * (scrollCycles + 1)) {
+        GetCards(scrollCycles + 1)
+        setScrollCycles((prev) => prev + 1);
+      }
+    } 
+
+    const el = listRef.current
+    if (!el) return;
+   
+    el.addEventListener('scroll', listScroll)
+
+    return () => {
+      if(el) el.removeEventListener('scroll', listScroll)
+    }
+
+  }, []);
+
+
+  const chooseCard = (card: any) => {
     setShowCard(true);
     setShowFilter(true);
     setShowAddition(false);
@@ -89,33 +73,29 @@ function CardList() {
     setFile("");
     setFileName("");
     setShowSaveChangesButton(false);
-    GetAdditions(card._id);
+
+    axios
+      .post(env.REACT_APP_GET_ADDITIONCARDS!, { docId: card._id })
+      .then((d) => setAdditions(d.data.data))
+      .catch((e) => console.error(e.response?.data?.error));
   };
 
+
   return (
-    <div className="cardList">
-      {Array.isArray(cards) && cards.length > 0 ? (
-        cards
-          .slice()
-          .reverse()
-          .map((card: any, index: any) => (
-            <div
-              key={index}
-              onClick={() => choiseListCard(card)}
-              className="CardBlockFilter"
-            >
-              <div className="cardBlockDateContainer">
-                <h1>Організація: {card.organizationName}</h1>
-                <h1>Дата створення: {card.docCreateDate}</h1>
-                <h1>Срок дії до: {card.validityPeriod}</h1>
-              </div>
+    <div className="cardList" ref={listRef}>
+        {cards.map((card) => (
+          <div
+            key={card._id}
+            onClick={() => chooseCard(card)}
+            className="CardBlockFilter"
+          >
+            <div className="cardBlockDateContainer">
+              <h1>Організація: {card.organizationName}</h1>
+              <h1>Дата створення: {card.docCreateDate}</h1>
+              <h1>Срок дії до: {card.validityPeriod}</h1>
             </div>
-          ))
-      ) : (
-        <h1>❌ Список карток пустий</h1>
-      )}
+          </div>
+        ))}
     </div>
   );
 }
-
-export default CardList;
